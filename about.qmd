@@ -12,14 +12,8 @@ This project was developed by **\[Pacman\]** For [INFO 526 - Data Analysis and V
 
 -   Jayneet Jain: 1st-year Master's student in Data Science, graduating in 2026.
 
+-   Saksham Gupta: 1st-year Master's student in Data Science, graduating in 2026.
+
 -   Vaishnavi Kulkarni: 1st-year Master's student in Data Science, graduating in 2026.
 
-```{=html}
-<!-- -->
-```
--   Shashank: 1st-year Master's student in Data Science, graduating in 2026.
-
-```{=html}
-<!-- -->
-```
--   Mihika: 1st-year Master's student in Data Science, graduating in 2026.
+-   Mihika Kubadia: 1st-year Master's student in Data Science, graduating in 2026.
