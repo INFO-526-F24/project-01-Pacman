@@ -70,10 +70,15 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<<<<<<< HEAD
 
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
+=======
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+>>>>>>> 4af6d064a593e380becaa252f8ae53c1acba9e2b
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -417,6 +422,7 @@ window.Quarto = {
 </ol>
 </section></div></main> <!-- /main -->
 
+<<<<<<< HEAD
 
 <script>
 
@@ -456,8 +462,35 @@ window.Quarto = {
 
           window.jQuery(previousSlide).trigger("hidden");
 
-        }
+=======
+<script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
 
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+>>>>>>> 4af6d064a593e380becaa252f8ae53c1acba9e2b
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+<<<<<<< HEAD
         if (currentSlide) {
 
           window.jQuery(currentSlide).trigger("shown");
@@ -492,6 +525,19 @@ window.Quarto = {
 
 
 
+=======
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script>
+
+>>>>>>> 4af6d064a593e380becaa252f8ae53c1acba9e2b
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
