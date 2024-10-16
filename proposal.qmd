@@ -85,29 +85,26 @@ While the dataset includes customer demographic details like age and gender, it 
 ## Analysis Plan
 
 -   Seasonal Trends and Sales Performance:\
-    1. Analyze monthly sales trends by category.\
-    2. Segment data by malls to explore seasonal sales variations.\
-    3. Examine the distribution of payment methods by season.\
-    4. Compare seasonal sales across categories, payment methods, and malls.\
-    Planned Visualizations: Line graphs, stacked area charts, heatmaps, and faceted bar plots.
-
+    1.  Analyze monthly sales trends by category.\
+    2.  Segment data by malls to explore seasonal sales variations.\
+    3.  Examine the distribution of payment methods by season.\
+    4.  Compare seasonal sales across categories, payment methods, and malls.\
+        Planned Visualizations: Line graphs, stacked area charts, heatmaps, and faceted bar plots.
 -   Customer Demographics and High-Value Transactions:\
-    1. Define and identify high-value transactions (e.g., sales \> \$500).\
-    2. Segment by demographic factors (age, gender).\
-    3. Analyze regional trends for high-value transactions.\
-    4. Cross-reference categories for demographic preferences.\
-    Planned Visualizations: Boxplots, bar charts, heatmaps, and violin plots.
-
+    1.  Define and identify high-value transactions (e.g., sales \> \$500).\
+    2.  Segment by demographic factors (age, gender).\
+    3.  Analyze regional trends for high-value transactions.\
+    4.  Cross-reference categories for demographic preferences.\
+        Planned Visualizations: Boxplots, bar charts, heatmaps, and violin plots.
 -   Discounts, Sales Volumes, and Profit Margins:\
-    1. Calculate and analyze discount percentages.\
-    2. Assess correlation of discounts with sales volumes.\
-    3. Determine profit margins post-discounts.\
-    4. Conduct correlation analysis among discounts, volumes, and margins.\
-    Planned Visualizations: Scatter plots, bar charts, correlation matrices, and 3D scatter plots.
-
+    1.  Calculate and analyze discount percentages.\
+    2.  Assess correlation of discounts with sales volumes.\
+    3.  Determine profit margins post-discounts.\
+    4.  Conduct correlation analysis among discounts, volumes, and margins.\
+        Planned Visualizations: Scatter plots, bar charts, correlation matrices, and 3D scatter plots.
 -   Payment Methods and Profit Margins by Category and Region:\
-    1. Segment by payment method and calculate profit margins.\
-    2. Analyze the impact of payment methods on profit margins per category.\
-    3. Assess regional differences in payment methods and profit margins.\
-    4. Perform time-series analysis on payment methods.\
-    Planned Visualizations: Stacked bar plots, line graphs, faceted bar charts, and Sankey diagrams.
+    1.  Segment by payment method and calculate profit margins.\
+    2.  Analyze the impact of payment methods on profit margins per category.\
+    3.  Assess regional differences in payment methods and profit margins.\
+    4.  Perform time-series analysis on payment methods.\
+        Planned Visualizations: Stacked bar plots, line graphs, faceted bar charts, and Sankey diagrams.
