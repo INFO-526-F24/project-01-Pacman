@@ -1,11 +1,11 @@
 ---
-title: "Project Title"
+title: "E-commerce Sales Trends and Consumer Insights: A Data-Driven Analysis"
 subtitle: "INFO 526 - Fall 2024 - Project 01"
 author: 
-  - name: "Team name"
+  - name: "Pacman"
     affiliations:
       - name: "School of Information, University of Arizona"
-description: "Project description"
+description: "In order to identify trends in consumer behavior, sales patterns, and profitability, this project examines e-commerce transaction data from different shopping centers and geographical areas. We seek to determine seasonal sales patterns, high-value client groups, and the effects of discounts by examining variables such as consumer demographics, product categories, and payment methods. The knowledge acquired will contribute to our comprehension of customer decision-making processes and the effects of various sales tactics on performance in various contexts."
 format:
    html:
     code-tools: true
@@ -19,4 +19,4 @@ execute:
 
 ## Abstract
 
-Add project abstract here.
+This project dives into e-commerce transaction data to uncover patterns in how people shop, what they buy, and which factors drive sales across different regions and times of the year. By analyzing details like product categories, customer demographics, payment methods, and seasonal trends, this study aims to highlight key insights, such as when and where sales peak, which customer groups make high-value purchases, and how discounts impact profitability. The findings offer a deeper understanding of consumer choices and sales dynamics, helping to shape strategies for boosting engagement and optimizing performance in the e-commerce space.
