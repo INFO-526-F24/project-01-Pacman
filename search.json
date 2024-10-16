@@ -1,0 +1,135 @@
+[
+  {
+    "objectID": "proposal.html",
+    "href": "proposal.html",
+    "title": "E-commerce Sales Trends and Consumer Insights: A Data-Driven Analysis",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(dplyr)"
+  },
+  {
+    "objectID": "proposal.html#dataset",
+    "href": "proposal.html#dataset",
+    "title": "E-commerce Sales Trends and Consumer Insights: A Data-Driven Analysis",
+    "section": "Dataset",
+    "text": "Dataset\n\ndata &lt;- read.csv(\"data/Data.gov+-+FY24+Q2.csv\")\nglimpse(data)\n\nRows: 49,938\nColumns: 34\n$ Fiscal.Year                           &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 20…\n$ Unique.Identifier                     &lt;chr&gt; \"08003048XA0002\", \"08003048XA000…\n$ Deal.Number                           &lt;chr&gt; \"AP003048AA\", \"AP003048AA\", \"AP0…\n$ Decision                              &lt;chr&gt; \"Approved\", \"Approved\", \"Approve…\n$ Decision.Date                         &lt;chr&gt; \"11/29/2006\", \"11/29/2006\", \"8/1…\n$ Effective.Date                        &lt;chr&gt; \"N/A\", \"11/29/2006\", \"8/16/2007\"…\n$ Expiration.Date                       &lt;chr&gt; \"12/15/2011\", \"12/15/2016\", \"9/1…\n$ Brokered                              &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"N…\n$ Deal.Cancelled                        &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"N…\n$ Country                               &lt;chr&gt; \"Private Export Funding Corp.\", …\n$ Program                               &lt;chr&gt; \"Guarantee\", \"Guarantee\", \"Guara…\n$ Policy.Type                           &lt;chr&gt; \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A…\n$ Decision.Authority                    &lt;chr&gt; \"Board\", \"Board\", \"Board\", \"Indi…\n$ Primary.Export.Product.NAICS.SIC.code &lt;chr&gt; \"N/A\", \"N/A\", \"N/A\", \"5088\", \"35…\n$ Product.Description                   &lt;chr&gt; \"N/A\", \"N/A\", \"N/A\", \"Transporta…\n$ Term                                  &lt;chr&gt; \"Long Term\", \"Long Term\", \"Long …\n$ Primary.Applicant                     &lt;chr&gt; \"Private Export Funding Corporat…\n$ Primary.Lender                        &lt;chr&gt; \"Private Export Funding Corporat…\n$ Primary.Exporter                      &lt;chr&gt; \"N/A\", \"N/A\", \"N/A\", \"American G…\n$ Primary.Exporter.City                 &lt;chr&gt; \"N/A\", \"N/A\", \"N/A\", \"Gaithersbu…\n$ Primary.Exporter.State.Code           &lt;chr&gt; \"N/A\", \"N/A\", \"N/A\", \"MD\", \"CT\",…\n$ Primary.Exporter.State.Name           &lt;chr&gt; \"N/A\", \"N/A\", \"N/A\", \"Maryland\",…\n$ Primary.Borrower                      &lt;chr&gt; \"Private Export Funding Corporat…\n$ Primary.Source.of.Repayment..PSOR.    &lt;chr&gt; \"Various Us Companies\", \"Various…\n$ Working.Capital.Delegated.Authority   &lt;chr&gt; \"\", \"\", \"\", \"Yes\", \"Yes\", \"Yes\",…\n$ Approved.Declined.Amount              &lt;dbl&gt; 24500000.0, 50000000.0, 13625000…\n$ Disbursed.Shipped.Amount              &lt;dbl&gt; 24500000.0, 50000000.0, 13625000…\n$ Undisbursed.Exposure.Amount           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ Outstanding.Exposure.Amount           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ Small.Business.Authorized.Amount      &lt;dbl&gt; 0.0, 0.0, 0.0, 2700000.0, 0.0, 2…\n$ Woman.Owned.Authorized.Amount         &lt;dbl&gt; 0.0, 0.0, 0.0, 0.0, 0.0, 233307.…\n$ Minority.Owned.Authorized.Amount      &lt;dbl&gt; 0, 0, 0, 2700000, 0, 0, 0, 10800…\n$ Loan.Interest.Rate                    &lt;chr&gt; \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A…\n$ Multiyear.Working.Capital.Extension   &lt;chr&gt; \"\", \"\", \"\", \"\", \"\", \"\", \"\", \"\", …"
+  },
+  {
+    "objectID": "proposal.html#data-description",
+    "href": "proposal.html#data-description",
+    "title": "E-commerce Sales Trends and Consumer Insights: A Data-Driven Analysis",
+    "section": "Data Description",
+    "text": "Data Description\n\nSource of the Data\nThis dataset comes from Kaggle and includes transaction records from different shopping malls and regions, designed to give a broad overview of consumer habits, sales patterns, and seasonal trends in e-commerce.\n\n\nCollection Information\nThe data covers all authorizations from October 1, 2006, to March 31, 2024. During this period, any transaction extensions, such as those for Working Capital, were approved under original agreements made before a temporary halt in EXIM Bank’s authority. No new transactions were approved during that lapse; only extensions of previous agreements were processed. This dataset was transferred to Catalog.Data.gov in September 2023 after Data.EXIM.gov ceased operations. With its multi-year scope, the dataset offers a consistent view of transaction details, customer demographics, and location-specific data, making it well-suited for financial and trend analyses over time.\n\n\nDescription of Observations\nThis dataset includes various types of information, organized into the following categories:\nTransaction Details: Each transaction record includes a timestamp, the total amount, and any discounts applied, which are useful for analyzing financial patterns and identifying seasonal shifts in sales.\nProduct Information: Each item sold is categorized, enabling an analysis of product trends within specific categories and helping to segment the data by product type.\nCustomer Demographics: Information on customers’ age and gender supports demographic analysis, helping to reveal spending preferences and behaviors across different customer groups.\nRegional Indicators: Transactions are associated with specific shopping malls or regions, making it possible to compare how different locations perform.\nPayment Methods: The dataset captures the type of payment used—such as credit card, mobile payment, or cash—which provides insights into payment preferences and how they may affect profit margins."
+  },
+  {
+    "objectID": "proposal.html#ethical-considerations",
+    "href": "proposal.html#ethical-considerations",
+    "title": "E-commerce Sales Trends and Consumer Insights: A Data-Driven Analysis",
+    "section": "Ethical Considerations",
+    "text": "Ethical Considerations\nWhile the dataset includes customer demographic details like age and gender, it does not contain any personal identifiers, helping to maintain privacy. Since the dataset is publicly available on Kaggle, it appears any necessary anonymization was applied beforehand. However, careful interpretation is needed when using demographic data to avoid inadvertently reinforcing stereotypes or drawing unsupported conclusions about certain groups."
+  },
+  {
+    "objectID": "proposal.html#questions",
+    "href": "proposal.html#questions",
+    "title": "E-commerce Sales Trends and Consumer Insights: A Data-Driven Analysis",
+    "section": "Questions",
+    "text": "Questions\n\nHow Do Seasonal Trends Affect Sales Performance Across Different Categories, Malls, and Payment Methods?\nWe are going to investigate the impact of seasonal fluctuations on sales across product categories, locations, and payment methods. This question will help identify peak seasons and preferred payment options during high-demand periods.\nWhich Customer Demographics (Gender, Age) Contribute the Most to High-Value Transactions, and in which Regions or Categories?\nThrough this question we aim to identify customer segments that account for the highest-value transactions, focusing on demographics, regions, and categories preferred by these customers.\nWhat Are the Relationships Between Discounted Prices, Sales Volumes, and Profit Margins in Different Shopping Malls and Product Categories?\nThrough this question, we will examine the influence of discounts on sales volumes and profit margins, analyzing correlations across product categories and shopping malls.\nWhat Is the Impact of Payment Methods on Profit Margins Across Different Categories and Regions Over Time?\nWe will analyze how different payment methods affect profit margins, observing variations by product category and region over time."
+  },
+  {
+    "objectID": "proposal.html#analysis-plan",
+    "href": "proposal.html#analysis-plan",
+    "title": "E-commerce Sales Trends and Consumer Insights: A Data-Driven Analysis",
+    "section": "Analysis Plan",
+    "text": "Analysis Plan\n\nSeasonal Trends and Sales Performance:\n\n\nAnalyze monthly sales trends by category.\n\nSegment data by malls to explore seasonal sales variations.\n\nExamine the distribution of payment methods by season.\n\nCompare seasonal sales across categories, payment methods, and malls.\nPlanned Visualizations: Line graphs, stacked area charts, heatmaps, and faceted bar plots.\n\nCustomer Demographics and High-Value Transactions:\n\n\nDefine and identify high-value transactions (e.g., sales &gt; $500).\n\nSegment by demographic factors (age, gender).\n\nAnalyze regional trends for high-value transactions.\n\nCross-reference categories for demographic preferences.\nPlanned Visualizations: Boxplots, bar charts, heatmaps, and violin plots.\n\nDiscounts, Sales Volumes, and Profit Margins:\n\n\nCalculate and analyze discount percentages.\n\nAssess correlation of discounts with sales volumes.\n\nDetermine profit margins post-discounts.\n\nConduct correlation analysis among discounts, volumes, and margins.\nPlanned Visualizations: Scatter plots, bar charts, correlation matrices, and 3D scatter plots.\n\nPayment Methods and Profit Margins by Category and Region:\n\n\nSegment by payment method and calculate profit margins.\n\nAnalyze the impact of payment methods on profit margins per category.\n\nAssess regional differences in payment methods and profit margins.\n\nPerform time-series analysis on payment methods.\nPlanned Visualizations: Stacked bar plots, line graphs, faceted bar charts, and Sankey diagrams."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Project Title",
+    "section": "",
+    "text": "Add project abstract here."
+  },
+  {
+    "objectID": "index.html#abstract",
+    "href": "index.html#abstract",
+    "title": "Project Title",
+    "section": "",
+    "text": "Add project abstract here."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project was developed by Pacman For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nRalph Dsouza : 1st-year Master’s student in Information Science, graduating in 2026.\nDevashree Pawar : 1st-year Master’s student in Data Science, graduating in 2026.\nJayneet Jain : 1st-year Master’s student in Data Science, graduating in 2026.\nSaksham Gupta : 1st-year Master’s student in Data Science, graduating in 2026.\nVaishnavi Kulkarni : 1st-year Master’s student in Data Science, graduating in 2026.\nMihika Kubadia : 1st-year Master’s student in Data Science, graduating in 2026."
+  },
+  {
+    "objectID": "contract.html",
+    "href": "contract.html",
+    "title": "Project Title",
+    "section": "",
+    "text": "https://svkmmumbai-my.sharepoint.com/:w:/g/personal/mihika_kubadia120_svkmmumbai_onmicrosoft_com/EYRjJZY6bZFErP80OuE-a9cBYi6gKwtVpmG9CJFaVZjVbQ?e=hgmBG6"
+  },
+  {
+    "objectID": "presentation.html#quarto",
+    "href": "presentation.html#quarto",
+    "title": "Project title",
+    "section": "Quarto",
+    "text": "Quarto\n\nThe presentation is created using the Quarto CLI\n## sets the start of a new slide"
+  },
+  {
+    "objectID": "presentation.html#layouts",
+    "href": "presentation.html#layouts",
+    "title": "Project title",
+    "section": "Layouts",
+    "text": "Layouts\nYou can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\nlike\nthis\n\nAnd add footnotes"
+  },
+  {
+    "objectID": "presentation.html#code",
+    "href": "presentation.html#code",
+    "title": "Project title",
+    "section": "Code",
+    "text": "Code\n\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic       p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n1 (Intercept)   25.3      3.08        8.22 0.00000000358\n2 speed         -0.116    0.0642     -1.81 0.0806       \n\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1    0.0983        0.0682  5.82      3.27  0.0806     1  -101.  207.  212.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;"
+  },
+  {
+    "objectID": "presentation.html#plots",
+    "href": "presentation.html#plots",
+    "title": "Project title",
+    "section": "Plots",
+    "text": "Plots"
+  },
+  {
+    "objectID": "presentation.html#plot-and-text",
+    "href": "presentation.html#plot-and-text",
+    "title": "Project title",
+    "section": "Plot and text",
+    "text": "Plot and text\n\n\n\nSome text\ngoes here"
+  },
+  {
+    "objectID": "presentation.html#tables",
+    "href": "presentation.html#tables",
+    "title": "Project title",
+    "section": "Tables",
+    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale"
+  },
+  {
+    "objectID": "presentation.html#images",
+    "href": "presentation.html#images",
+    "title": "Project title",
+    "section": "Images",
+    "text": "Images\n\nImage credit: Danielle Navarro, Percolate."
+  },
+  {
+    "objectID": "presentation.html#math-expressions",
+    "href": "presentation.html#math-expressions",
+    "title": "Project title",
+    "section": "Math Expressions",
+    "text": "Math Expressions\nYou can write LaTeX math expressions inside a pair of dollar signs, e.g. $\\alpha+\\beta$ renders \\(\\alpha + \\beta\\). You can use the display style with double dollar signs:\n$$\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i$$\n\\[\n\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i\n\\]\nLimitations:\n\nThe source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting $$ must appear in the very beginning of a line, followed immediately by a non-space character, and the ending $$ must be at the end of a line, led by a non-space character;\nThere should not be spaces after the opening $ or before the closing $."
+  },
+  {
+    "objectID": "presentation.html#feeling-adventurous",
+    "href": "presentation.html#feeling-adventurous",
+    "title": "Project title",
+    "section": "Feeling adventurous?",
+    "text": "Feeling adventurous?\n\nYou are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.\nBut some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs."
+  }
+]
