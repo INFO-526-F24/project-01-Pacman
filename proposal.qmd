@@ -1,11 +1,11 @@
 ---
-title: "Proposal title"
+title: "E-commerce Sales Trends and Consumer Insights: A Data-Driven Analysis"
 subtitle: "Proposal"
 author: 
-  - name: "Team Name"
+  - name: "Pacman"
     affiliations:
       - name: "School of Information, University of Arizona"
-description: "Project description"
+description: "In order to identify trends in consumer behavior, sales patterns, and profitability, this research examines e-commerce transaction data from different shopping centers and geographical areas. We seek to determine seasonal sales patterns, high-value client groups, and the effects of discounts by examining variables such as consumer demographics, product categories, and payment methods. The knowledge acquired will contribute to our comprehension of customer decision-making processes and the effects of various sales tactics on performance in various contexts."
 format:
   html:
     code-tools: true
@@ -22,6 +22,8 @@ execute:
 #| label: load-pkgs
 #| message: false
 library(tidyverse)
+library(dplyr)
+
 ```
 
 ## Dataset
@@ -29,18 +31,80 @@ library(tidyverse)
 ```{r}
 #| label: load-dataset
 #| message: false
+data <- read.csv("data/Data.gov+-+FY24+Q2.csv")
+glimpse(data)
+
 ```
 
-A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.
+**Source of the Data**
 
-n2jnbsjbw
+This dataset comes from Kaggle and includes transaction records from different shopping malls and regions, designed to give a broad overview of consumer habits, sales patterns, and seasonal trends in e-commerce.
 
-Make sure to load the data and use inline code for some of this information.
+**Collection Information**
+
+The data covers all authorizations from October 1, 2006, to March 31, 2024. During this period, any transaction extensions, such as those for Working Capital, were approved under original agreements made before a temporary halt in EXIM Bank’s authority. No new transactions were approved during that lapse; only extensions of previous agreements were processed. This dataset was transferred to Catalog.Data.gov in September 2023 after Data.EXIM.gov ceased operations. With its multi-year scope, the dataset offers a consistent view of transaction details, customer demographics, and location-specific data, making it well-suited for financial and trend analyses over time.
+
+**Description of Observations**
+
+This dataset includes various types of information, organized into the following categories:
+
+**Transaction Details:** Each transaction record includes a timestamp, the total amount, and any discounts applied, which are useful for analyzing financial patterns and identifying seasonal shifts in sales.
+
+**Product Information:** Each item sold is categorized, enabling an analysis of product trends within specific categories and helping to segment the data by product type.
+
+**Customer Demographics:** Information on customers’ age and gender supports demographic analysis, helping to reveal spending preferences and behaviors across different customer groups.
+
+**Regional Indicators:** Transactions are associated with specific shopping malls or regions, making it possible to compare how different locations perform.
+
+**Payment Methods:** The dataset captures the type of payment used—such as credit card, mobile payment, or cash—which provides insights into payment preferences and how they may affect profit margins.
+
+\
+**Ethical Considerations**
+
+While the dataset includes customer demographic details like age and gender, it does not contain any personal identifiers, helping to maintain privacy. Since the dataset is publicly available on Kaggle, it appears any necessary anonymization was applied beforehand. However, careful interpretation is needed when using demographic data to avoid inadvertently reinforcing stereotypes or drawing unsupported conclusions about certain groups.
 
 ## Questions
 
-The two questions you want to answer.
+1\. How Do Seasonal Trends Affect Sales Performance Across Different Categories, Malls, and Payment Methods?\
+\> Investigates the impact of seasonal fluctuations on sales across product categories, locations, and payment methods. This question will help identify peak seasons and preferred payment options during high-demand periods.\
+\
+2. Which Customer Demographics (Gender, Age) Contribute the Most to High-Value Transactions, and in which Regions or Categories?\
+\> Aims to identify customer segments that account for the highest-value transactions, focusing on demographics, regions, and categories preferred by these customers.\
+\
+3. What Are the Relationships Between Discounted Prices, Sales Volumes, and Profit Margins in Different Shopping Malls and Product Categories?\
+\> Examines the influence of discounts on sales volumes and profit margins, analyzing correlations across product categories and shopping malls.\
+\
+4. What Is the Impact of Payment Methods on Profit Margins Across Different Categories and Regions Over Time?\
+\> Analyzes how different payment methods affect profit margins, observing variations by product category and region over time.
 
 ## Analysis plan
 
--   A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
+ 1. Seasonal Trends and Sales Performance:\
+Step 1: Analyze monthly sales trends by category.\
+Step 2: Segment data by malls to explore seasonal sales variations.\
+Step 3: Examine distribution of payment methods by season.\
+Step 4: Compare seasonal sales across categories, payment methods, and malls.\
+Planned Visualizations: Line graphs, stacked area charts, heatmaps, and faceted bar plots.
+
+\
+2. Customer Demographics and High-Value Transactions:\
+Step 1: Define and identify high-value transactions (e.g., sales \> \$500).\
+Step 2: Segment by demographic factors (age, gender).\
+Step 3: Analyze regional trends for high-value transactions.\
+Step 4: Cross-reference categories for demographic preferences.\
+Planned Visualizations: Boxplots, bar charts, heatmaps, and violin plots.
+
+3. Discounts, Sales Volumes, and Profit Margins:\
+Step 1: Calculate and analyze discount percentages.\
+Step 2: Assess correlation of discounts with sales volumes.\
+Step 3: Determine profit margins post-discounts.\
+Step 4: Conduct correlation analysis among discounts, volumes, and margins.\
+Planned Visualizations: Scatter plots, bar charts, correlation matrices, and 3D scatter plots.
+
+\
+4. Payment Methods and Profit Margins by Category and Region:\
+Step 1: Segment by payment method and calculate profit margins.\
+Step 2: Analyze impact of payment methods on profit margins per category.\
+Step 3: Assess regional differences in payment methods and profit margins.\
+Step 4: Perform time-series analysis on payment methods.\
+Planned Visualizations: Stacked bar plots, line graphs, faceted bar charts, and Sankey diagrams
