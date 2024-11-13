@@ -31,8 +31,8 @@ library(dplyr)
 ```{r}
 #| label: load-dataset
 #| message: false
-data <- read.csv("data/Data.gov+-+FY24+Q2.csv")
-glimpse(data)
+myData <- read.csv("data/Different_stores_dataset.csv")
+glimpse(myData)
 
 ```
 
