@@ -4808,6 +4808,7 @@ vertical-align: -.125em;
   <li><a href="#ethical-considerations" id="toc-ethical-considerations" class="nav-link" data-scroll-target="#ethical-considerations"><strong>Ethical Considerations</strong></a></li>
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#analysis-plan" id="toc-analysis-plan" class="nav-link" data-scroll-target="#analysis-plan">Analysis Plan</a></li>
+  <li><a href="#citations" id="toc-citations" class="nav-link" data-scroll-target="#citations">Citations</a></li>
   </ul>
 </nav>
     </div>
@@ -4859,45 +4860,24 @@ vertical-align: -.125em;
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/Data.gov+-+FY24+Q2.csv&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">glimpse</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>myData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/Different_stores_dataset.csv&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">glimpse</span>(myData)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 49,938
-Columns: 34
-$ Fiscal.Year                           &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 20…
-$ Unique.Identifier                     &lt;chr&gt; &quot;08003048XA0002&quot;, &quot;08003048XA000…
-$ Deal.Number                           &lt;chr&gt; &quot;AP003048AA&quot;, &quot;AP003048AA&quot;, &quot;AP0…
-$ Decision                              &lt;chr&gt; &quot;Approved&quot;, &quot;Approved&quot;, &quot;Approve…
-$ Decision.Date                         &lt;chr&gt; &quot;11/29/2006&quot;, &quot;11/29/2006&quot;, &quot;8/1…
-$ Effective.Date                        &lt;chr&gt; &quot;N/A&quot;, &quot;11/29/2006&quot;, &quot;8/16/2007&quot;…
-$ Expiration.Date                       &lt;chr&gt; &quot;12/15/2011&quot;, &quot;12/15/2016&quot;, &quot;9/1…
-$ Brokered                              &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;N…
-$ Deal.Cancelled                        &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;N…
-$ Country                               &lt;chr&gt; &quot;Private Export Funding Corp.&quot;, …
-$ Program                               &lt;chr&gt; &quot;Guarantee&quot;, &quot;Guarantee&quot;, &quot;Guara…
-$ Policy.Type                           &lt;chr&gt; &quot;N/A&quot;, &quot;N/A&quot;, &quot;N/A&quot;, &quot;N/A&quot;, &quot;N/A…
-$ Decision.Authority                    &lt;chr&gt; &quot;Board&quot;, &quot;Board&quot;, &quot;Board&quot;, &quot;Indi…
-$ Primary.Export.Product.NAICS.SIC.code &lt;chr&gt; &quot;N/A&quot;, &quot;N/A&quot;, &quot;N/A&quot;, &quot;5088&quot;, &quot;35…
-$ Product.Description                   &lt;chr&gt; &quot;N/A&quot;, &quot;N/A&quot;, &quot;N/A&quot;, &quot;Transporta…
-$ Term                                  &lt;chr&gt; &quot;Long Term&quot;, &quot;Long Term&quot;, &quot;Long …
-$ Primary.Applicant                     &lt;chr&gt; &quot;Private Export Funding Corporat…
-$ Primary.Lender                        &lt;chr&gt; &quot;Private Export Funding Corporat…
-$ Primary.Exporter                      &lt;chr&gt; &quot;N/A&quot;, &quot;N/A&quot;, &quot;N/A&quot;, &quot;American G…
-$ Primary.Exporter.City                 &lt;chr&gt; &quot;N/A&quot;, &quot;N/A&quot;, &quot;N/A&quot;, &quot;Gaithersbu…
-$ Primary.Exporter.State.Code           &lt;chr&gt; &quot;N/A&quot;, &quot;N/A&quot;, &quot;N/A&quot;, &quot;MD&quot;, &quot;CT&quot;,…
-$ Primary.Exporter.State.Name           &lt;chr&gt; &quot;N/A&quot;, &quot;N/A&quot;, &quot;N/A&quot;, &quot;Maryland&quot;,…
-$ Primary.Borrower                      &lt;chr&gt; &quot;Private Export Funding Corporat…
-$ Primary.Source.of.Repayment..PSOR.    &lt;chr&gt; &quot;Various Us Companies&quot;, &quot;Various…
-$ Working.Capital.Delegated.Authority   &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;,…
-$ Approved.Declined.Amount              &lt;dbl&gt; 24500000.0, 50000000.0, 13625000…
-$ Disbursed.Shipped.Amount              &lt;dbl&gt; 24500000.0, 50000000.0, 13625000…
-$ Undisbursed.Exposure.Amount           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-$ Outstanding.Exposure.Amount           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-$ Small.Business.Authorized.Amount      &lt;dbl&gt; 0.0, 0.0, 0.0, 2700000.0, 0.0, 2…
-$ Woman.Owned.Authorized.Amount         &lt;dbl&gt; 0.0, 0.0, 0.0, 0.0, 0.0, 233307.…
-$ Minority.Owned.Authorized.Amount      &lt;dbl&gt; 0, 0, 0, 2700000, 0, 0, 0, 10800…
-$ Loan.Interest.Rate                    &lt;chr&gt; &quot;N/A&quot;, &quot;N/A&quot;, &quot;N/A&quot;, &quot;N/A&quot;, &quot;N/A…
-$ Multiyear.Working.Capital.Extension   &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, …</code></pre>
+<pre><code>Rows: 99,457
+Columns: 13
+$ invoice_no             &lt;chr&gt; &quot;I138884&quot;, &quot;I317333&quot;, &quot;I127801&quot;, &quot;I173702&quot;, &quot;I3…
+$ invoice_date           &lt;chr&gt; &quot;10/30/2016 9:58&quot;, &quot;10/30/2016 9:58&quot;, &quot;10/30/20…
+$ customer_id            &lt;chr&gt; &quot;C241288&quot;, &quot;C111565&quot;, &quot;C266599&quot;, &quot;C988172&quot;, &quot;C1…
+$ gender                 &lt;chr&gt; &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;…
+$ age                    &lt;int&gt; 28, 21, 20, 66, 53, 28, 49, 32, 69, 60, 36, 29,…
+$ category               &lt;chr&gt; &quot;Clothing&quot;, &quot;Shoes&quot;, &quot;Clothing&quot;, &quot;Shoes&quot;, &quot;Book…
+$ quantity               &lt;int&gt; 5, 3, 1, 5, 4, 5, 1, 2, 3, 2, 2, 8, 4, 2, 2, 5,…
+$ selling_price_per_unit &lt;dbl&gt; 1500.40, 1800.51, 300.08, 3000.85, 60.60, 1500.…
+$ cost_price_per_unit    &lt;dbl&gt; 1425.3800, 1620.4590, 295.0600, 2900.7650, 45.4…
+$ payment_method         &lt;chr&gt; &quot;Credit Card&quot;, &quot;Debit Card&quot;, &quot;Cash&quot;, &quot;Credit Ca…
+$ region                 &lt;chr&gt; &quot;South&quot;, &quot;South&quot;, &quot;West&quot;, &quot;South&quot;, &quot;South&quot;, &quot;We…
+$ state                  &lt;chr&gt; &quot;Kentucky&quot;, &quot;Kentucky&quot;, &quot;California&quot;, &quot;Florida&quot;…
+$ shopping_mall          &lt;chr&gt; &quot;Kanyon&quot;, &quot;Viaport Outlet&quot;, &quot;Metrocity&quot;, &quot;Metro…</code></pre>
 </div>
 </div>
 </section>
@@ -4930,19 +4910,15 @@ $ Multiyear.Working.Capital.Extension   &lt;chr&gt; &quot;&quot;, &quot;&quot;, 
 <ul>
 <li><p>How Do Seasonal Trends Affect Sales Performance Across Different Categories, Malls, and Payment Methods?</p>
 <p>We are going to investigate the impact of seasonal fluctuations on sales across product categories, locations, and payment methods. This question will help identify peak seasons and preferred payment options during high-demand periods.</p></li>
-<li><p>Which Customer Demographics (Gender, Age) Contribute the Most to High-Value Transactions, and in which Regions or Categories?</p>
-<p>Through this question we aim to identify customer segments that account for the highest-value transactions, focusing on demographics, regions, and categories preferred by these customers.</p></li>
 <li><p>What Are the Relationships Between Discounted Prices, Sales Volumes, and Profit Margins in Different Shopping Malls and Product Categories?</p>
 <p>Through this question, we will examine the influence of discounts on sales volumes and profit margins, analyzing correlations across product categories and shopping malls.</p></li>
-<li><p>What Is the Impact of Payment Methods on Profit Margins Across Different Categories and Regions Over Time?</p>
-<p>We will analyze how different payment methods affect profit margins, observing variations by product category and region over time.</p></li>
 </ul>
 </section>
 <section id="analysis-plan" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-plan">Analysis Plan</h2>
 <ul>
-<li>Seasonal Trends and Sales Performance:<br>
-
+<li><p>Seasonal Trends and Sales Performance:<br>
+</p>
 <ol type="1">
 <li>Analyze monthly sales trends by category.<br>
 </li>
@@ -4953,20 +4929,8 @@ $ Multiyear.Working.Capital.Extension   &lt;chr&gt; &quot;&quot;, &quot;&quot;, 
 <li>Compare seasonal sales across categories, payment methods, and malls.<br>
 Planned Visualizations: Line graphs, stacked area charts, heatmaps, and faceted bar plots.</li>
 </ol></li>
-<li>Customer Demographics and High-Value Transactions:<br>
-
-<ol type="1">
-<li>Define and identify high-value transactions (e.g., sales &gt; $500).<br>
-</li>
-<li>Segment by demographic factors (age, gender).<br>
-</li>
-<li>Analyze regional trends for high-value transactions.<br>
-</li>
-<li>Cross-reference categories for demographic preferences.<br>
-Planned Visualizations: Boxplots, bar charts, heatmaps, and violin plots.</li>
-</ol></li>
-<li>Discounts, Sales Volumes, and Profit Margins:<br>
-
+<li><p>Discounts, Sales Volumes, and Profit Margins:<br>
+</p>
 <ol type="1">
 <li>Calculate and analyze discount percentages.<br>
 </li>
@@ -4977,19 +4941,11 @@ Planned Visualizations: Boxplots, bar charts, heatmaps, and violin plots.</li>
 <li>Conduct correlation analysis among discounts, volumes, and margins.<br>
 Planned Visualizations: Scatter plots, bar charts, correlation matrices, and 3D scatter plots.</li>
 </ol></li>
-<li>Payment Methods and Profit Margins by Category and Region:<br>
-
-<ol type="1">
-<li>Segment by payment method and calculate profit margins.<br>
-</li>
-<li>Analyze the impact of payment methods on profit margins per category.<br>
-</li>
-<li>Assess regional differences in payment methods and profit margins.<br>
-</li>
-<li>Perform time-series analysis on payment methods.<br>
-Planned Visualizations: Stacked bar plots, line graphs, faceted bar charts, and Sankey diagrams.</li>
-</ol></li>
 </ul>
+</section>
+<section id="citations" class="level2">
+<h2 class="anchored" data-anchor-id="citations">Citations</h2>
+<p>KZMontage, “Sales from different stores,” Kaggle. [Online]. Available: <a href="https://www.kaggle.com/datasets/kzmontage/sales-from-different-stores">Sales from different stores.</a>.</p>
 
 
 <!-- -->
@@ -5684,8 +5640,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-35"><a href="#cb4-35"></a><span class="in">```{r}</span></span>
 <span id="cb4-36"><a href="#cb4-36"></a><span class="co">#| label: load-dataset</span></span>
 <span id="cb4-37"><a href="#cb4-37"></a><span class="co">#| message: false</span></span>
-<span id="cb4-38"><a href="#cb4-38"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/Data.gov+-+FY24+Q2.csv&quot;</span>)</span>
-<span id="cb4-39"><a href="#cb4-39"></a><span class="fu">glimpse</span>(data)</span>
+<span id="cb4-38"><a href="#cb4-38"></a>myData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/Different_stores_dataset.csv&quot;</span>)</span>
+<span id="cb4-39"><a href="#cb4-39"></a><span class="fu">glimpse</span>(myData)</span>
 <span id="cb4-40"><a href="#cb4-40"></a></span>
 <span id="cb4-41"><a href="#cb4-41"></a><span class="in">```</span></span>
 <span id="cb4-42"><a href="#cb4-42"></a></span>
@@ -5723,44 +5679,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-74"><a href="#cb4-74"></a></span>
 <span id="cb4-75"><a href="#cb4-75"></a>    We are going to investigate the impact of seasonal fluctuations on sales across product categories, locations, and payment methods. This question will help identify peak seasons and preferred payment options during high-demand periods.</span>
 <span id="cb4-76"><a href="#cb4-76"></a></span>
-<span id="cb4-77"><a href="#cb4-77"></a><span class="ss">-   </span>Which Customer Demographics (Gender, Age) Contribute the Most to High-Value Transactions, and in which Regions or Categories?</span>
+<span id="cb4-77"><a href="#cb4-77"></a><span class="ss">-   </span>What Are the Relationships Between Discounted Prices, Sales Volumes, and Profit Margins in Different Shopping Malls and Product Categories?</span>
 <span id="cb4-78"><a href="#cb4-78"></a></span>
-<span id="cb4-79"><a href="#cb4-79"></a>    Through this question we aim to identify customer segments that account for the highest-value transactions, focusing on demographics, regions, and categories preferred by these customers.</span>
+<span id="cb4-79"><a href="#cb4-79"></a>    Through this question, we will examine the influence of discounts on sales volumes and profit margins, analyzing correlations across product categories and shopping malls.</span>
 <span id="cb4-80"><a href="#cb4-80"></a></span>
-<span id="cb4-81"><a href="#cb4-81"></a><span class="ss">-   </span>What Are the Relationships Between Discounted Prices, Sales Volumes, and Profit Margins in Different Shopping Malls and Product Categories?</span>
+<span id="cb4-81"><a href="#cb4-81"></a><span class="fu">## Analysis Plan</span></span>
 <span id="cb4-82"><a href="#cb4-82"></a></span>
-<span id="cb4-83"><a href="#cb4-83"></a>    Through this question, we will examine the influence of discounts on sales volumes and profit margins, analyzing correlations across product categories and shopping malls.</span>
+<span id="cb4-83"><a href="#cb4-83"></a><span class="ss">-   </span>Seasonal Trends and Sales Performance:\</span>
 <span id="cb4-84"><a href="#cb4-84"></a></span>
-<span id="cb4-85"><a href="#cb4-85"></a><span class="ss">-   </span>What Is the Impact of Payment Methods on Profit Margins Across Different Categories and Regions Over Time?</span>
-<span id="cb4-86"><a href="#cb4-86"></a></span>
-<span id="cb4-87"><a href="#cb4-87"></a>    We will analyze how different payment methods affect profit margins, observing variations by product category and region over time.</span>
-<span id="cb4-88"><a href="#cb4-88"></a></span>
-<span id="cb4-89"><a href="#cb4-89"></a><span class="fu">## Analysis Plan</span></span>
+<span id="cb4-85"><a href="#cb4-85"></a><span class="ss">    1.  </span>Analyze monthly sales trends by category.\</span>
+<span id="cb4-86"><a href="#cb4-86"></a><span class="ss">    2.  </span>Segment data by malls to explore seasonal sales variations.\</span>
+<span id="cb4-87"><a href="#cb4-87"></a><span class="ss">    3.  </span>Examine the distribution of payment methods by season.\</span>
+<span id="cb4-88"><a href="#cb4-88"></a><span class="ss">    4.  </span>Compare seasonal sales across categories, payment methods, and malls.\</span>
+<span id="cb4-89"><a href="#cb4-89"></a>        Planned Visualizations: Line graphs, stacked area charts, heatmaps, and faceted bar plots.</span>
 <span id="cb4-90"><a href="#cb4-90"></a></span>
-<span id="cb4-91"><a href="#cb4-91"></a><span class="ss">-   </span>Seasonal Trends and Sales Performance:\</span>
-<span id="cb4-92"><a href="#cb4-92"></a><span class="ss">    1.  </span>Analyze monthly sales trends by category.\</span>
-<span id="cb4-93"><a href="#cb4-93"></a><span class="ss">    2.  </span>Segment data by malls to explore seasonal sales variations.\</span>
-<span id="cb4-94"><a href="#cb4-94"></a><span class="ss">    3.  </span>Examine the distribution of payment methods by season.\</span>
-<span id="cb4-95"><a href="#cb4-95"></a><span class="ss">    4.  </span>Compare seasonal sales across categories, payment methods, and malls.\</span>
-<span id="cb4-96"><a href="#cb4-96"></a>        Planned Visualizations: Line graphs, stacked area charts, heatmaps, and faceted bar plots.</span>
-<span id="cb4-97"><a href="#cb4-97"></a><span class="ss">-   </span>Customer Demographics and High-Value Transactions:\</span>
-<span id="cb4-98"><a href="#cb4-98"></a><span class="ss">    1.  </span>Define and identify high-value transactions (e.g., sales <span class="sc">\&gt;</span> \$500).\</span>
-<span id="cb4-99"><a href="#cb4-99"></a><span class="ss">    2.  </span>Segment by demographic factors (age, gender).\</span>
-<span id="cb4-100"><a href="#cb4-100"></a><span class="ss">    3.  </span>Analyze regional trends for high-value transactions.\</span>
-<span id="cb4-101"><a href="#cb4-101"></a><span class="ss">    4.  </span>Cross-reference categories for demographic preferences.\</span>
-<span id="cb4-102"><a href="#cb4-102"></a>        Planned Visualizations: Boxplots, bar charts, heatmaps, and violin plots.</span>
-<span id="cb4-103"><a href="#cb4-103"></a><span class="ss">-   </span>Discounts, Sales Volumes, and Profit Margins:\</span>
-<span id="cb4-104"><a href="#cb4-104"></a><span class="ss">    1.  </span>Calculate and analyze discount percentages.\</span>
-<span id="cb4-105"><a href="#cb4-105"></a><span class="ss">    2.  </span>Assess correlation of discounts with sales volumes.\</span>
-<span id="cb4-106"><a href="#cb4-106"></a><span class="ss">    3.  </span>Determine profit margins post-discounts.\</span>
-<span id="cb4-107"><a href="#cb4-107"></a><span class="ss">    4.  </span>Conduct correlation analysis among discounts, volumes, and margins.\</span>
-<span id="cb4-108"><a href="#cb4-108"></a>        Planned Visualizations: Scatter plots, bar charts, correlation matrices, and 3D scatter plots.</span>
-<span id="cb4-109"><a href="#cb4-109"></a><span class="ss">-   </span>Payment Methods and Profit Margins by Category and Region:\</span>
-<span id="cb4-110"><a href="#cb4-110"></a><span class="ss">    1.  </span>Segment by payment method and calculate profit margins.\</span>
-<span id="cb4-111"><a href="#cb4-111"></a><span class="ss">    2.  </span>Analyze the impact of payment methods on profit margins per category.\</span>
-<span id="cb4-112"><a href="#cb4-112"></a><span class="ss">    3.  </span>Assess regional differences in payment methods and profit margins.\</span>
-<span id="cb4-113"><a href="#cb4-113"></a><span class="ss">    4.  </span>Perform time-series analysis on payment methods.\</span>
-<span id="cb4-114"><a href="#cb4-114"></a>        Planned Visualizations: Stacked bar plots, line graphs, faceted bar charts, and Sankey diagrams.</span>
+<span id="cb4-91"><a href="#cb4-91"></a><span class="ss">-   </span>Discounts, Sales Volumes, and Profit Margins:\</span>
+<span id="cb4-92"><a href="#cb4-92"></a></span>
+<span id="cb4-93"><a href="#cb4-93"></a><span class="ss">    1.  </span>Calculate and analyze discount percentages.\</span>
+<span id="cb4-94"><a href="#cb4-94"></a><span class="ss">    2.  </span>Assess correlation of discounts with sales volumes.\</span>
+<span id="cb4-95"><a href="#cb4-95"></a><span class="ss">    3.  </span>Determine profit margins post-discounts.\</span>
+<span id="cb4-96"><a href="#cb4-96"></a><span class="ss">    4.  </span>Conduct correlation analysis among discounts, volumes, and margins.\</span>
+<span id="cb4-97"><a href="#cb4-97"></a>        Planned Visualizations: Scatter plots, bar charts, correlation matrices, and 3D scatter plots.</span>
+<span id="cb4-98"><a href="#cb4-98"></a></span>
+<span id="cb4-99"><a href="#cb4-99"></a><span class="fu">## Citations</span></span>
+<span id="cb4-100"><a href="#cb4-100"></a></span>
+<span id="cb4-101"><a href="#cb4-101"></a>KZMontage, &quot;Sales from different stores,&quot; Kaggle. <span class="sc">\[</span>Online<span class="sc">\]</span>. Available: <span class="co">[</span><span class="ot">Sales from different stores.</span><span class="co">](https://www.kaggle.com/datasets/kzmontage/sales-from-different-stores)</span>.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
