@@ -91,3 +91,7 @@ While the dataset includes customer demographic details like age and gender, it 
     3.  Determine profit margins post-discounts.\
     4.  Conduct correlation analysis among discounts, volumes, and margins.\
         Planned Visualizations: Scatter plots, bar charts, correlation matrices, and 3D scatter plots.
+
+## Citations
+
+KZMontage, "Sales from different stores," Kaggle. \[Online\]. Available: [Sales from different stores.](https://www.kaggle.com/datasets/kzmontage/sales-from-different-stores).
