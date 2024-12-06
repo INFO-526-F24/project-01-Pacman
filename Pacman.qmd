@@ -12,6 +12,7 @@ editor: visual
 library(tidyverse)
 library(dplyr)
 library(lubridate)
+library(ggplot2)
 ```
 
 ### Data Initialization
@@ -90,4 +91,135 @@ data$payment_method <- as.factor(data$payment_method)
 
 ```
 
-### Question 1: 
+### Question 1: Seasonal Trends and Sales Performance:
+
+```{r}
+
+# Calculate total sales for analysis
+data <- data %>%
+  mutate(total_sales = selling_price_per_unit * quantity)
+
+# 1. Monthly Sales Trends by Category
+monthly_sales <- data %>%
+  group_by(month, category) %>%
+  summarise(total_sales = sum(total_sales), .groups = "drop")
+
+ggplot(monthly_sales, aes(x = month, y = total_sales, color = category)) +
+  geom_line(size = 1) +
+  labs(title = "Monthly Sales Trends by Category", x = "Month", y = "Total Sales") +
+  theme_minimal()
+
+# 2. Seasonal Sales by Mall
+seasonal_sales_mall <- data %>%
+  group_by(season, shopping_mall) %>%
+  summarise(total_sales = sum(total_sales), .groups = "drop")
+
+ggplot(seasonal_sales_mall, aes(x = season, y = total_sales, fill = shopping_mall)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Seasonal Sales by Shopping Mall", x = "Season", y = "Total Sales") +
+  theme_minimal()
+
+# 3. Distribution of Payment Methods by Season
+payment_distribution <- data %>%
+  group_by(season, payment_method) %>%
+  summarise(count = n(), .groups = "drop")
+
+ggplot(payment_distribution, aes(x = season, y = count, fill = payment_method)) +
+  geom_bar(stat = "identity", position = "fill") +
+  labs(title = "Distribution of Payment Methods by Season", x = "Season", y = "Proportion") +
+  theme_minimal()
+
+# 4. Seasonal Sales Across Categories, Payment Methods, and Malls
+seasonal_category_sales <- data %>%
+  group_by(season, category, payment_method) %>%
+  summarise(total_sales = sum(total_sales), .groups = "drop")
+
+ggplot(seasonal_category_sales, aes(x = season, y = total_sales, fill = payment_method)) +
+  geom_bar(stat = "identity", position = "stack") +
+  facet_wrap(~ category) +
+  labs(title = "Seasonal Sales by Category and Payment Methods", x = "Season", y = "Total Sales") +
+  theme_minimal()
+
+```
+
+### Question 2: 
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(reshape2)
+library(plotly)
+
+# Ensure necessary columns are included in the dataset
+data <- data %>%
+  mutate(
+    discount_percentage = (selling_price_per_unit - cost_price_per_unit) / selling_price_per_unit * 100,
+    profit_margin = (selling_price_per_unit - cost_price_per_unit) * quantity,
+    total_sales = selling_price_per_unit * quantity
+  )
+
+# 1. Calculate and Analyze Discount Percentages
+discount_analysis <- data %>%
+  group_by(category) %>%
+  summarise(
+    avg_discount = mean(discount_percentage, na.rm = TRUE),
+    avg_sales_volume = mean(quantity, na.rm = TRUE),
+    avg_profit_margin = mean(profit_margin, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+ggplot(discount_analysis, aes(x = category, y = avg_discount, fill = category)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Average Discount Percentage by Category", x = "Category", y = "Average Discount (%)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+# 2. Correlation of Discounts with Sales Volumes
+ggplot(data, aes(x = discount_percentage, y = quantity)) +
+  geom_point(alpha = 0.5, color = "blue") +
+  geom_smooth(method = "lm", color = "red") +
+  labs(title = "Correlation of Discounts with Sales Volumes", x = "Discount Percentage", y = "Sales Volume") +
+  theme_minimal()
+
+# 3. Profit Margins Post-Discounts
+profit_analysis <- data %>%
+  group_by(category) %>%
+  summarise(
+    total_profit_margin = sum(profit_margin, na.rm = TRUE),
+    total_sales_volume = sum(quantity, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+ggplot(profit_analysis, aes(x = category, y = total_profit_margin, fill = category)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Profit Margins by Category Post-Discount", x = "Category", y = "Profit Margin") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+# 4. Correlation Analysis Among Discounts, Volumes, and Margins
+correlation_data <- data %>%
+  select(discount_percentage, quantity, profit_margin) %>%
+  na.omit()
+
+correlation_matrix <- cor(correlation_data)
+
+# Visualize the Correlation Matrix
+corr_melt <- melt(correlation_matrix)
+ggplot(corr_melt, aes(x = Var1, y = Var2, fill = value)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0) +
+  labs(title = "Correlation Matrix", x = "", y = "", fill = "Correlation") +
+  theme_minimal()
+
+# 5. 3D Scatter Plot for Discounts, Volumes, and Profit Margins
+plot_ly(data = data, x = ~discount_percentage, y = ~quantity, z = ~profit_margin, 
+        type = "scatter3d", mode = "markers",
+        marker = list(size = 3, color = ~profit_margin, colorscale = "Viridis")) %>%
+  layout(title = "3D Scatter Plot: Discounts, Volumes, and Profit Margins",
+         scene = list(
+           xaxis = list(title = "Discount Percentage"),
+           yaxis = list(title = "Sales Volume"),
+           zaxis = list(title = "Profit Margin")
+         ))
+
+```
