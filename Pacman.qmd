@@ -1,0 +1,93 @@
+---
+title: "Pacman"
+subtitle: "Project"
+editor: visual
+---
+
+### Loading necessary libraries
+
+```{r}
+#| label: load-pkgs
+#| message: false
+library(tidyverse)
+library(dplyr)
+library(lubridate)
+```
+
+### Data Initialization
+
+```{r}
+#| label: load-dataset
+#| message: false
+data <- read.csv("data/Different_stores_dataset.csv")
+glimpse(data)
+
+```
+
+### Data Preprocessing
+
+```{r}
+#| label: data-preprocessing
+#| message: false
+
+# Checking for missing values
+sum(is.na(data))
+
+# Viewing unique categories, malls, and payment methods for verification
+unique(data$category)
+unique(data$shopping_mall)
+unique(data$payment_method)
+
+# Converting `invoice_date` to Date-Time format
+data$invoice_date <- as.POSIXct(data$invoice_date, format = "%m/%d/%Y %H:%M")
+
+# Extracting Year, Month, Day, and Hour for further analysis
+data$year <- year(data$invoice_date)
+data$month <- month(data$invoice_date)
+data$day <- day(data$invoice_date)
+data$hour <- hour(data$invoice_date)
+
+# Defining seasons based on months
+data$season <- case_when(
+  data$month %in% c(12, 1, 2) ~ "Winter",
+  data$month %in% c(3, 4, 5) ~ "Spring",
+  data$month %in% c(6, 7, 8) ~ "Summer",
+  data$month %in% c(9, 10, 11) ~ "Fall"
+)
+
+# Calculating Discount and Profit Margin
+data <- data %>%
+  mutate(
+    discount = selling_price_per_unit - cost_price_per_unit,
+    profit_margin = (selling_price_per_unit - cost_price_per_unit) / selling_price_per_unit * 100
+  )
+# Aggregating for seasonal sales performance
+seasonal_data <- data %>%
+  group_by(season, category, shopping_mall, payment_method) %>%
+  summarise(
+    total_sales = sum(selling_price_per_unit * quantity),
+    avg_discount = mean(discount),
+    avg_profit_margin = mean(profit_margin),
+    .groups = 'drop'
+  )
+  
+
+# Checking for outliers in discounts
+boxplot(data$discount, main = "Boxplot for Discounts")
+
+# Checking for outliers in profit margins
+boxplot(data$profit_margin, main = "Boxplot for Profit Margins")
+
+# Normalizing sales volume if necessary (optional)
+data$total_sales_normalized <- (data$selling_price_per_unit * data$quantity - min(data$selling_price_per_unit * data$quantity)) / 
+                               (max(data$selling_price_per_unit * data$quantity) - min(data$selling_price_per_unit * data$quantity))
+
+# Ensuring factor levels for categorical variables
+data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fall"))
+data$category <- as.factor(data$category)
+data$shopping_mall <- as.factor(data$shopping_mall)
+data$payment_method <- as.factor(data$payment_method)
+
+```
+
+### Question 1: 
