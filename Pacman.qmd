@@ -13,6 +13,8 @@ library(tidyverse)
 library(dplyr)
 library(lubridate)
 library(ggplot2)
+library(scales)
+
 ```
 
 ### Data Initialization
@@ -87,8 +89,7 @@ data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fal
 ### Question 1: Seasonal Trends and Sales Performance:
 
 ```{r}
-# Line graph for monthly sales trends by category
-library(ggplot2)
+
 
 monthly_sales <- data %>%
   group_by(month, category) %>%
@@ -99,7 +100,9 @@ ggplot(monthly_sales, aes(x = month, y = total_sales, color = category)) +
   labs(title = "Monthly Sales Trends by Category", x = "Month", y = "Total Sales") +
   theme_minimal() +
   scale_x_continuous(breaks = 1:12) +
-  theme(legend.title = element_blank())
+  scale_y_continuous(labels = comma) + # Ensure y-axis values are in plain numeric format
+  theme(legend.title = element_blank(), plot.title = element_text(hjust = 0.5))
+
 ```
 
 ```{r}
