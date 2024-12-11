@@ -14,6 +14,7 @@ library(dplyr)
 library(lubridate)
 library(ggplot2)
 library(scales)
+library(plotly)
 
 ```
 
@@ -91,17 +92,40 @@ data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fal
 ```{r}
 
 
+# Prepare data: Assuming `data` contains `month`, `category`, and `total_sales`
 monthly_sales <- data %>%
   group_by(month, category) %>%
   summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
 
+# Create the enhanced plot with a legend title
 ggplot(monthly_sales, aes(x = month, y = total_sales, color = category)) +
-  geom_line(size = 1) +
-  labs(title = "Monthly Sales Trends by Category", x = "Month", y = "Total Sales") +
-  theme_minimal() +
-  scale_x_continuous(breaks = 1:12) +
-  scale_y_continuous(labels = comma) + # Ensure y-axis values are in plain numeric format
-  theme(legend.title = element_blank(), plot.title = element_text(hjust = 0.5))
+  geom_line(size = 1) +                             
+  geom_point(size = 2) +                            
+  geom_smooth(method = "lm", se = FALSE,         
+              linetype = "solid", color = "black", linewidth = 0.2) +
+  labs(
+    title = "Monthly Sales Trends by Category",
+    x = "Month",
+    y = "Total Sales",
+    color = "Product Category") +
+  theme_minimal(base_size = 14) +                   
+  theme(
+    plot.title = element_text(hjust = 0.5,          
+                              size = 16),
+    axis.text.x = element_text(size = 12),          
+    axis.title = element_text(size = 14),
+    axis.text = element_text(size = 12),           
+    panel.grid.major.x = element_blank(),          
+    panel.grid.major.y = element_line(color = "gray", 
+                                      linetype = "dashed"), 
+    legend.text = element_text(size = 12),
+    legend.title = element_text(size = 12)     
+  ) +
+  scale_color_brewer(palette = "Set2") +           
+  scale_x_continuous(breaks = 1:12, labels = 1:12) + 
+  scale_y_continuous(labels = comma)              
+
+
 
 ```
 
@@ -113,10 +137,11 @@ seasonal_sales_malls <- data %>%
 
 ggplot(seasonal_sales_malls, aes(x = season, y = total_sales, fill = region)) +
   geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Seasonal Sales Variations by Region (Malls)", x = "Season", y = "Total Sales") +
+  labs(title = "Seasonal Sales Variations by Region (Malls)", x = "Season", y = "Total Sales", fill = "Region") +
   theme_minimal() +
   scale_fill_brewer(palette = "Set2") +
-  theme(legend.title = element_blank())
+  theme(plot.title = element_text(hjust = 0.5), # Center the title
+        legend.title = element_text()) # Make legend title bold
 ```
 
 ```{r}
