@@ -31,24 +31,20 @@ glimpse(data)
 #| label: data-preprocessing
 #| message: false
 
-# Checking for missing values
 sum(is.na(data))
 
-# Viewing unique categories, malls, and payment methods for verification
+# Check unique values for categorical columns
 unique(data$category)
-unique(data$shopping_mall)
-unique(data$payment_method)
+unique(data$region)
+unique(data$segment)
 
-# Converting `invoice_date` to Date-Time format
-data$invoice_date <- as.POSIXct(data$invoice_date, format = "%m/%d/%Y %H:%M")
+# Convert order_date and ship_date to date format
+data$order_date <- as.Date(data$order_date, format = "%m/%d/%Y")
+data$ship_date <- as.Date(data$ship_date, format = "%m/%d/%Y")
 
-# Extracting Year, Month, Day, and Hour for further analysis
-data$year <- year(data$invoice_date)
-data$month <- month(data$invoice_date)
-data$day <- day(data$invoice_date)
-data$hour <- hour(data$invoice_date)
-
-# Defining seasons based on months
+# Extract Year, Month, and Season from order_date
+data$year <- year(data$order_date)
+data$month <- month(data$order_date)
 data$season <- case_when(
   data$month %in% c(12, 1, 2) ~ "Winter",
   data$month %in% c(3, 4, 5) ~ "Spring",
@@ -56,42 +52,56 @@ data$season <- case_when(
   data$month %in% c(9, 10, 11) ~ "Fall"
 )
 
-# Calculating Discount and Profit Margin
+# Calculate total sales and profit margins
 data <- data %>%
   mutate(
-    discount = selling_price_per_unit - cost_price_per_unit,
-    profit_margin = (selling_price_per_unit - cost_price_per_unit) / selling_price_per_unit * 100
+    total_sales = sales * quantity,
+    profit_margin = profit / sales * 100
   )
-# Aggregating for seasonal sales performance
-seasonal_data <- data %>%
-  group_by(season, category, shopping_mall, payment_method) %>%
+
+# Handle any missing or negative values
+data <- data %>%
+  filter(!is.na(total_sales) & !is.na(profit_margin))
+
+# Group data by season, category, and region
+aggregated_data <- data %>%
+  group_by(season, category, region, segment) %>%
   summarise(
-    total_sales = sum(selling_price_per_unit * quantity),
-    avg_discount = mean(discount),
-    avg_profit_margin = mean(profit_margin),
+    avg_discount = mean(discount, na.rm = TRUE),
+    total_sales = sum(total_sales, na.rm = TRUE),
+    avg_profit_margin = mean(profit_margin, na.rm = TRUE),
     .groups = 'drop'
   )
-  
 
-# Checking for outliers in discounts
-boxplot(data$discount, main = "Boxplot for Discounts")
+# Normalize total_sales
+data$total_sales_normalized <- (data$total_sales - min(data$total_sales, na.rm = TRUE)) /
+                               (max(data$total_sales, na.rm = TRUE) - min(data$total_sales, na.rm = TRUE))
 
-# Checking for outliers in profit margins
-boxplot(data$profit_margin, main = "Boxplot for Profit Margins")
-
-# Normalizing sales volume if necessary (optional)
-data$total_sales_normalized <- (data$selling_price_per_unit * data$quantity - min(data$selling_price_per_unit * data$quantity)) / 
-                               (max(data$selling_price_per_unit * data$quantity) - min(data$selling_price_per_unit * data$quantity))
-
-# Ensuring factor levels for categorical variables
-data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fall"))
+# Ensure categorical variables are treated as factors
 data$category <- as.factor(data$category)
-data$shopping_mall <- as.factor(data$shopping_mall)
-data$payment_method <- as.factor(data$payment_method)
-
+data$segment <- as.factor(data$segment)
+data$region <- as.factor(data$region)
+data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fall"))
 ```
 
 ### Question 1: Seasonal Trends and Sales Performance:
+
+```{r}
+# Line graph for monthly sales trends by category
+library(ggplot2)
+
+monthly_sales <- data %>%
+  group_by(month, category) %>%
+  summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
+
+ggplot(monthly_sales, aes(x = month, y = total_sales, color = category)) +
+  geom_line(size = 1) +
+  labs(title = "Monthly Sales Trends by Category", x = "Month", y = "Total Sales") +
+  theme_minimal() +
+  scale_x_continuous(breaks = 1:12) +
+  theme(legend.title = element_blank())
+
+```
 
 ```{r}
 
@@ -142,7 +152,7 @@ ggplot(seasonal_category_sales, aes(x = season, y = total_sales, fill = payment_
 
 ```
 
-### Question 2: 
+### Question 2:
 
 ```{r}
 library(ggplot2)
