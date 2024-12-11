@@ -4816,21 +4816,27 @@ vertical-align: -.125em;
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/Different_stores_dataset.csv&quot;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">glimpse</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 99,457
-Columns: 13
-$ invoice_no             &lt;chr&gt; &quot;I138884&quot;, &quot;I317333&quot;, &quot;I127801&quot;, &quot;I173702&quot;, &quot;I3…
-$ invoice_date           &lt;chr&gt; &quot;10/30/2016 9:58&quot;, &quot;10/30/2016 9:58&quot;, &quot;10/30/20…
-$ customer_id            &lt;chr&gt; &quot;C241288&quot;, &quot;C111565&quot;, &quot;C266599&quot;, &quot;C988172&quot;, &quot;C1…
-$ gender                 &lt;chr&gt; &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;…
-$ age                    &lt;int&gt; 28, 21, 20, 66, 53, 28, 49, 32, 69, 60, 36, 29,…
-$ category               &lt;chr&gt; &quot;Clothing&quot;, &quot;Shoes&quot;, &quot;Clothing&quot;, &quot;Shoes&quot;, &quot;Book…
-$ quantity               &lt;int&gt; 5, 3, 1, 5, 4, 5, 1, 2, 3, 2, 2, 8, 4, 2, 2, 5,…
-$ selling_price_per_unit &lt;dbl&gt; 1500.40, 1800.51, 300.08, 3000.85, 60.60, 1500.…
-$ cost_price_per_unit    &lt;dbl&gt; 1425.3800, 1620.4590, 295.0600, 2900.7650, 45.4…
-$ payment_method         &lt;chr&gt; &quot;Credit Card&quot;, &quot;Debit Card&quot;, &quot;Cash&quot;, &quot;Credit Ca…
-$ region                 &lt;chr&gt; &quot;South&quot;, &quot;South&quot;, &quot;West&quot;, &quot;South&quot;, &quot;South&quot;, &quot;We…
-$ state                  &lt;chr&gt; &quot;Kentucky&quot;, &quot;Kentucky&quot;, &quot;California&quot;, &quot;Florida&quot;…
-$ shopping_mall          &lt;chr&gt; &quot;Kanyon&quot;, &quot;Viaport Outlet&quot;, &quot;Metrocity&quot;, &quot;Metro…</code></pre>
+<pre><code>Rows: 9,994
+Columns: 19
+$ order_id      &lt;chr&gt; &quot;US-2020-103800&quot;, &quot;US-2020-112326&quot;, &quot;US-2020-112326&quot;, &quot;U…
+$ order_date    &lt;chr&gt; &quot;1/3/2019&quot;, &quot;1/4/2019&quot;, &quot;1/4/2019&quot;, &quot;1/4/2019&quot;, &quot;1/5/201…
+$ ship_date     &lt;chr&gt; &quot;1/7/2019&quot;, &quot;1/8/2019&quot;, &quot;1/8/2019&quot;, &quot;1/8/2019&quot;, &quot;1/12/20…
+$ customer      &lt;chr&gt; &quot;Darren Powers&quot;, &quot;Phillina Ober&quot;, &quot;Phillina Ober&quot;, &quot;Phil…
+$ manufactory   &lt;chr&gt; &quot;Message Book&quot;, &quot;GBC&quot;, &quot;Avery&quot;, &quot;SAFCO&quot;, &quot;Avery&quot;, &quot;Dixon…
+$ product_name  &lt;chr&gt; &quot;Message Book, Wirebound, Four 5 1/2\&quot; X 4\&quot; Forms/Pg., …
+$ segment       &lt;chr&gt; &quot;Consumer&quot;, &quot;Home Office&quot;, &quot;Home Office&quot;, &quot;Home Office&quot;,…
+$ category      &lt;chr&gt; &quot;Office Supplies&quot;, &quot;Office Supplies&quot;, &quot;Office Supplies&quot;,…
+$ subcategory   &lt;chr&gt; &quot;Paper&quot;, &quot;Binders&quot;, &quot;Labels&quot;, &quot;Storage&quot;, &quot;Art&quot;, &quot;Art&quot;, &quot;…
+$ region        &lt;chr&gt; &quot;Central&quot;, &quot;Central&quot;, &quot;Central&quot;, &quot;Central&quot;, &quot;East&quot;, &quot;Sou…
+$ zip           &lt;int&gt; 77095, 60540, 60540, 60540, 19143, 30605, 90049, 42420, …
+$ city          &lt;chr&gt; &quot;Houston&quot;, &quot;Naperville&quot;, &quot;Naperville&quot;, &quot;Naperville&quot;, &quot;Ph…
+$ state         &lt;chr&gt; &quot;Texas&quot;, &quot;Illinois&quot;, &quot;Illinois&quot;, &quot;Illinois&quot;, &quot;Pennsylvan…
+$ country       &lt;chr&gt; &quot;United States&quot;, &quot;United States&quot;, &quot;United States&quot;, &quot;Unit…
+$ discount      &lt;dbl&gt; 0.20, 0.80, 0.20, 0.20, 0.20, 0.00, 0.00, 0.00, 0.00, 0.…
+$ profit        &lt;dbl&gt; 5.5512, -5.4870, 4.2717, -64.7748, 4.8840, 5.2398, 9.331…
+$ quantity      &lt;int&gt; 2, 2, 3, 3, 3, 3, 3, 9, 2, 2, 4, 1, 4, 2, 3, 7, 2, 3, 1,…
+$ sales         &lt;dbl&gt; 16.448, 3.540, 11.784, 272.736, 19.536, 12.780, 19.440, …
+$ profit_margin &lt;dbl&gt; 0.33750000, -1.55000000, 0.36250000, -0.23750000, 0.2500…</code></pre>
 </div>
 </div>
 </section>
@@ -4842,16 +4848,70 @@ $ shopping_mall          &lt;chr&gt; &quot;Kanyon&quot;, &quot;Viaport Outlet&qu
 </section>
 <section id="collection-information" class="level4">
 <h4 class="anchored" data-anchor-id="collection-information"><strong>Collection Information</strong></h4>
-<p>The data covers all authorizations from October 1, 2006, to March 31, 2024. During this period, any transaction extensions, such as those for Working Capital, were approved under original agreements made before a temporary halt in EXIM Bank’s authority. No new transactions were approved during that lapse; only extensions of previous agreements were processed. This dataset was transferred to Catalog.Data.gov in September 2023 after Data.EXIM.gov ceased operations. With its multi-year scope, the dataset offers a consistent view of transaction details, customer demographics, and location-specific data, making it well-suited for financial and trend analyses over time.</p>
+<p>The data covers all authorizations 2019 to 2022. With its multi-year scope, the dataset offers a consistent view of transaction details, customer demographics, and location-specific data, making it well-suited for financial and trend analyses over time.</p>
+<p><strong>Description of Observations</strong></p>
+<p>This dataset includes diverse types of information, categorized as follows:</p>
 </section>
-<section id="description-of-observations" class="level4">
-<h4 class="anchored" data-anchor-id="description-of-observations"><strong>Description of Observations</strong></h4>
-<p>This dataset includes various types of information, organized into the following categories:</p>
-<p><strong>Transaction Details:</strong> Each transaction record includes a timestamp, the total amount, and any discounts applied, which are useful for analyzing financial patterns and identifying seasonal shifts in sales.</p>
-<p><strong>Product Information:</strong> Each item sold is categorized, enabling an analysis of product trends within specific categories and helping to segment the data by product type.</p>
-<p><strong>Customer Demographics:</strong> Information on customers’ age and gender supports demographic analysis, helping to reveal spending preferences and behaviors across different customer groups.</p>
-<p><strong>Regional Indicators:</strong> Transactions are associated with specific shopping malls or regions, making it possible to compare how different locations perform.</p>
-<p><strong>Payment Methods:</strong> The dataset captures the type of payment used—such as credit card, mobile payment, or cash—which provides insights into payment preferences and how they may affect profit margins.</p>
+<section id="transaction-details" class="level4">
+<h4 class="anchored" data-anchor-id="transaction-details"><strong>Transaction Details</strong></h4>
+<ul>
+<li><p>Each record contains detailed transaction information, including:</p>
+<ul>
+<li><p><strong>Order Date and Ship Date</strong>: Helps in identifying order processing and shipping durations.</p></li>
+<li><p><strong>Total Sales</strong>: The monetary value of sales for each transaction.</p></li>
+<li><p><strong>Discounts Applied</strong>: Percentage discounts offered on products, aiding in the analysis of how discounts affect sales and profit margins.</p></li>
+<li><p><strong>Profit Margins</strong>: Calculated profit as a percentage of sales, useful for analyzing profitability trends.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="product-information" class="level4">
+<h4 class="anchored" data-anchor-id="product-information"><strong>Product Information</strong></h4>
+<ul>
+<li><p>The dataset includes detailed descriptions of products sold, categorized as follows:</p>
+<ul>
+<li><p><strong>Category and Subcategory</strong>: Organizes items into broad and specific groups, enabling trend analysis within specific product types.</p></li>
+<li><p><strong>Product Name and Manufacturer</strong>: Useful for analyzing product-level performance and identifying top-performing manufacturers or brands.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="customer-segmentation" class="level4">
+<h4 class="anchored" data-anchor-id="customer-segmentation"><strong>Customer Segmentation</strong></h4>
+<ul>
+<li><p>Customer details are included to support demographic and segment-specific analysis:</p>
+<ul>
+<li><p><strong>Customer Names</strong>: Identifies unique buyers.</p></li>
+<li><p><strong>Segment</strong>: Classifies customers as “Consumer,” “Corporate,” or “Home Office,” helping to analyze sales across different segments.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="regional-and-geographic-indicators" class="level4">
+<h4 class="anchored" data-anchor-id="regional-and-geographic-indicators"><strong>Regional and Geographic Indicators</strong></h4>
+<ul>
+<li><p>The dataset associates transactions with geographic and regional data:</p>
+<ul>
+<li><p><strong>City, State, Region, and ZIP Code</strong>: Provides granularity for regional performance analysis.</p></li>
+<li><p><strong>Country</strong>: Helps in identifying global patterns if applicable.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="payment-and-discounts" class="level4">
+<h4 class="anchored" data-anchor-id="payment-and-discounts"><strong>Payment and Discounts</strong></h4>
+<ul>
+<li><p>Insights into financial behaviors:</p>
+<ul>
+<li><p><strong>Discount Rates</strong>: Helps identify trends in discounting and its impact on sales volumes and profitability.</p></li>
+<li><p><strong>Profit and Sales Values</strong>: Facilitates the analysis of relationships between discounting, sales performance, and profitability.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="shipping-details" class="level4">
+<h4 class="anchored" data-anchor-id="shipping-details"><strong>Shipping Details</strong></h4>
+<ul>
+<li><p>Additional fields:</p>
+<ul>
+<li><strong>Shipping Durations</strong>: Derived from the difference between order date and ship date to analyze delivery efficiency.</li>
+</ul></li>
+</ul>
 </section>
 </section>
 <section id="ethical-considerations" class="level2">
@@ -4861,89 +4921,67 @@ $ shopping_mall          &lt;chr&gt; &quot;Kanyon&quot;, &quot;Viaport Outlet&qu
 <section id="data-preprocessing" class="level2">
 <h2 class="anchored" data-anchor-id="data-preprocessing"><strong>Data Preprocessing</strong></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Checking for missing values</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Viewing unique categories, malls, and payment methods for verification</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Check unique values for categorical columns</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="fu">unique</span>(data<span class="sc">$</span>category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;Clothing&quot;        &quot;Shoes&quot;           &quot;Books&quot;           &quot;Cosmetics&quot;      
-[5] &quot;Food &amp; Beverage&quot; &quot;Toys&quot;            &quot;Technology&quot;      &quot;Souvenir&quot;       </code></pre>
+<pre><code>[1] &quot;Office Supplies&quot; &quot;Furniture&quot;       &quot;Technology&quot;     </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">unique</span>(data<span class="sc">$</span>shopping_mall)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">unique</span>(data<span class="sc">$</span>region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;Kanyon&quot;           &quot;Viaport Outlet&quot;   &quot;Metrocity&quot;        &quot;Metropol AVM&quot;    
-[5] &quot;Istinye Park&quot;     &quot;Mall of Istanbul&quot; &quot;Zorlu Center&quot;    </code></pre>
+<pre><code>[1] &quot;Central&quot; &quot;East&quot;    &quot;South&quot;   &quot;West&quot;   </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">unique</span>(data<span class="sc">$</span>payment_method)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">unique</span>(data<span class="sc">$</span>segment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;Credit Card&quot; &quot;Debit Card&quot;  &quot;Cash&quot;       </code></pre>
+<pre><code>[1] &quot;Consumer&quot;    &quot;Home Office&quot; &quot;Corporate&quot;  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Converting `invoice_date` to Date-Time format</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>data<span class="sc">$</span>invoice_date <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(data<span class="sc">$</span>invoice_date, <span class="at">format =</span> <span class="st">&quot;%m/%d/%Y %H:%M&quot;</span>)</span>
-<span id="cb12-3"><a href="#cb12-3"></a></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># Extracting Year, Month, Day, and Hour for further analysis</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>data<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">year</span>(data<span class="sc">$</span>invoice_date)</span>
-<span id="cb12-6"><a href="#cb12-6"></a>data<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">month</span>(data<span class="sc">$</span>invoice_date)</span>
-<span id="cb12-7"><a href="#cb12-7"></a>data<span class="sc">$</span>day <span class="ot">&lt;-</span> <span class="fu">day</span>(data<span class="sc">$</span>invoice_date)</span>
-<span id="cb12-8"><a href="#cb12-8"></a>data<span class="sc">$</span>hour <span class="ot">&lt;-</span> <span class="fu">hour</span>(data<span class="sc">$</span>invoice_date)</span>
-<span id="cb12-9"><a href="#cb12-9"></a></span>
-<span id="cb12-10"><a href="#cb12-10"></a><span class="co"># Defining seasons based on months</span></span>
-<span id="cb12-11"><a href="#cb12-11"></a>data<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
-<span id="cb12-12"><a href="#cb12-12"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">&quot;Winter&quot;</span>,</span>
-<span id="cb12-13"><a href="#cb12-13"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">&quot;Spring&quot;</span>,</span>
-<span id="cb12-14"><a href="#cb12-14"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>) <span class="sc">~</span> <span class="st">&quot;Summer&quot;</span>,</span>
-<span id="cb12-15"><a href="#cb12-15"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>) <span class="sc">~</span> <span class="st">&quot;Fall&quot;</span></span>
-<span id="cb12-16"><a href="#cb12-16"></a>)</span>
-<span id="cb12-17"><a href="#cb12-17"></a></span>
-<span id="cb12-18"><a href="#cb12-18"></a><span class="co"># Calculating Discount and Profit Margin</span></span>
-<span id="cb12-19"><a href="#cb12-19"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb12-20"><a href="#cb12-20"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb12-21"><a href="#cb12-21"></a>    <span class="at">discount =</span> selling_price_per_unit <span class="sc">-</span> cost_price_per_unit,</span>
-<span id="cb12-22"><a href="#cb12-22"></a>    <span class="at">profit_margin =</span> (selling_price_per_unit <span class="sc">-</span> cost_price_per_unit) <span class="sc">/</span> selling_price_per_unit <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb12-23"><a href="#cb12-23"></a>  )</span>
-<span id="cb12-24"><a href="#cb12-24"></a></span>
-<span id="cb12-25"><a href="#cb12-25"></a><span class="co"># Aggregating for seasonal sales performance</span></span>
-<span id="cb12-26"><a href="#cb12-26"></a>seasonal_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb12-27"><a href="#cb12-27"></a>  <span class="fu">group_by</span>(season, category, shopping_mall, payment_method) <span class="sc">%&gt;%</span></span>
-<span id="cb12-28"><a href="#cb12-28"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb12-29"><a href="#cb12-29"></a>    <span class="at">total_sales =</span> <span class="fu">sum</span>(selling_price_per_unit <span class="sc">*</span> quantity),</span>
-<span id="cb12-30"><a href="#cb12-30"></a>    <span class="at">avg_discount =</span> <span class="fu">mean</span>(discount),</span>
-<span id="cb12-31"><a href="#cb12-31"></a>    <span class="at">avg_profit_margin =</span> <span class="fu">mean</span>(profit_margin),</span>
-<span id="cb12-32"><a href="#cb12-32"></a>    <span class="at">.groups =</span> <span class="st">&#39;drop&#39;</span></span>
-<span id="cb12-33"><a href="#cb12-33"></a>  )</span>
-<span id="cb12-34"><a href="#cb12-34"></a>  </span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Convert order_date and ship_date to date format</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>data<span class="sc">$</span>order_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data<span class="sc">$</span>order_date, <span class="at">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a>data<span class="sc">$</span>ship_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data<span class="sc">$</span>ship_date, <span class="at">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co"># Extract Year, Month, and Season from order_date</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>data<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">year</span>(data<span class="sc">$</span>order_date)</span>
+<span id="cb12-7"><a href="#cb12-7"></a>data<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">month</span>(data<span class="sc">$</span>order_date)</span>
+<span id="cb12-8"><a href="#cb12-8"></a>data<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-9"><a href="#cb12-9"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">&quot;Winter&quot;</span>,</span>
+<span id="cb12-10"><a href="#cb12-10"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">&quot;Spring&quot;</span>,</span>
+<span id="cb12-11"><a href="#cb12-11"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>) <span class="sc">~</span> <span class="st">&quot;Summer&quot;</span>,</span>
+<span id="cb12-12"><a href="#cb12-12"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>) <span class="sc">~</span> <span class="st">&quot;Fall&quot;</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a>)</span>
+<span id="cb12-14"><a href="#cb12-14"></a></span>
+<span id="cb12-15"><a href="#cb12-15"></a><span class="co"># Calculate total sales and profit margins</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb12-17"><a href="#cb12-17"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-18"><a href="#cb12-18"></a>    <span class="at">total_sales =</span> sales <span class="sc">*</span> quantity,</span>
+<span id="cb12-19"><a href="#cb12-19"></a>    <span class="at">profit_margin =</span> profit <span class="sc">/</span> sales <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb12-20"><a href="#cb12-20"></a>  )</span>
+<span id="cb12-21"><a href="#cb12-21"></a></span>
+<span id="cb12-22"><a href="#cb12-22"></a><span class="co"># Handle any missing or negative values</span></span>
+<span id="cb12-23"><a href="#cb12-23"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb12-24"><a href="#cb12-24"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(total_sales) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(profit_margin))</span>
+<span id="cb12-25"><a href="#cb12-25"></a></span>
+<span id="cb12-26"><a href="#cb12-26"></a><span class="co"># Group data by season, category, and region</span></span>
+<span id="cb12-27"><a href="#cb12-27"></a>aggregated_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb12-28"><a href="#cb12-28"></a>  <span class="fu">group_by</span>(season, category, region, segment) <span class="sc">%&gt;%</span></span>
+<span id="cb12-29"><a href="#cb12-29"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb12-30"><a href="#cb12-30"></a>    <span class="at">avg_discount =</span> <span class="fu">mean</span>(discount, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb12-31"><a href="#cb12-31"></a>    <span class="at">total_sales =</span> <span class="fu">sum</span>(total_sales, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb12-32"><a href="#cb12-32"></a>    <span class="at">avg_profit_margin =</span> <span class="fu">mean</span>(profit_margin, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb12-33"><a href="#cb12-33"></a>    <span class="at">.groups =</span> <span class="st">&#39;drop&#39;</span></span>
+<span id="cb12-34"><a href="#cb12-34"></a>  )</span>
 <span id="cb12-35"><a href="#cb12-35"></a></span>
-<span id="cb12-36"><a href="#cb12-36"></a><span class="co"># Checking for outliers in discounts</span></span>
-<span id="cb12-37"><a href="#cb12-37"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>discount, <span class="at">main =</span> <span class="st">&quot;Boxplot for Discounts&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data:image/png;base64,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dPKmmdCDZ31XZLJfkMSgkKSygM5MTsZvjo6Ono3fBdazs1+QxKCQpL6A3or9giQGhSQCChAkoABBAgoQJKAAQQIKECSgAEECChAkoNBmUEgioNBmUEgioNBmUEgioNBmUEgioNBmUEgioNBmUEgioNBmUEgioNBmUEgioNBmUEgioABBAgoQJKAAQQIKECSgAEECChAkoABBAgptBoUkAgptBoUkAgptBoUkAgptBoUkAgptBoUkAgptBoUkAgptBoUkAkplRnfJrv8yuSUBpS67Tl5eu/7b5JYEFCBIQAGCBBQgSEABggQUIEhAAYIEFCBIQAGCBBQgSEABggQUIEhAAYIEFCBIQAGCBBQgSEABggQUIEhAAYIEFCBIQAGCBBQgaO8CCpBP9kbl3mBOu/7LBu6W7I3KvUGAfSGgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAnG21hsAAAJjSURBVAoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChD0/wGrSxVT7+WMJwAAAABJRU5ErkJggg==" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Checking for outliers in profit margins</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>profit_margin, <span class="at">main =</span> <span class="st">&quot;Boxplot for Profit Margins&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data:image/png;base64,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ECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQf8fS6kOyj7jQ/kAAAAASUVORK5CYII=" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Normalizing sales volume if necessary (optional)</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>data<span class="sc">$</span>total_sales_normalized <span class="ot">&lt;-</span> (data<span class="sc">$</span>selling_price_per_unit <span class="sc">*</span> data<span class="sc">$</span>quantity <span class="sc">-</span> <span class="fu">min</span>(data<span class="sc">$</span>selling_price_per_unit <span class="sc">*</span> data<span class="sc">$</span>quantity)) <span class="sc">/</span> </span>
-<span id="cb14-3"><a href="#cb14-3"></a>                               (<span class="fu">max</span>(data<span class="sc">$</span>selling_price_per_unit <span class="sc">*</span> data<span class="sc">$</span>quantity) <span class="sc">-</span> <span class="fu">min</span>(data<span class="sc">$</span>selling_price_per_unit <span class="sc">*</span> data<span class="sc">$</span>quantity))</span>
-<span id="cb14-4"><a href="#cb14-4"></a></span>
-<span id="cb14-5"><a href="#cb14-5"></a></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="co"># Ensuring factor levels for categorical variables</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a>data<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>season, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Winter&quot;</span>, <span class="st">&quot;Spring&quot;</span>, <span class="st">&quot;Summer&quot;</span>, <span class="st">&quot;Fall&quot;</span>))</span>
-<span id="cb14-8"><a href="#cb14-8"></a>data<span class="sc">$</span>category <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>category)</span>
-<span id="cb14-9"><a href="#cb14-9"></a>data<span class="sc">$</span>shopping_mall <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>shopping_mall)</span>
-<span id="cb14-10"><a href="#cb14-10"></a>data<span class="sc">$</span>payment_method <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>payment_method)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-36"><a href="#cb12-36"></a><span class="co"># Normalize total_sales</span></span>
+<span id="cb12-37"><a href="#cb12-37"></a>data<span class="sc">$</span>total_sales_normalized <span class="ot">&lt;-</span> (data<span class="sc">$</span>total_sales <span class="sc">-</span> <span class="fu">min</span>(data<span class="sc">$</span>total_sales, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span></span>
+<span id="cb12-38"><a href="#cb12-38"></a>                               (<span class="fu">max</span>(data<span class="sc">$</span>total_sales, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">min</span>(data<span class="sc">$</span>total_sales, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb12-39"><a href="#cb12-39"></a></span>
+<span id="cb12-40"><a href="#cb12-40"></a><span class="co"># Ensure categorical variables are treated as factors</span></span>
+<span id="cb12-41"><a href="#cb12-41"></a>data<span class="sc">$</span>category <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>category)</span>
+<span id="cb12-42"><a href="#cb12-42"></a>data<span class="sc">$</span>segment <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>segment)</span>
+<span id="cb12-43"><a href="#cb12-43"></a>data<span class="sc">$</span>region <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>region)</span>
+<span id="cb12-44"><a href="#cb12-44"></a>data<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>season, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Winter&quot;</span>, <span class="st">&quot;Spring&quot;</span>, <span class="st">&quot;Summer&quot;</span>, <span class="st">&quot;Fall&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="questions" class="level2">
@@ -5637,171 +5675,203 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
-<div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">---</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="an">title:</span><span class="co"> &quot;E-commerce Sales Trends and Consumer Insights: A Data-Driven Analysis&quot;</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="an">subtitle:</span><span class="co"> &quot;Proposal&quot;</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="an">author:</span><span class="co"> </span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="co">  - name: &quot;Pacman&quot;</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="co">    affiliations:</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a><span class="co">      - name: &quot;School of Information, University of Arizona&quot;</span></span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="an">description:</span><span class="co"> &quot;In order to identify trends in consumer behavior, sales patterns, and profitability, this project examines e-commerce transaction data from different shopping centers and geographical areas. We seek to determine seasonal sales patterns, high-value client groups, and the effects of discounts by examining variables such as consumer demographics, product categories, and payment methods. The knowledge acquired will contribute to our comprehension of customer decision-making processes and the effects of various sales tactics on performance in various contexts.&quot;</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="an">format:</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a><span class="co">  html:</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a><span class="co">    code-tools: true</span></span>
-<span id="cb15-12"><a href="#cb15-12"></a><span class="co">    code-overflow: wrap</span></span>
-<span id="cb15-13"><a href="#cb15-13"></a><span class="co">    code-line-numbers: true</span></span>
-<span id="cb15-14"><a href="#cb15-14"></a><span class="co">    embed-resources: true</span></span>
-<span id="cb15-15"><a href="#cb15-15"></a><span class="an">editor:</span><span class="co"> visual</span></span>
-<span id="cb15-16"><a href="#cb15-16"></a><span class="an">code-annotations:</span><span class="co"> hover</span></span>
-<span id="cb15-17"><a href="#cb15-17"></a><span class="an">execute:</span></span>
-<span id="cb15-18"><a href="#cb15-18"></a><span class="co">  warning: false</span></span>
-<span id="cb15-19"><a href="#cb15-19"></a><span class="co">---</span></span>
-<span id="cb15-20"><a href="#cb15-20"></a></span>
-<span id="cb15-23"><a href="#cb15-23"></a><span class="in">```{r}</span></span>
-<span id="cb15-24"><a href="#cb15-24"></a><span class="co">#| label: load-pkgs</span></span>
-<span id="cb15-25"><a href="#cb15-25"></a><span class="co">#| message: false</span></span>
-<span id="cb15-26"><a href="#cb15-26"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb15-27"><a href="#cb15-27"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb15-28"><a href="#cb15-28"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb15-29"><a href="#cb15-29"></a><span class="in">```</span></span>
-<span id="cb15-30"><a href="#cb15-30"></a></span>
-<span id="cb15-31"><a href="#cb15-31"></a><span class="fu">## Dataset</span></span>
-<span id="cb15-32"><a href="#cb15-32"></a></span>
-<span id="cb15-35"><a href="#cb15-35"></a><span class="in">```{r}</span></span>
-<span id="cb15-36"><a href="#cb15-36"></a><span class="co">#| label: load-dataset</span></span>
-<span id="cb15-37"><a href="#cb15-37"></a><span class="co">#| message: false</span></span>
-<span id="cb15-38"><a href="#cb15-38"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/Different_stores_dataset.csv&quot;</span>)</span>
-<span id="cb15-39"><a href="#cb15-39"></a><span class="fu">glimpse</span>(data)</span>
-<span id="cb15-40"><a href="#cb15-40"></a></span>
-<span id="cb15-41"><a href="#cb15-41"></a><span class="in">```</span></span>
-<span id="cb15-42"><a href="#cb15-42"></a></span>
-<span id="cb15-43"><a href="#cb15-43"></a><span class="fu">## **Data Description**</span></span>
-<span id="cb15-44"><a href="#cb15-44"></a></span>
-<span id="cb15-45"><a href="#cb15-45"></a><span class="fu">#### **Source of the Data**</span></span>
-<span id="cb15-46"><a href="#cb15-46"></a></span>
-<span id="cb15-47"><a href="#cb15-47"></a>This dataset comes from Kaggle and includes transaction records from different shopping malls and regions, designed to give a broad overview of consumer habits, sales patterns, and seasonal trends in e-commerce.</span>
-<span id="cb15-48"><a href="#cb15-48"></a></span>
-<span id="cb15-49"><a href="#cb15-49"></a><span class="fu">#### **Collection Information**</span></span>
-<span id="cb15-50"><a href="#cb15-50"></a></span>
-<span id="cb15-51"><a href="#cb15-51"></a>The data covers all authorizations from October 1, 2006, to March 31, 2024. During this period, any transaction extensions, such as those for Working Capital, were approved under original agreements made before a temporary halt in EXIM Bank’s authority. No new transactions were approved during that lapse; only extensions of previous agreements were processed. This dataset was transferred to Catalog.Data.gov in September 2023 after Data.EXIM.gov ceased operations. With its multi-year scope, the dataset offers a consistent view of transaction details, customer demographics, and location-specific data, making it well-suited for financial and trend analyses over time.</span>
-<span id="cb15-52"><a href="#cb15-52"></a></span>
-<span id="cb15-53"><a href="#cb15-53"></a><span class="fu">#### **Description of Observations**</span></span>
-<span id="cb15-54"><a href="#cb15-54"></a></span>
-<span id="cb15-55"><a href="#cb15-55"></a>This dataset includes various types of information, organized into the following categories:</span>
-<span id="cb15-56"><a href="#cb15-56"></a></span>
-<span id="cb15-57"><a href="#cb15-57"></a>**Transaction Details:** Each transaction record includes a timestamp, the total amount, and any discounts applied, which are useful for analyzing financial patterns and identifying seasonal shifts in sales.</span>
-<span id="cb15-58"><a href="#cb15-58"></a></span>
-<span id="cb15-59"><a href="#cb15-59"></a>**Product Information:** Each item sold is categorized, enabling an analysis of product trends within specific categories and helping to segment the data by product type.</span>
-<span id="cb15-60"><a href="#cb15-60"></a></span>
-<span id="cb15-61"><a href="#cb15-61"></a>**Customer Demographics:** Information on customers’ age and gender supports demographic analysis, helping to reveal spending preferences and behaviors across different customer groups.</span>
-<span id="cb15-62"><a href="#cb15-62"></a></span>
-<span id="cb15-63"><a href="#cb15-63"></a>**Regional Indicators:** Transactions are associated with specific shopping malls or regions, making it possible to compare how different locations perform.</span>
-<span id="cb15-64"><a href="#cb15-64"></a></span>
-<span id="cb15-65"><a href="#cb15-65"></a>**Payment Methods:** The dataset captures the type of payment used—such as credit card, mobile payment, or cash—which provides insights into payment preferences and how they may affect profit margins.</span>
-<span id="cb15-66"><a href="#cb15-66"></a></span>
-<span id="cb15-67"><a href="#cb15-67"></a><span class="fu">## **Ethical Considerations**</span></span>
-<span id="cb15-68"><a href="#cb15-68"></a></span>
-<span id="cb15-69"><a href="#cb15-69"></a>While the dataset includes customer demographic details like age and gender, it does not contain any personal identifiers, helping to maintain privacy. Since the dataset is publicly available on Kaggle, it appears any necessary anonymization was applied beforehand. However, careful interpretation is needed when using demographic data to avoid inadvertently reinforcing stereotypes or drawing unsupported conclusions about certain groups.</span>
-<span id="cb15-70"><a href="#cb15-70"></a></span>
-<span id="cb15-71"><a href="#cb15-71"></a><span class="fu">## **Data Preprocessing**</span></span>
-<span id="cb15-72"><a href="#cb15-72"></a></span>
-<span id="cb15-75"><a href="#cb15-75"></a><span class="in">```{r}</span></span>
-<span id="cb15-76"><a href="#cb15-76"></a><span class="co">#| label: data-preprocessing</span></span>
-<span id="cb15-77"><a href="#cb15-77"></a><span class="co">#| message: false</span></span>
-<span id="cb15-78"><a href="#cb15-78"></a></span>
-<span id="cb15-79"><a href="#cb15-79"></a><span class="co"># Checking for missing values</span></span>
-<span id="cb15-80"><a href="#cb15-80"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data))</span>
-<span id="cb15-81"><a href="#cb15-81"></a></span>
-<span id="cb15-82"><a href="#cb15-82"></a><span class="co"># Viewing unique categories, malls, and payment methods for verification</span></span>
-<span id="cb15-83"><a href="#cb15-83"></a><span class="fu">unique</span>(data<span class="sc">$</span>category)</span>
-<span id="cb15-84"><a href="#cb15-84"></a><span class="fu">unique</span>(data<span class="sc">$</span>shopping_mall)</span>
-<span id="cb15-85"><a href="#cb15-85"></a><span class="fu">unique</span>(data<span class="sc">$</span>payment_method)</span>
-<span id="cb15-86"><a href="#cb15-86"></a></span>
-<span id="cb15-87"><a href="#cb15-87"></a><span class="co"># Converting `invoice_date` to Date-Time format</span></span>
-<span id="cb15-88"><a href="#cb15-88"></a>data<span class="sc">$</span>invoice_date <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(data<span class="sc">$</span>invoice_date, <span class="at">format =</span> <span class="st">&quot;%m/%d/%Y %H:%M&quot;</span>)</span>
-<span id="cb15-89"><a href="#cb15-89"></a></span>
-<span id="cb15-90"><a href="#cb15-90"></a><span class="co"># Extracting Year, Month, Day, and Hour for further analysis</span></span>
-<span id="cb15-91"><a href="#cb15-91"></a>data<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">year</span>(data<span class="sc">$</span>invoice_date)</span>
-<span id="cb15-92"><a href="#cb15-92"></a>data<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">month</span>(data<span class="sc">$</span>invoice_date)</span>
-<span id="cb15-93"><a href="#cb15-93"></a>data<span class="sc">$</span>day <span class="ot">&lt;-</span> <span class="fu">day</span>(data<span class="sc">$</span>invoice_date)</span>
-<span id="cb15-94"><a href="#cb15-94"></a>data<span class="sc">$</span>hour <span class="ot">&lt;-</span> <span class="fu">hour</span>(data<span class="sc">$</span>invoice_date)</span>
-<span id="cb15-95"><a href="#cb15-95"></a></span>
-<span id="cb15-96"><a href="#cb15-96"></a><span class="co"># Defining seasons based on months</span></span>
-<span id="cb15-97"><a href="#cb15-97"></a>data<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
-<span id="cb15-98"><a href="#cb15-98"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">&quot;Winter&quot;</span>,</span>
-<span id="cb15-99"><a href="#cb15-99"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">&quot;Spring&quot;</span>,</span>
-<span id="cb15-100"><a href="#cb15-100"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>) <span class="sc">~</span> <span class="st">&quot;Summer&quot;</span>,</span>
-<span id="cb15-101"><a href="#cb15-101"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>) <span class="sc">~</span> <span class="st">&quot;Fall&quot;</span></span>
-<span id="cb15-102"><a href="#cb15-102"></a>)</span>
-<span id="cb15-103"><a href="#cb15-103"></a></span>
-<span id="cb15-104"><a href="#cb15-104"></a><span class="co"># Calculating Discount and Profit Margin</span></span>
-<span id="cb15-105"><a href="#cb15-105"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb15-106"><a href="#cb15-106"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb15-107"><a href="#cb15-107"></a>    <span class="at">discount =</span> selling_price_per_unit <span class="sc">-</span> cost_price_per_unit,</span>
-<span id="cb15-108"><a href="#cb15-108"></a>    <span class="at">profit_margin =</span> (selling_price_per_unit <span class="sc">-</span> cost_price_per_unit) <span class="sc">/</span> selling_price_per_unit <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb15-109"><a href="#cb15-109"></a>  )</span>
-<span id="cb15-110"><a href="#cb15-110"></a></span>
-<span id="cb15-111"><a href="#cb15-111"></a><span class="co"># Aggregating for seasonal sales performance</span></span>
-<span id="cb15-112"><a href="#cb15-112"></a>seasonal_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb15-113"><a href="#cb15-113"></a>  <span class="fu">group_by</span>(season, category, shopping_mall, payment_method) <span class="sc">%&gt;%</span></span>
-<span id="cb15-114"><a href="#cb15-114"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb15-115"><a href="#cb15-115"></a>    <span class="at">total_sales =</span> <span class="fu">sum</span>(selling_price_per_unit <span class="sc">*</span> quantity),</span>
-<span id="cb15-116"><a href="#cb15-116"></a>    <span class="at">avg_discount =</span> <span class="fu">mean</span>(discount),</span>
-<span id="cb15-117"><a href="#cb15-117"></a>    <span class="at">avg_profit_margin =</span> <span class="fu">mean</span>(profit_margin),</span>
-<span id="cb15-118"><a href="#cb15-118"></a>    <span class="at">.groups =</span> <span class="st">&#39;drop&#39;</span></span>
-<span id="cb15-119"><a href="#cb15-119"></a>  )</span>
-<span id="cb15-120"><a href="#cb15-120"></a>  </span>
-<span id="cb15-121"><a href="#cb15-121"></a></span>
-<span id="cb15-122"><a href="#cb15-122"></a><span class="co"># Checking for outliers in discounts</span></span>
-<span id="cb15-123"><a href="#cb15-123"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>discount, <span class="at">main =</span> <span class="st">&quot;Boxplot for Discounts&quot;</span>)</span>
-<span id="cb15-124"><a href="#cb15-124"></a></span>
-<span id="cb15-125"><a href="#cb15-125"></a><span class="co"># Checking for outliers in profit margins</span></span>
-<span id="cb15-126"><a href="#cb15-126"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>profit_margin, <span class="at">main =</span> <span class="st">&quot;Boxplot for Profit Margins&quot;</span>)</span>
-<span id="cb15-127"><a href="#cb15-127"></a></span>
-<span id="cb15-128"><a href="#cb15-128"></a><span class="co"># Normalizing sales volume if necessary (optional)</span></span>
-<span id="cb15-129"><a href="#cb15-129"></a>data<span class="sc">$</span>total_sales_normalized <span class="ot">&lt;-</span> (data<span class="sc">$</span>selling_price_per_unit <span class="sc">*</span> data<span class="sc">$</span>quantity <span class="sc">-</span> <span class="fu">min</span>(data<span class="sc">$</span>selling_price_per_unit <span class="sc">*</span> data<span class="sc">$</span>quantity)) <span class="sc">/</span> </span>
-<span id="cb15-130"><a href="#cb15-130"></a>                               (<span class="fu">max</span>(data<span class="sc">$</span>selling_price_per_unit <span class="sc">*</span> data<span class="sc">$</span>quantity) <span class="sc">-</span> <span class="fu">min</span>(data<span class="sc">$</span>selling_price_per_unit <span class="sc">*</span> data<span class="sc">$</span>quantity))</span>
-<span id="cb15-131"><a href="#cb15-131"></a></span>
-<span id="cb15-132"><a href="#cb15-132"></a></span>
-<span id="cb15-133"><a href="#cb15-133"></a><span class="co"># Ensuring factor levels for categorical variables</span></span>
-<span id="cb15-134"><a href="#cb15-134"></a>data<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>season, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Winter&quot;</span>, <span class="st">&quot;Spring&quot;</span>, <span class="st">&quot;Summer&quot;</span>, <span class="st">&quot;Fall&quot;</span>))</span>
-<span id="cb15-135"><a href="#cb15-135"></a>data<span class="sc">$</span>category <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>category)</span>
-<span id="cb15-136"><a href="#cb15-136"></a>data<span class="sc">$</span>shopping_mall <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>shopping_mall)</span>
-<span id="cb15-137"><a href="#cb15-137"></a>data<span class="sc">$</span>payment_method <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>payment_method)</span>
-<span id="cb15-138"><a href="#cb15-138"></a></span>
-<span id="cb15-139"><a href="#cb15-139"></a><span class="in">```</span></span>
-<span id="cb15-140"><a href="#cb15-140"></a></span>
-<span id="cb15-141"><a href="#cb15-141"></a><span class="fu">## Questions</span></span>
-<span id="cb15-142"><a href="#cb15-142"></a></span>
-<span id="cb15-143"><a href="#cb15-143"></a><span class="ss">-   </span>How Do Seasonal Trends Affect Sales Performance Across Different Categories, Malls, and Payment Methods?</span>
-<span id="cb15-144"><a href="#cb15-144"></a></span>
-<span id="cb15-145"><a href="#cb15-145"></a>    We are going to investigate the impact of seasonal fluctuations on sales across product categories, locations, and payment methods. This question will help identify peak seasons and preferred payment options during high-demand periods.</span>
-<span id="cb15-146"><a href="#cb15-146"></a></span>
-<span id="cb15-147"><a href="#cb15-147"></a><span class="ss">-   </span>What Are the Relationships Between Discounted Prices, Sales Volumes, and Profit Margins in Different Shopping Malls and Product Categories?</span>
-<span id="cb15-148"><a href="#cb15-148"></a></span>
-<span id="cb15-149"><a href="#cb15-149"></a>    Through this question, we will examine the influence of discounts on sales volumes and profit margins, analyzing correlations across product categories and shopping malls.</span>
-<span id="cb15-150"><a href="#cb15-150"></a></span>
-<span id="cb15-151"><a href="#cb15-151"></a><span class="fu">## Analysis Plan</span></span>
-<span id="cb15-152"><a href="#cb15-152"></a></span>
-<span id="cb15-153"><a href="#cb15-153"></a><span class="ss">-   </span>Seasonal Trends and Sales Performance:\</span>
-<span id="cb15-154"><a href="#cb15-154"></a></span>
-<span id="cb15-155"><a href="#cb15-155"></a><span class="ss">    1.  </span>Analyze monthly sales trends by category.\</span>
-<span id="cb15-156"><a href="#cb15-156"></a><span class="ss">    2.  </span>Segment data by malls to explore seasonal sales variations.\</span>
-<span id="cb15-157"><a href="#cb15-157"></a><span class="ss">    3.  </span>Examine the distribution of payment methods by season.\</span>
-<span id="cb15-158"><a href="#cb15-158"></a><span class="ss">    4.  </span>Compare seasonal sales across categories, payment methods, and malls.\</span>
-<span id="cb15-159"><a href="#cb15-159"></a>        Planned Visualizations: Line graphs, stacked area charts, heatmaps, and faceted bar plots.</span>
-<span id="cb15-160"><a href="#cb15-160"></a></span>
-<span id="cb15-161"><a href="#cb15-161"></a><span class="ss">-   </span>Discounts, Sales Volumes, and Profit Margins:\</span>
-<span id="cb15-162"><a href="#cb15-162"></a></span>
-<span id="cb15-163"><a href="#cb15-163"></a><span class="ss">    1.  </span>Calculate and analyze discount percentages.\</span>
-<span id="cb15-164"><a href="#cb15-164"></a><span class="ss">    2.  </span>Assess correlation of discounts with sales volumes.\</span>
-<span id="cb15-165"><a href="#cb15-165"></a><span class="ss">    3.  </span>Determine profit margins post-discounts.\</span>
-<span id="cb15-166"><a href="#cb15-166"></a><span class="ss">    4.  </span>Conduct correlation analysis among discounts, volumes, and margins.\</span>
-<span id="cb15-167"><a href="#cb15-167"></a>        Planned Visualizations: Scatter plots, bar charts, correlation matrices, and 3D scatter plots.</span>
-<span id="cb15-168"><a href="#cb15-168"></a></span>
-<span id="cb15-169"><a href="#cb15-169"></a><span class="fu">## Citations</span></span>
-<span id="cb15-170"><a href="#cb15-170"></a></span>
-<span id="cb15-171"><a href="#cb15-171"></a>KZMontage, &quot;Sales from different stores,&quot; Kaggle. <span class="sc">\[</span>Online<span class="sc">\]</span>. Available: <span class="co">[</span><span class="ot">Sales from different stores.</span><span class="co">](https://www.kaggle.com/datasets/kzmontage/sales-from-different-stores)</span>.</span>
+<div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">---</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="an">title:</span><span class="co"> &quot;E-commerce Sales Trends and Consumer Insights: A Data-Driven Analysis&quot;</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="an">subtitle:</span><span class="co"> &quot;Proposal&quot;</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="an">author:</span><span class="co"> </span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co">  - name: &quot;Pacman&quot;</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co">    affiliations:</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="co">      - name: &quot;School of Information, University of Arizona&quot;</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="an">description:</span><span class="co"> &quot;In order to identify trends in consumer behavior, sales patterns, and profitability, this project examines e-commerce transaction data from different shopping centers and geographical areas. We seek to determine seasonal sales patterns, high-value client groups, and the effects of discounts by examining variables such as consumer demographics, product categories, and payment methods. The knowledge acquired will contribute to our comprehension of customer decision-making processes and the effects of various sales tactics on performance in various contexts.&quot;</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="an">format:</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a><span class="co">  html:</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="co">    code-tools: true</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a><span class="co">    code-overflow: wrap</span></span>
+<span id="cb13-13"><a href="#cb13-13"></a><span class="co">    code-line-numbers: true</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a><span class="co">    embed-resources: true</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb13-16"><a href="#cb13-16"></a><span class="an">code-annotations:</span><span class="co"> hover</span></span>
+<span id="cb13-17"><a href="#cb13-17"></a><span class="an">execute:</span></span>
+<span id="cb13-18"><a href="#cb13-18"></a><span class="co">  warning: false</span></span>
+<span id="cb13-19"><a href="#cb13-19"></a><span class="co">---</span></span>
+<span id="cb13-20"><a href="#cb13-20"></a></span>
+<span id="cb13-23"><a href="#cb13-23"></a><span class="in">```{r}</span></span>
+<span id="cb13-24"><a href="#cb13-24"></a><span class="co">#| label: load-pkgs</span></span>
+<span id="cb13-25"><a href="#cb13-25"></a><span class="co">#| message: false</span></span>
+<span id="cb13-26"><a href="#cb13-26"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-27"><a href="#cb13-27"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb13-28"><a href="#cb13-28"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb13-29"><a href="#cb13-29"></a><span class="in">```</span></span>
+<span id="cb13-30"><a href="#cb13-30"></a></span>
+<span id="cb13-31"><a href="#cb13-31"></a><span class="fu">## Dataset</span></span>
+<span id="cb13-32"><a href="#cb13-32"></a></span>
+<span id="cb13-35"><a href="#cb13-35"></a><span class="in">```{r}</span></span>
+<span id="cb13-36"><a href="#cb13-36"></a><span class="co">#| label: load-dataset</span></span>
+<span id="cb13-37"><a href="#cb13-37"></a><span class="co">#| message: false</span></span>
+<span id="cb13-38"><a href="#cb13-38"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/Different_stores_dataset.csv&quot;</span>)</span>
+<span id="cb13-39"><a href="#cb13-39"></a><span class="fu">glimpse</span>(data)</span>
+<span id="cb13-40"><a href="#cb13-40"></a></span>
+<span id="cb13-41"><a href="#cb13-41"></a><span class="in">```</span></span>
+<span id="cb13-42"><a href="#cb13-42"></a></span>
+<span id="cb13-43"><a href="#cb13-43"></a><span class="fu">## **Data Description**</span></span>
+<span id="cb13-44"><a href="#cb13-44"></a></span>
+<span id="cb13-45"><a href="#cb13-45"></a><span class="fu">#### **Source of the Data**</span></span>
+<span id="cb13-46"><a href="#cb13-46"></a></span>
+<span id="cb13-47"><a href="#cb13-47"></a>This dataset comes from Kaggle and includes transaction records from different shopping malls and regions, designed to give a broad overview of consumer habits, sales patterns, and seasonal trends in e-commerce.</span>
+<span id="cb13-48"><a href="#cb13-48"></a></span>
+<span id="cb13-49"><a href="#cb13-49"></a><span class="fu">#### **Collection Information**</span></span>
+<span id="cb13-50"><a href="#cb13-50"></a></span>
+<span id="cb13-51"><a href="#cb13-51"></a>The data covers all authorizations 2019 to 2022. With its multi-year scope, the dataset offers a consistent view of transaction details, customer demographics, and location-specific data, making it well-suited for financial and trend analyses over time.</span>
+<span id="cb13-52"><a href="#cb13-52"></a></span>
+<span id="cb13-53"><a href="#cb13-53"></a>**Description of Observations**</span>
+<span id="cb13-54"><a href="#cb13-54"></a></span>
+<span id="cb13-55"><a href="#cb13-55"></a>This dataset includes diverse types of information, categorized as follows:</span>
+<span id="cb13-56"><a href="#cb13-56"></a></span>
+<span id="cb13-57"><a href="#cb13-57"></a><span class="fu">#### **Transaction Details**</span></span>
+<span id="cb13-58"><a href="#cb13-58"></a></span>
+<span id="cb13-59"><a href="#cb13-59"></a><span class="ss">-   </span>Each record contains detailed transaction information, including:</span>
+<span id="cb13-60"><a href="#cb13-60"></a></span>
+<span id="cb13-61"><a href="#cb13-61"></a><span class="ss">    -   </span>**Order Date and Ship Date**: Helps in identifying order processing and shipping durations.</span>
+<span id="cb13-62"><a href="#cb13-62"></a></span>
+<span id="cb13-63"><a href="#cb13-63"></a><span class="ss">    -   </span>**Total Sales**: The monetary value of sales for each transaction.</span>
+<span id="cb13-64"><a href="#cb13-64"></a></span>
+<span id="cb13-65"><a href="#cb13-65"></a><span class="ss">    -   </span>**Discounts Applied**: Percentage discounts offered on products, aiding in the analysis of how discounts affect sales and profit margins.</span>
+<span id="cb13-66"><a href="#cb13-66"></a></span>
+<span id="cb13-67"><a href="#cb13-67"></a><span class="ss">    -   </span>**Profit Margins**: Calculated profit as a percentage of sales, useful for analyzing profitability trends.</span>
+<span id="cb13-68"><a href="#cb13-68"></a></span>
+<span id="cb13-69"><a href="#cb13-69"></a><span class="fu">#### **Product Information**</span></span>
+<span id="cb13-70"><a href="#cb13-70"></a></span>
+<span id="cb13-71"><a href="#cb13-71"></a><span class="ss">-   </span>The dataset includes detailed descriptions of products sold, categorized as follows:</span>
+<span id="cb13-72"><a href="#cb13-72"></a></span>
+<span id="cb13-73"><a href="#cb13-73"></a><span class="ss">    -   </span>**Category and Subcategory**: Organizes items into broad and specific groups, enabling trend analysis within specific product types.</span>
+<span id="cb13-74"><a href="#cb13-74"></a></span>
+<span id="cb13-75"><a href="#cb13-75"></a><span class="ss">    -   </span>**Product Name and Manufacturer**: Useful for analyzing product-level performance and identifying top-performing manufacturers or brands.</span>
+<span id="cb13-76"><a href="#cb13-76"></a></span>
+<span id="cb13-77"><a href="#cb13-77"></a><span class="fu">#### **Customer Segmentation**</span></span>
+<span id="cb13-78"><a href="#cb13-78"></a></span>
+<span id="cb13-79"><a href="#cb13-79"></a><span class="ss">-   </span>Customer details are included to support demographic and segment-specific analysis:</span>
+<span id="cb13-80"><a href="#cb13-80"></a></span>
+<span id="cb13-81"><a href="#cb13-81"></a><span class="ss">    -   </span>**Customer Names**: Identifies unique buyers.</span>
+<span id="cb13-82"><a href="#cb13-82"></a></span>
+<span id="cb13-83"><a href="#cb13-83"></a><span class="ss">    -   </span>**Segment**: Classifies customers as &quot;Consumer,&quot; &quot;Corporate,&quot; or &quot;Home Office,&quot; helping to analyze sales across different segments.</span>
+<span id="cb13-84"><a href="#cb13-84"></a></span>
+<span id="cb13-85"><a href="#cb13-85"></a><span class="fu">#### **Regional and Geographic Indicators**</span></span>
+<span id="cb13-86"><a href="#cb13-86"></a></span>
+<span id="cb13-87"><a href="#cb13-87"></a><span class="ss">-   </span>The dataset associates transactions with geographic and regional data:</span>
+<span id="cb13-88"><a href="#cb13-88"></a></span>
+<span id="cb13-89"><a href="#cb13-89"></a><span class="ss">    -   </span>**City, State, Region, and ZIP Code**: Provides granularity for regional performance analysis.</span>
+<span id="cb13-90"><a href="#cb13-90"></a></span>
+<span id="cb13-91"><a href="#cb13-91"></a><span class="ss">    -   </span>**Country**: Helps in identifying global patterns if applicable.</span>
+<span id="cb13-92"><a href="#cb13-92"></a></span>
+<span id="cb13-93"><a href="#cb13-93"></a><span class="fu">#### **Payment and Discounts**</span></span>
+<span id="cb13-94"><a href="#cb13-94"></a></span>
+<span id="cb13-95"><a href="#cb13-95"></a><span class="ss">-   </span>Insights into financial behaviors:</span>
+<span id="cb13-96"><a href="#cb13-96"></a></span>
+<span id="cb13-97"><a href="#cb13-97"></a><span class="ss">    -   </span>**Discount Rates**: Helps identify trends in discounting and its impact on sales volumes and profitability.</span>
+<span id="cb13-98"><a href="#cb13-98"></a></span>
+<span id="cb13-99"><a href="#cb13-99"></a><span class="ss">    -   </span>**Profit and Sales Values**: Facilitates the analysis of relationships between discounting, sales performance, and profitability.</span>
+<span id="cb13-100"><a href="#cb13-100"></a></span>
+<span id="cb13-101"><a href="#cb13-101"></a><span class="fu">#### **Shipping Details**</span></span>
+<span id="cb13-102"><a href="#cb13-102"></a></span>
+<span id="cb13-103"><a href="#cb13-103"></a><span class="ss">-   </span>Additional fields:</span>
+<span id="cb13-104"><a href="#cb13-104"></a></span>
+<span id="cb13-105"><a href="#cb13-105"></a><span class="ss">    -   </span>**Shipping Durations**: Derived from the difference between order date and ship date to analyze delivery efficiency.</span>
+<span id="cb13-106"><a href="#cb13-106"></a></span>
+<span id="cb13-107"><a href="#cb13-107"></a><span class="fu">## **Ethical Considerations**</span></span>
+<span id="cb13-108"><a href="#cb13-108"></a></span>
+<span id="cb13-109"><a href="#cb13-109"></a>While the dataset includes customer demographic details like age and gender, it does not contain any personal identifiers, helping to maintain privacy. Since the dataset is publicly available on Kaggle, it appears any necessary anonymization was applied beforehand. However, careful interpretation is needed when using demographic data to avoid inadvertently reinforcing stereotypes or drawing unsupported conclusions about certain groups.</span>
+<span id="cb13-110"><a href="#cb13-110"></a></span>
+<span id="cb13-111"><a href="#cb13-111"></a><span class="fu">## **Data Preprocessing**</span></span>
+<span id="cb13-112"><a href="#cb13-112"></a></span>
+<span id="cb13-115"><a href="#cb13-115"></a><span class="in">```{r}</span></span>
+<span id="cb13-116"><a href="#cb13-116"></a><span class="co">#| label: data-preprocessing</span></span>
+<span id="cb13-117"><a href="#cb13-117"></a><span class="co">#| message: false</span></span>
+<span id="cb13-118"><a href="#cb13-118"></a></span>
+<span id="cb13-119"><a href="#cb13-119"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data))</span>
+<span id="cb13-120"><a href="#cb13-120"></a></span>
+<span id="cb13-121"><a href="#cb13-121"></a><span class="co"># Check unique values for categorical columns</span></span>
+<span id="cb13-122"><a href="#cb13-122"></a><span class="fu">unique</span>(data<span class="sc">$</span>category)</span>
+<span id="cb13-123"><a href="#cb13-123"></a><span class="fu">unique</span>(data<span class="sc">$</span>region)</span>
+<span id="cb13-124"><a href="#cb13-124"></a><span class="fu">unique</span>(data<span class="sc">$</span>segment)</span>
+<span id="cb13-125"><a href="#cb13-125"></a></span>
+<span id="cb13-126"><a href="#cb13-126"></a><span class="co"># Convert order_date and ship_date to date format</span></span>
+<span id="cb13-127"><a href="#cb13-127"></a>data<span class="sc">$</span>order_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data<span class="sc">$</span>order_date, <span class="at">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</span>
+<span id="cb13-128"><a href="#cb13-128"></a>data<span class="sc">$</span>ship_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data<span class="sc">$</span>ship_date, <span class="at">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</span>
+<span id="cb13-129"><a href="#cb13-129"></a></span>
+<span id="cb13-130"><a href="#cb13-130"></a><span class="co"># Extract Year, Month, and Season from order_date</span></span>
+<span id="cb13-131"><a href="#cb13-131"></a>data<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">year</span>(data<span class="sc">$</span>order_date)</span>
+<span id="cb13-132"><a href="#cb13-132"></a>data<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">month</span>(data<span class="sc">$</span>order_date)</span>
+<span id="cb13-133"><a href="#cb13-133"></a>data<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb13-134"><a href="#cb13-134"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">&quot;Winter&quot;</span>,</span>
+<span id="cb13-135"><a href="#cb13-135"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">&quot;Spring&quot;</span>,</span>
+<span id="cb13-136"><a href="#cb13-136"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>) <span class="sc">~</span> <span class="st">&quot;Summer&quot;</span>,</span>
+<span id="cb13-137"><a href="#cb13-137"></a>  data<span class="sc">$</span>month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>) <span class="sc">~</span> <span class="st">&quot;Fall&quot;</span></span>
+<span id="cb13-138"><a href="#cb13-138"></a>)</span>
+<span id="cb13-139"><a href="#cb13-139"></a></span>
+<span id="cb13-140"><a href="#cb13-140"></a><span class="co"># Calculate total sales and profit margins</span></span>
+<span id="cb13-141"><a href="#cb13-141"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb13-142"><a href="#cb13-142"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-143"><a href="#cb13-143"></a>    <span class="at">total_sales =</span> sales <span class="sc">*</span> quantity,</span>
+<span id="cb13-144"><a href="#cb13-144"></a>    <span class="at">profit_margin =</span> profit <span class="sc">/</span> sales <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb13-145"><a href="#cb13-145"></a>  )</span>
+<span id="cb13-146"><a href="#cb13-146"></a></span>
+<span id="cb13-147"><a href="#cb13-147"></a><span class="co"># Handle any missing or negative values</span></span>
+<span id="cb13-148"><a href="#cb13-148"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb13-149"><a href="#cb13-149"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(total_sales) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(profit_margin))</span>
+<span id="cb13-150"><a href="#cb13-150"></a></span>
+<span id="cb13-151"><a href="#cb13-151"></a><span class="co"># Group data by season, category, and region</span></span>
+<span id="cb13-152"><a href="#cb13-152"></a>aggregated_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb13-153"><a href="#cb13-153"></a>  <span class="fu">group_by</span>(season, category, region, segment) <span class="sc">%&gt;%</span></span>
+<span id="cb13-154"><a href="#cb13-154"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb13-155"><a href="#cb13-155"></a>    <span class="at">avg_discount =</span> <span class="fu">mean</span>(discount, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-156"><a href="#cb13-156"></a>    <span class="at">total_sales =</span> <span class="fu">sum</span>(total_sales, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-157"><a href="#cb13-157"></a>    <span class="at">avg_profit_margin =</span> <span class="fu">mean</span>(profit_margin, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-158"><a href="#cb13-158"></a>    <span class="at">.groups =</span> <span class="st">&#39;drop&#39;</span></span>
+<span id="cb13-159"><a href="#cb13-159"></a>  )</span>
+<span id="cb13-160"><a href="#cb13-160"></a></span>
+<span id="cb13-161"><a href="#cb13-161"></a><span class="co"># Normalize total_sales</span></span>
+<span id="cb13-162"><a href="#cb13-162"></a>data<span class="sc">$</span>total_sales_normalized <span class="ot">&lt;-</span> (data<span class="sc">$</span>total_sales <span class="sc">-</span> <span class="fu">min</span>(data<span class="sc">$</span>total_sales, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span></span>
+<span id="cb13-163"><a href="#cb13-163"></a>                               (<span class="fu">max</span>(data<span class="sc">$</span>total_sales, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">min</span>(data<span class="sc">$</span>total_sales, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb13-164"><a href="#cb13-164"></a></span>
+<span id="cb13-165"><a href="#cb13-165"></a><span class="co"># Ensure categorical variables are treated as factors</span></span>
+<span id="cb13-166"><a href="#cb13-166"></a>data<span class="sc">$</span>category <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>category)</span>
+<span id="cb13-167"><a href="#cb13-167"></a>data<span class="sc">$</span>segment <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>segment)</span>
+<span id="cb13-168"><a href="#cb13-168"></a>data<span class="sc">$</span>region <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>region)</span>
+<span id="cb13-169"><a href="#cb13-169"></a>data<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>season, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Winter&quot;</span>, <span class="st">&quot;Spring&quot;</span>, <span class="st">&quot;Summer&quot;</span>, <span class="st">&quot;Fall&quot;</span>))</span>
+<span id="cb13-170"><a href="#cb13-170"></a></span>
+<span id="cb13-171"><a href="#cb13-171"></a><span class="in">```</span></span>
+<span id="cb13-172"><a href="#cb13-172"></a></span>
+<span id="cb13-173"><a href="#cb13-173"></a><span class="fu">## Questions</span></span>
+<span id="cb13-174"><a href="#cb13-174"></a></span>
+<span id="cb13-175"><a href="#cb13-175"></a><span class="ss">-   </span>How Do Seasonal Trends Affect Sales Performance Across Different Categories, Malls, and Payment Methods?</span>
+<span id="cb13-176"><a href="#cb13-176"></a></span>
+<span id="cb13-177"><a href="#cb13-177"></a>    We are going to investigate the impact of seasonal fluctuations on sales across product categories, locations, and payment methods. This question will help identify peak seasons and preferred payment options during high-demand periods.</span>
+<span id="cb13-178"><a href="#cb13-178"></a></span>
+<span id="cb13-179"><a href="#cb13-179"></a><span class="ss">-   </span>What Are the Relationships Between Discounted Prices, Sales Volumes, and Profit Margins in Different Shopping Malls and Product Categories?</span>
+<span id="cb13-180"><a href="#cb13-180"></a></span>
+<span id="cb13-181"><a href="#cb13-181"></a>    Through this question, we will examine the influence of discounts on sales volumes and profit margins, analyzing correlations across product categories and shopping malls.</span>
+<span id="cb13-182"><a href="#cb13-182"></a></span>
+<span id="cb13-183"><a href="#cb13-183"></a><span class="fu">## Analysis Plan</span></span>
+<span id="cb13-184"><a href="#cb13-184"></a></span>
+<span id="cb13-185"><a href="#cb13-185"></a><span class="ss">-   </span>Seasonal Trends and Sales Performance:\</span>
+<span id="cb13-186"><a href="#cb13-186"></a></span>
+<span id="cb13-187"><a href="#cb13-187"></a><span class="ss">    1.  </span>Analyze monthly sales trends by category.\</span>
+<span id="cb13-188"><a href="#cb13-188"></a><span class="ss">    2.  </span>Segment data by malls to explore seasonal sales variations.\</span>
+<span id="cb13-189"><a href="#cb13-189"></a><span class="ss">    3.  </span>Examine the distribution of payment methods by season.\</span>
+<span id="cb13-190"><a href="#cb13-190"></a><span class="ss">    4.  </span>Compare seasonal sales across categories, payment methods, and malls.\</span>
+<span id="cb13-191"><a href="#cb13-191"></a>        Planned Visualizations: Line graphs, stacked area charts, heatmaps, and faceted bar plots.</span>
+<span id="cb13-192"><a href="#cb13-192"></a></span>
+<span id="cb13-193"><a href="#cb13-193"></a><span class="ss">-   </span>Discounts, Sales Volumes, and Profit Margins:\</span>
+<span id="cb13-194"><a href="#cb13-194"></a></span>
+<span id="cb13-195"><a href="#cb13-195"></a><span class="ss">    1.  </span>Calculate and analyze discount percentages.\</span>
+<span id="cb13-196"><a href="#cb13-196"></a><span class="ss">    2.  </span>Assess correlation of discounts with sales volumes.\</span>
+<span id="cb13-197"><a href="#cb13-197"></a><span class="ss">    3.  </span>Determine profit margins post-discounts.\</span>
+<span id="cb13-198"><a href="#cb13-198"></a><span class="ss">    4.  </span>Conduct correlation analysis among discounts, volumes, and margins.\</span>
+<span id="cb13-199"><a href="#cb13-199"></a>        Planned Visualizations: Scatter plots, bar charts, correlation matrices, and 3D scatter plots.</span>
+<span id="cb13-200"><a href="#cb13-200"></a></span>
+<span id="cb13-201"><a href="#cb13-201"></a><span class="fu">## Citations</span></span>
+<span id="cb13-202"><a href="#cb13-202"></a></span>
+<span id="cb13-203"><a href="#cb13-203"></a>KZMontage, &quot;Sales from different stores,&quot; Kaggle. <span class="sc">\[</span>Online<span class="sc">\]</span>. Available: <span class="co">[</span><span class="ot">Sales from different stores.</span><span class="co">](https://www.kaggle.com/datasets/kzmontage/sales-from-different-stores)</span>.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

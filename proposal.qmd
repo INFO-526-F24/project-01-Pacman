@@ -44,21 +44,61 @@ This dataset comes from Kaggle and includes transaction records from different s
 
 #### **Collection Information**
 
-The data covers all authorizations from October 1, 2006, to March 31, 2024. During this period, any transaction extensions, such as those for Working Capital, were approved under original agreements made before a temporary halt in EXIM Bank’s authority. No new transactions were approved during that lapse; only extensions of previous agreements were processed. This dataset was transferred to Catalog.Data.gov in September 2023 after Data.EXIM.gov ceased operations. With its multi-year scope, the dataset offers a consistent view of transaction details, customer demographics, and location-specific data, making it well-suited for financial and trend analyses over time.
+The data covers all authorizations 2019 to 2022. With its multi-year scope, the dataset offers a consistent view of transaction details, customer demographics, and location-specific data, making it well-suited for financial and trend analyses over time.
 
-#### **Description of Observations**
+**Description of Observations**
 
-This dataset includes various types of information, organized into the following categories:
+This dataset includes diverse types of information, categorized as follows:
 
-**Transaction Details:** Each transaction record includes a timestamp, the total amount, and any discounts applied, which are useful for analyzing financial patterns and identifying seasonal shifts in sales.
+#### **Transaction Details**
 
-**Product Information:** Each item sold is categorized, enabling an analysis of product trends within specific categories and helping to segment the data by product type.
+-   Each record contains detailed transaction information, including:
 
-**Customer Demographics:** Information on customers’ age and gender supports demographic analysis, helping to reveal spending preferences and behaviors across different customer groups.
+    -   **Order Date and Ship Date**: Helps in identifying order processing and shipping durations.
 
-**Regional Indicators:** Transactions are associated with specific shopping malls or regions, making it possible to compare how different locations perform.
+    -   **Total Sales**: The monetary value of sales for each transaction.
 
-**Payment Methods:** The dataset captures the type of payment used—such as credit card, mobile payment, or cash—which provides insights into payment preferences and how they may affect profit margins.
+    -   **Discounts Applied**: Percentage discounts offered on products, aiding in the analysis of how discounts affect sales and profit margins.
+
+    -   **Profit Margins**: Calculated profit as a percentage of sales, useful for analyzing profitability trends.
+
+#### **Product Information**
+
+-   The dataset includes detailed descriptions of products sold, categorized as follows:
+
+    -   **Category and Subcategory**: Organizes items into broad and specific groups, enabling trend analysis within specific product types.
+
+    -   **Product Name and Manufacturer**: Useful for analyzing product-level performance and identifying top-performing manufacturers or brands.
+
+#### **Customer Segmentation**
+
+-   Customer details are included to support demographic and segment-specific analysis:
+
+    -   **Customer Names**: Identifies unique buyers.
+
+    -   **Segment**: Classifies customers as "Consumer," "Corporate," or "Home Office," helping to analyze sales across different segments.
+
+#### **Regional and Geographic Indicators**
+
+-   The dataset associates transactions with geographic and regional data:
+
+    -   **City, State, Region, and ZIP Code**: Provides granularity for regional performance analysis.
+
+    -   **Country**: Helps in identifying global patterns if applicable.
+
+#### **Payment and Discounts**
+
+-   Insights into financial behaviors:
+
+    -   **Discount Rates**: Helps identify trends in discounting and its impact on sales volumes and profitability.
+
+    -   **Profit and Sales Values**: Facilitates the analysis of relationships between discounting, sales performance, and profitability.
+
+#### **Shipping Details**
+
+-   Additional fields:
+
+    -   **Shipping Durations**: Derived from the difference between order date and ship date to analyze delivery efficiency.
 
 ## **Ethical Considerations**
 
@@ -70,24 +110,20 @@ While the dataset includes customer demographic details like age and gender, it 
 #| label: data-preprocessing
 #| message: false
 
-# Checking for missing values
 sum(is.na(data))
 
-# Viewing unique categories, malls, and payment methods for verification
+# Check unique values for categorical columns
 unique(data$category)
-unique(data$shopping_mall)
-unique(data$payment_method)
+unique(data$region)
+unique(data$segment)
 
-# Converting `invoice_date` to Date-Time format
-data$invoice_date <- as.POSIXct(data$invoice_date, format = "%m/%d/%Y %H:%M")
+# Convert order_date and ship_date to date format
+data$order_date <- as.Date(data$order_date, format = "%m/%d/%Y")
+data$ship_date <- as.Date(data$ship_date, format = "%m/%d/%Y")
 
-# Extracting Year, Month, Day, and Hour for further analysis
-data$year <- year(data$invoice_date)
-data$month <- month(data$invoice_date)
-data$day <- day(data$invoice_date)
-data$hour <- hour(data$invoice_date)
-
-# Defining seasons based on months
+# Extract Year, Month, and Season from order_date
+data$year <- year(data$order_date)
+data$month <- month(data$order_date)
 data$season <- case_when(
   data$month %in% c(12, 1, 2) ~ "Winter",
   data$month %in% c(3, 4, 5) ~ "Spring",
@@ -95,40 +131,36 @@ data$season <- case_when(
   data$month %in% c(9, 10, 11) ~ "Fall"
 )
 
-# Calculating Discount and Profit Margin
+# Calculate total sales and profit margins
 data <- data %>%
   mutate(
-    discount = selling_price_per_unit - cost_price_per_unit,
-    profit_margin = (selling_price_per_unit - cost_price_per_unit) / selling_price_per_unit * 100
+    total_sales = sales * quantity,
+    profit_margin = profit / sales * 100
   )
 
-# Aggregating for seasonal sales performance
-seasonal_data <- data %>%
-  group_by(season, category, shopping_mall, payment_method) %>%
+# Handle any missing or negative values
+data <- data %>%
+  filter(!is.na(total_sales) & !is.na(profit_margin))
+
+# Group data by season, category, and region
+aggregated_data <- data %>%
+  group_by(season, category, region, segment) %>%
   summarise(
-    total_sales = sum(selling_price_per_unit * quantity),
-    avg_discount = mean(discount),
-    avg_profit_margin = mean(profit_margin),
+    avg_discount = mean(discount, na.rm = TRUE),
+    total_sales = sum(total_sales, na.rm = TRUE),
+    avg_profit_margin = mean(profit_margin, na.rm = TRUE),
     .groups = 'drop'
   )
-  
 
-# Checking for outliers in discounts
-boxplot(data$discount, main = "Boxplot for Discounts")
+# Normalize total_sales
+data$total_sales_normalized <- (data$total_sales - min(data$total_sales, na.rm = TRUE)) /
+                               (max(data$total_sales, na.rm = TRUE) - min(data$total_sales, na.rm = TRUE))
 
-# Checking for outliers in profit margins
-boxplot(data$profit_margin, main = "Boxplot for Profit Margins")
-
-# Normalizing sales volume if necessary (optional)
-data$total_sales_normalized <- (data$selling_price_per_unit * data$quantity - min(data$selling_price_per_unit * data$quantity)) / 
-                               (max(data$selling_price_per_unit * data$quantity) - min(data$selling_price_per_unit * data$quantity))
-
-
-# Ensuring factor levels for categorical variables
-data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fall"))
+# Ensure categorical variables are treated as factors
 data$category <- as.factor(data$category)
-data$shopping_mall <- as.factor(data$shopping_mall)
-data$payment_method <- as.factor(data$payment_method)
+data$segment <- as.factor(data$segment)
+data$region <- as.factor(data$region)
+data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fall"))
 
 ```
 
