@@ -100,56 +100,50 @@ ggplot(monthly_sales, aes(x = month, y = total_sales, color = category)) +
   theme_minimal() +
   scale_x_continuous(breaks = 1:12) +
   theme(legend.title = element_blank())
-
 ```
 
 ```{r}
+# Bar plot for seasonal sales variations segmented by region (malls)
+seasonal_sales_malls <- data %>%
+  group_by(season, region) %>%
+  summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
 
-# Calculate total sales for analysis
-data <- data %>%
-  mutate(total_sales = selling_price_per_unit * quantity)
-
-# 1. Monthly Sales Trends by Category
-monthly_sales <- data %>%
-  group_by(month, category) %>%
-  summarise(total_sales = sum(total_sales), .groups = "drop")
-
-ggplot(monthly_sales, aes(x = month, y = total_sales, color = category)) +
-  geom_line(size = 1) +
-  labs(title = "Monthly Sales Trends by Category", x = "Month", y = "Total Sales") +
-  theme_minimal()
-
-# 2. Seasonal Sales by Mall
-seasonal_sales_mall <- data %>%
-  group_by(season, shopping_mall) %>%
-  summarise(total_sales = sum(total_sales), .groups = "drop")
-
-ggplot(seasonal_sales_mall, aes(x = season, y = total_sales, fill = shopping_mall)) +
+ggplot(seasonal_sales_malls, aes(x = season, y = total_sales, fill = region)) +
   geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Seasonal Sales by Shopping Mall", x = "Season", y = "Total Sales") +
-  theme_minimal()
+  labs(title = "Seasonal Sales Variations by Region (Malls)", x = "Season", y = "Total Sales") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set2") +
+  theme(legend.title = element_blank())
+```
 
-# 3. Distribution of Payment Methods by Season
-payment_distribution <- data %>%
-  group_by(season, payment_method) %>%
-  summarise(count = n(), .groups = "drop")
-
-ggplot(payment_distribution, aes(x = season, y = count, fill = payment_method)) +
-  geom_bar(stat = "identity", position = "fill") +
-  labs(title = "Distribution of Payment Methods by Season", x = "Season", y = "Proportion") +
-  theme_minimal()
-
-# 4. Seasonal Sales Across Categories, Payment Methods, and Malls
+```{r}
+# Bar plot for seasonal sales across categories
 seasonal_category_sales <- data %>%
-  group_by(season, category, payment_method) %>%
-  summarise(total_sales = sum(total_sales), .groups = "drop")
+  group_by(season, category) %>%
+  summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
 
-ggplot(seasonal_category_sales, aes(x = season, y = total_sales, fill = payment_method)) +
-  geom_bar(stat = "identity", position = "stack") +
-  facet_wrap(~ category) +
-  labs(title = "Seasonal Sales by Category and Payment Methods", x = "Season", y = "Total Sales") +
-  theme_minimal()
+ggplot(seasonal_category_sales, aes(x = season, y = total_sales, fill = category)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Seasonal Sales Across Categories", x = "Season", y = "Total Sales") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set3") +
+  theme(legend.title = element_blank())
+```
 
+```{r}
+# Faceted bar plot for seasonal sales across regions and categories
+faceted_data <- data %>%
+  group_by(season, category, region) %>%
+  summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
+
+ggplot(faceted_data, aes(x = season, y = total_sales, fill = category)) +
+  geom_bar(stat="identity", position="dodge") +
+  facet_wrap(~region) +
+  labs(title="Seasonal Sales Across Categories and Regions (Malls)", x="Season", y="Total Sales") +
+  theme_minimal() +
+  scale_fill_brewer(palette="Set3") +
+  theme(legend.title=element_blank())
+ 
 ```
 
 ### Question 2:
