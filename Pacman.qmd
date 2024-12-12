@@ -38,6 +38,7 @@ glimpse(data)
 #| label: data-preprocessing
 #| message: false
 
+# Check the missing values
 sum(is.na(data))
 
 # Check unique values for categorical columns
