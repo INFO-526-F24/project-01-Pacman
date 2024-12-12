@@ -93,6 +93,8 @@ data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fal
 
 ### Question 1: Seasonal Trends and Sales Performance:
 
+#### Plot 1: Monthly sales by Category
+
 ```{r}
 # Prepare data⁠
 monthly_sales <- data %>%
@@ -139,37 +141,28 @@ ggplot(monthly_sales, aes(x = month, y = total_sales, color = category)) +
 
 ```
 
+#### Plot 2: Seasonal sales variation by region
+
 ```{r}
 #| warning: false
 #| message: false
 
-# Data preparation (assuming 'data' contains the raw dataset)
+# Data preparation 
 seasonal_sales_malls <- data %>%
   group_by(season, region) %>%
   summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
 
 # Static plot with all enhancements
 p <- ggplot(seasonal_sales_malls, aes(x = season, y = total_sales, fill = region)) +
-  # Bar plot with black outline for bars
   geom_bar(stat = "identity", position = "dodge", color = "black") +
-  
-  # Add data labels
   geom_text(aes(label = comma(total_sales)), 
             position = position_dodge(width = 0.9), vjust = -0.3, size = 3) +
-  
-  # Faceted layout with fixed y-axis for all regions
   facet_wrap(~ region, scales = "fixed") +
-  
-  # Custom color palette
   scale_fill_brewer(palette = "OrRd") +
-  
-  # Annotations: Highlight specific values
   geom_text(aes(label = ifelse(total_sales > 50000, comma(total_sales), "")), 
             position = position_dodge(width = 0.9), vjust = -0.3, color = "black", size = 3.5) +
-  
-  # Labels and titles
   labs(
-    title = "Seasonal Sales Variations by Region (Malls)", 
+    title = "Seasonal Sales Variations by Region", 
     x = "Season", 
     y = "Total Sales",
     fill = "Region"
@@ -179,19 +172,17 @@ p <- ggplot(seasonal_sales_malls, aes(x = season, y = total_sales, fill = region
   theme_classic() +
   theme(
     plot.title = element_text(size = 14, family = "Arial", hjust = 0.5),
+    plot.title.position = "plot",
     axis.text = element_text(size = 10, family = "Arial", hjust = 0.5),
     axis.title = element_text(size = 12, family = "Arial", hjust = 0.5),
     legend.title = element_text(size = 12, family = "Arial", hjust = 0.5),
     legend.position = "top"
   )
-
-# Interactive plot
 interactive_plot <- ggplotly(p)
-
-# Display the interactive plot
 interactive_plot
-
 ```
+
+#### Plot 3:
 
 ```{r}
 # Bar plot for seasonal sales across categories
