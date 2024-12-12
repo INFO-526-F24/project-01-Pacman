@@ -217,8 +217,6 @@ faceted_data <- data %>%
   group_by(season, category, region) %>%
   summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
 
-library(plotly)
-
 # Create the ggplot2 plot as before
 ggplot_plot <- ggplot(faceted_data, aes(x = season, y = category, fill = total_sales)) +
   geom_tile() +
