@@ -15,7 +15,6 @@ library(lubridate)
 library(ggplot2)
 library(scales)
 library(plotly)
-
 ```
 
 ### Data Initialization
@@ -130,17 +129,57 @@ ggplot(monthly_sales, aes(x = month, y = total_sales, color = category)) +
 ```
 
 ```{r}
-# Bar plot for seasonal sales variations segmented by region (malls)
-seasonal_sales_malls <- data %>%
- group_by(season, region) %>%
-summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
+#| warning: false
+#| message: false
 
-ggplot(seasonal_sales_malls, aes(x = season, y = total_sales, fill = region)) +
-geom_bar(stat = "identity", position = "dodge") +
-labs(title = "Seasonal Sales Variations by Region (Malls)", x = "Season", y = "Total Sales") +
-theme_minimal() +
-scale_fill_brewer(palette = "Set2") +
-theme(legend.title = element_blank())
+# Data preparation (assuming 'data' contains the raw dataset)
+seasonal_sales_malls <- data %>%
+  group_by(season, region) %>%
+  summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
+
+# Static plot with all enhancements
+p <- ggplot(seasonal_sales_malls, aes(x = season, y = total_sales, fill = region)) +
+  # Bar plot with black outline for bars
+  geom_bar(stat = "identity", position = "dodge", color = "black") +
+  
+  # Add data labels
+  geom_text(aes(label = comma(total_sales)), 
+            position = position_dodge(width = 0.9), vjust = -0.3, size = 3) +
+  
+  # Faceted layout with fixed y-axis for all regions
+  facet_wrap(~ region, scales = "fixed") +
+  
+  # Custom color palette
+  scale_fill_manual(values = c("#1b9e77", "#d95f02", "#7570b3", "#e7298a")) +
+  
+  # Annotations: Highlight specific values
+  geom_text(aes(label = ifelse(total_sales > 50000, comma(total_sales), "")), 
+            position = position_dodge(width = 0.9), vjust = -0.3, color = "black", size = 3.5) +
+  
+  # Labels and titles
+  labs(
+    title = "Seasonal Sales Variations by Region (Malls)", 
+    x = "Season", 
+    y = "Total Sales",
+    fill = "Region"
+  ) +
+  
+  # Polished theme
+  theme_classic() +
+  theme(
+    plot.title = element_text(size = 14, family = "Arial", hjust = 0.5),
+    axis.text = element_text(size = 10, family = "Arial", hjust = 0.5),
+    axis.title = element_text(size = 12, family = "Arial", hjust = 0.5),
+    legend.title = element_text(size = 12, family = "Arial", hjust = 0.5),
+    legend.position = "top"
+  )
+
+# Interactive plot
+interactive_plot <- ggplotly(p)
+
+# Display the interactive plot
+interactive_plot
+
 ```
 
 ```{r}
@@ -218,28 +257,16 @@ ggplot(data, aes(x = discount, y = quantity)) +
 ```
 
 ```{r}
-# Scatter plot for discounts vs. profit margins
+#| message: false
 ggplot(data, aes(x = discount, y = profit_margin)) +
-  geom_point(alpha = 0.5, color = "green") +
-  labs(title = "Impact of Discounts on Profit Margins", x = "Discount (%)", y = "Profit Margin (%)") +
-  theme_minimal()
-```
-
-```{r}
-ggplot(data, aes(x = discount, y = profit_margin)) +
-  geom_point(alpha = 0.5, color = "green") +
+  geom_point(alpha = 0.5, color = "salmon") +
   geom_smooth(method = "lm", se = FALSE, color = "blue") +
   labs(title = "Impact of Discounts on Profit Margins", x = "Discount (%)", y = "Profit Margin (%)") +
-  theme_minimal()
-```
-
-```{r}
-ggplot(data, aes(x = discount, y = profit_margin)) +
-  geom_point(alpha = 0.7) +
-  geom_smooth(method = "lm", se = FALSE, color = "blue") +
-  geom_hline(yintercept = mean(data$profit_margin), linetype = "dashed", color = "red") +
-  labs(title = "Impact of Discounts on Profit Margins with Trend Line", x = "Discount (%)", y = "Profit Margin (%)") +
-  theme_minimal()
+  theme_minimal() +
+  theme(
+     plot.title = element_text(hjust = 0.5, size = 14, family = "Arial"),
+     axis.title = element_text(size = 10, family = "Arial")
+  )
 ```
 
 ```{r}
@@ -280,5 +307,48 @@ plot_ly(data,
            yaxis=list(title="Quantity"),
            zaxis=list(title="Profit Margin")
          ))
+
+```
+
+```{r}
+plot_ly(data,
+        x = ~discount,
+        y = ~quantity,
+        z = ~profit_margin,
+        type = 'scatter3d',
+        mode = 'markers',
+        marker = list(size = 6, opacity = 0.8, color = ~profit_margin, colorscale = 'Viridis', showscale = TRUE)) %>%
+  layout(title="3D Scatter Plot: Discounts vs Sales vs Profit Margins",
+         scene = list(
+           xaxis = list(title = "Discount", tickangle = 45, tickmode = "array", tickvals = seq(0, 100, by = 10)),
+           yaxis = list(title = "Quantity", tickangle = 45, tickmode = "array"),
+           zaxis = list(title = "Profit Margin"),
+           bgcolor = "#f3f3f3"
+         ),
+         plot_bgcolor = "#e5e5e5",
+         paper_bgcolor = "#f5f5f5"
+  )
+
+```
+
+```{r}
+plot_ly(data,
+        x = ~discount,
+        y = ~quantity,
+        z = ~profit_margin,
+        type = 'scatter3d',
+        mode = 'markers+text',
+        marker = list(size = 6, opacity = 0.8, color = ~profit_margin, colorscale = 'Viridis', showscale = TRUE),
+        text = ~paste("Discount: ", discount, "<br>Quantity: ", quantity, "<br>Profit Margin: ", profit_margin),
+        textposition = 'top center') %>%
+  layout(title="3D Scatter Plot: Discounts vs Sales vs Profit Margins",
+         scene = list(
+           xaxis = list(title = "Discount"),
+           yaxis = list(title = "Quantity"),
+           zaxis = list(title = "Profit Margin")
+         ),
+         plot_bgcolor = "#e5e5e5",
+         paper_bgcolor = "#f5f5f5"
+  )
 
 ```
