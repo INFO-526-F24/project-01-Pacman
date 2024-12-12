@@ -163,9 +163,9 @@ p <- ggplot(seasonal_sales_malls, aes(x = season, y = total_sales, fill = region
             position = position_dodge(width = 0.9), vjust = -0.3, color = "black", size = 3.5) +
   labs(
     title = "Seasonal Sales Variations by Region", 
-    x = "Season", 
+    x = "Seasons", 
     y = "Total Sales",
-    fill = "Region"
+    fill = "Regions"
   ) +
   
   # Polished theme
