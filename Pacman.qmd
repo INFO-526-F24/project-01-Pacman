@@ -130,24 +130,17 @@ ggplot(monthly_sales, aes(x = month, y = total_sales, color = category)) +
 ```
 
 ```{r}
-# Faceted heatmap plot for seasonal sales across regions and categories
-faceted_data <- data %>%
-  group_by(season, category, region) %>%
-  summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
+# Bar plot for seasonal sales variations segmented by region (malls)
+seasonal_sales_malls <- data %>%
+ group_by(season, region) %>%
+summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
 
-ggplot(faceted_data, aes(x = season, y = category, fill = total_sales)) +
-  geom_tile() +
-  facet_wrap(~region) +
-  labs(title = "Heatmap of Seasonal Sales by Category and Region", x = "Season", y = "Category") +
-  scale_fill_gradient(
-    low = "white", 
-    high = "blue", 
-    name = "Total Sales",   # Title for the legend
-    breaks = scales::pretty_breaks(n = 5),  # Breaks at nice intervals
-    labels = scales::label_comma()  # Format labels as commas for readability
-  ) +
-  theme_minimal() +
-  theme(legend.title = element_blank())
+ggplot(seasonal_sales_malls, aes(x = season, y = total_sales, fill = region)) +
+geom_bar(stat = "identity", position = "dodge") +
+labs(title = "Seasonal Sales Variations by Region (Malls)", x = "Season", y = "Total Sales") +
+theme_minimal() +
+scale_fill_brewer(palette = "Set2") +
+theme(legend.title = element_blank())
 ```
 
 ```{r}
