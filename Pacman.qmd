@@ -94,7 +94,77 @@ data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fal
 glimpse(data)
 ```
 
-\
+### Exploratory Data Analysis:
+
+```{r}
+summary(data)
+```
+
+Product Category Distribution
+
+```{r}
+data %>%
+  group_by(category) %>%
+  summarise(total_sales = sum(total_sales, na.rm = TRUE)) %>%
+  ggplot(aes(x = "", y = total_sales, fill = category)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y") +
+  theme_minimal() +
+  labs(
+    title = "Proportion of Sales by Product Category",
+    x = NULL,
+    y = NULL,
+    fill = "Category"
+  ) +
+  theme(axis.text.x = element_blank())
+
+```
+
+Sales and Trends by Month
+
+```{r}
+# Sales and Profit Trends by Month
+data %>%
+  group_by(month) %>%
+  summarise(
+    total_sales = sum(total_sales, na.rm = TRUE),
+    total_profit = sum(profit, na.rm = TRUE)
+  ) %>%
+  ggplot(aes(x = month)) +
+  geom_line(aes(y = total_sales, color = "Total Sales"), size = 1.2) +
+  geom_line(aes(y = total_profit, color = "Total Profit"), size = 1.2) +
+  scale_color_manual(values = c("Total Sales" = "blue", "Total Profit" = "green")) +
+  theme_minimal() +
+  labs(
+    title = "Sales and Profit Trends by Month",
+    x = "Month",
+    y = "Value",
+    color = "Metric"
+  )
+
+```
+
+Top 5 cities by total sales 
+
+```{r}
+data %>%
+  group_by(city) %>%
+  summarise(total_sales = sum(total_sales, na.rm = TRUE)) %>%
+  top_n(5, wt = total_sales) %>%
+  ggplot(aes(x = reorder(city, total_sales), y = total_sales, fill = city)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  theme_minimal() +
+  labs(
+    title = "Top 5 Cities by Total Sales",
+    x = "City",
+    y = "Total Sales",
+    fill = "City"
+  ) +
+  theme(legend.position = "none")
+
+```
+
 
 ### Question 1: Seasonal Trends and Sales Performance:
 
