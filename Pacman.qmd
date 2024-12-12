@@ -150,27 +150,57 @@ seasonal_category_sales <- data %>%
   summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
 
 ggplot(seasonal_category_sales, aes(x = season, y = total_sales, fill = category)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Seasonal Sales Across Categories", x = "Season", y = "Total Sales") +
+  geom_col(position = "dodge") +
+  labs(
+    title = "Seasonal Sales Across Categories",
+    x = "Season",
+    y = "Total Sales",
+    fill = "Category"  # This sets the legend title
+  ) +
   theme_minimal() +
-  scale_fill_brewer(palette = "Set3") +
-  theme(legend.title = element_blank())
+  scale_fill_brewer(palette = "BuPu") +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14),  # Changed hjust to 0.5 for center alignment
+    text = element_text(family = "Arial", size = 12),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12)
+  ) +
+  scale_y_continuous(labels = comma)
+
 ```
 
 ```{r}
-# Faceted bar plot for seasonal sales across regions and categories
+# Faceted heatmap plot for seasonal sales across regions and categories
 faceted_data <- data %>%
   group_by(season, category, region) %>%
   summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
 
-ggplot(faceted_data, aes(x = season, y = total_sales, fill = category)) +
-  geom_bar(stat="identity", position="dodge") +
+library(plotly)
+
+# Create the ggplot2 plot as before
+ggplot_plot <- ggplot(faceted_data, aes(x = season, y = category, fill = total_sales)) +
+  geom_tile() +
   facet_wrap(~region) +
-  labs(title="Seasonal Sales Across Categories and Regions (Malls)", x="Season", y="Total Sales") +
+  labs(title = "Heatmap of Seasonal Sales by Category and Region", x = "Season", y = "Category") +
+  scale_fill_gradient(
+    low = "white",
+    high = "blue",
+    name = "Total Sales",
+    breaks = scales::pretty_breaks(n = 5),
+    labels = scales::label_comma()
+  ) +
   theme_minimal() +
-  scale_fill_brewer(palette="Set3") +
-  theme(legend.title=element_blank())
- 
+  theme(legend.title = element_blank())
+
+# Convert the ggplot2 plot to a plotly object
+plotly_plot <- ggplotly(ggplot_plot)
+
+# Customize the plotly plot (optional)
+plotly_plot <- plotly_plot %>%
+  layout(title = list(text = "Interactive Heatmap of Seasonal Sales", x = 0.5))
+
+# Display the interactive plot
+plotly_plot
 ```
 
 ### Question 2:
