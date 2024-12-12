@@ -299,21 +299,30 @@ ggplot(data, aes(x = discount, y = profit_margin)) +
 #### Plot 3: Correlation matrix
 
 ```{r}
-# Create a correlation matrix
+# Load necessary libraries
+library(ggplot2)
+library(reshape2)
+library(dplyr)
+
+# Calculate the correlation matrix from selected columns
 cor_matrix <- data %>%
   select(discount, quantity, profit_margin) %>%
   cor(use = "complete.obs")
 
-# Visualize the correlation matrix as a heatmap
-library(reshape2)
+# Melt the correlation matrix for ggplot2 usage
 cor_melt <- melt(cor_matrix)
 
-ggplot(cor_melt, aes(Var1, Var2, fill = value)) +
+# Create a heatmap
+ggplot(cor_melt, aes(x = Var1, y = Var2, fill = value)) +
   geom_tile(color = "white") +
-  scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0) +
-  labs(title = "Correlation Matrix: Discounts, Sales Volumes, and Profit Margins", x = "", y = "") +
+  scale_fill_gradient(low = "black", high = "white", name = "Correlation") +
+  labs(title = "Correlation Matrix: Discounts, Quantity, and Profit Margins",
+       subtitle = "Correlation coefficients between variables",
+       x = "", y = "") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 0, hjust = 0.5, size = 10),
+        plot.title = element_text(hjust = 0.5, family = "Arial", size = 14),
+        plot.subtitle = element_text(hjust = 0.5, family = "Arial", size = 12))
 
 
 ```
