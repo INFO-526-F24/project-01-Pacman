@@ -203,7 +203,7 @@ plotly_plot <- plotly_plot %>%
 plotly_plot
 ```
 
-### Question 2:
+### Question 2: Discounts, Sales Volumes, and Profit Margins
 
 ```{r}
 # Scatter plot for discounts vs. sales volumes
