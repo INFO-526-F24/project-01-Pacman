@@ -150,7 +150,7 @@ p <- ggplot(seasonal_sales_malls, aes(x = season, y = total_sales, fill = region
   facet_wrap(~ region, scales = "fixed") +
   
   # Custom color palette
-  scale_fill_manual(values = c("#1b9e77", "#d95f02", "#7570b3", "#e7298a")) +
+  scale_fill_brewer(palette = "OrRd") +
   
   # Annotations: Highlight specific values
   geom_text(aes(label = ifelse(total_sales > 50000, comma(total_sales), "")), 
