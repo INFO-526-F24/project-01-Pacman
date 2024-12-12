@@ -272,7 +272,7 @@ ggplot(data, aes(x = discount, y = quantity)) +
 
 ```
 
-#### Plot 2:  Impact of Discounts on Profit Margin by Category
+#### Plot 2: Impact of Discounts on Profit Margin by Category
 
 ```{r}
 ggplot(data, aes(x = discount, y = profit_margin)) +
@@ -297,6 +297,8 @@ ggplot(data, aes(x = discount, y = profit_margin)) +
   )
 ```
 
+#### Plot 3: Correlation matrix
+
 ```{r}
 # Create a correlation matrix
 cor_matrix <- data %>%
@@ -314,69 +316,75 @@ ggplot(cor_melt, aes(Var1, Var2, fill = value)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
+
 ```
 
-```{r}
-# Install required package if not already installed
-if (!require("plotly")) install.packages("plotly")
+#### Plot 4: 3D Scatter plot to visualize profit margin, discount and the Quantity sold
 
+```{r}
 library(plotly)
 
-plot_ly(data,
-        x = ~discount,
-        y = ~quantity,
-        z = ~profit_margin,
-        type = 'scatter3d',
-        mode = 'markers',
-        marker = list(size=3)) %>%
-  layout(title="3D Scatter Plot: Discounts vs Sales vs Profit Margins",
-         scene=list(
-           xaxis=list(title="Discount"),
-           yaxis=list(title="Quantity"),
-           zaxis=list(title="Profit Margin")
-         ))
-
-```
-
-```{r}
-plot_ly(data,
-        x = ~discount,
-        y = ~quantity,
-        z = ~profit_margin,
-        type = 'scatter3d',
-        mode = 'markers',
-        marker = list(size = 6, opacity = 0.8, color = ~profit_margin, colorscale = 'Viridis', showscale = TRUE)) %>%
-  layout(title="3D Scatter Plot: Discounts vs Sales vs Profit Margins",
-         scene = list(
-           xaxis = list(title = "Discount", tickangle = 45, tickmode = "array", tickvals = seq(0, 100, by = 10)),
-           yaxis = list(title = "Quantity", tickangle = 45, tickmode = "array"),
-           zaxis = list(title = "Profit Margin"),
-           bgcolor = "#f3f3f3"
-         ),
-         plot_bgcolor = "#e5e5e5",
-         paper_bgcolor = "#f5f5f5"
+plot_ly(
+  data = data,
+  x = ~discount,
+  y = ~quantity,
+  z = ~profit_margin,
+  type = 'scatter3d',
+  mode = 'markers',
+  marker = list(
+    size = 5,
+    color = ~profit_margin,       # Color points based on profit_margin
+    colorscale = 'Viridis',       # Use Viridis color scale for better visibility
+    opacity = 0.8                 # Add transparency for less clutter
+  ),
+  hoverinfo = 'text',             # Display additional information on hover
+  text = ~paste(
+    "Discount: ", discount, 
+    "<br>Quantity: ", quantity, 
+    "<br>Profit Margin: ", profit_margin
   )
-
-```
-
-```{r}
-plot_ly(data,
-        x = ~discount,
-        y = ~quantity,
-        z = ~profit_margin,
-        type = 'scatter3d',
-        mode = 'markers+text',
-        marker = list(size = 6, opacity = 0.8, color = ~profit_margin, colorscale = 'Viridis', showscale = TRUE),
-        text = ~paste("Discount: ", discount, "<br>Quantity: ", quantity, "<br>Profit Margin: ", profit_margin),
-        textposition = 'top center') %>%
-  layout(title="3D Scatter Plot: Discounts vs Sales vs Profit Margins",
-         scene = list(
-           xaxis = list(title = "Discount"),
-           yaxis = list(title = "Quantity"),
-           zaxis = list(title = "Profit Margin")
-         ),
-         plot_bgcolor = "#e5e5e5",
-         paper_bgcolor = "#f5f5f5"
+) %>%
+  layout(
+    title = "3D Scatter Plot: Discounts vs Sales vs Profit Margins",
+    scene = list(
+      xaxis = list(
+        title = "Discount (%)",
+        showgrid = TRUE,
+        zeroline = TRUE,
+        backgroundcolor = 'rgb(240,240,240)',  # Light background for axis
+        gridcolor = 'rgb(200,200,200)'         # Subtle grid lines
+      ),
+      yaxis = list(
+        title = "Quantity Sold",
+        showgrid = TRUE,
+        zeroline = TRUE,
+        backgroundcolor = 'rgb(240,240,240)',
+        gridcolor = 'rgb(200,200,200)'
+      ),
+      zaxis = list(
+        title = "Profit Margin (%)",
+        showgrid = TRUE,
+        zeroline = TRUE,
+        backgroundcolor = 'rgb(240,240,240)',
+        gridcolor = 'rgb(200,200,200)'
+      ),
+      camera = list(
+        eye = list(x = 1.5, y = 1.5, z = 1.5)  # Set initial camera position
+      )
+    ),
+    annotations = list(  # Add an example annotation
+      list(
+        x = 20, y = 50, z = 0.2,
+        text = "High Discount, Low Profit",
+        showarrow = TRUE,
+        arrowhead = 4,
+        arrowcolor = 'red',
+        font = list(size = 12)
+      )
+    ),
+    paper_bgcolor = 'rgba(240,240,240,1)',  # Light paper background
+    plot_bgcolor = 'rgba(240,240,240,1)',  # Light plot background
+    showlegend = TRUE                      # Enable legend
   )
 
 ```
