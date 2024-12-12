@@ -251,6 +251,8 @@ plotly_plot
 
 ### Question 2: Discounts, Sales Volumes, and Profit Margins
 
+#### Plot 1: Relation between Discounts and sales
+
 ```{r}
 
 data$discount <- data$discount * 100
@@ -258,8 +260,15 @@ data$discount <- data$discount * 100
 # Scatter plot for discounts vs. sales volumes
 ggplot(data, aes(x = discount, y = quantity)) +
   geom_point(alpha = 0.5, color = "blue") +
-  labs(title = "Correlation Between Discounts and Sales Volumes", x = "Discount (%)", y = "Quantity Sold") +
-  theme_minimal()
+  labs(title = "Correlation Between Discounts and Sales Volumes", x = "Discount (%)", y = "Sales") +
+  theme_minimal() +
+  theme(
+  plot.title = element_text(hjust = 0.5, family = "Arial", size = 16),
+  axis.title.x = element_text(hjust = 0.5, family = "Arial", size = 14),
+  axis.title.y = element_text(hjust = 0.5, family = "Arial", size = 14),
+  axis.text.x = element_text(hjust = 0.5, family = "Arial", size = 12),
+  axis.text.y = element_text(hjust = 0.5, family = "Arial", size = 12)
+)
 
 ```
 
