@@ -194,20 +194,19 @@ ggplot(seasonal_category_sales, aes(x = season, y = total_sales, fill = category
   geom_col(position = "dodge") +
   labs(
     title = "Seasonal Sales Across Categories",
-    x = "Season",
+    x = "Seasons",
     y = "Total Sales",
-    fill = "Category"  # This sets the legend title
+    fill = "Category"
   ) +
   theme_minimal() +
   scale_fill_brewer(palette = "BuPu") +
   theme(
-    plot.title = element_text(hjust = 0.5, size = 14),  # Changed hjust to 0.5 for center alignment
-    text = element_text(family = "Arial", size = 12),
-    axis.text = element_text(size = 10),
-    axis.title = element_text(size = 12)
+    plot.title = element_text(hjust = 0.5, size = 14, family = "Arial"),
+    text = element_text(family = "Arial", size = 12, hjust = 0.5),
+    axis.text = element_text(size = 10, hjust = 0.5, family = "Arial"),
+    axis.title = element_text(size = 12, hjust = 0.5, family = "Arial")
   ) +
   scale_y_continuous(labels = comma)
-
 ```
 
 ```{r}
