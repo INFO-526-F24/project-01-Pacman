@@ -2,6 +2,9 @@
 title: "Pacman"
 subtitle: "Project"
 editor: visual
+execute: 
+  warning: false
+  message: false
 ---
 
 ### Loading necessary libraries
@@ -9,6 +12,8 @@ editor: visual
 ```{r}
 #| label: load-pkgs
 #| message: false
+
+# Load the necessary libraries
 library(tidyverse)
 library(dplyr)
 library(lubridate)
@@ -89,9 +94,7 @@ data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fal
 ### Question 1: Seasonal Trends and Sales Performance:
 
 ```{r}
-
-
-# Prepare data: Assuming `data` contains `month`, `category`, and `total_sales`
+# Prepare data⁠
 monthly_sales <- data %>%
   group_by(month, category) %>%
   summarise(total_sales = sum(total_sales, na.rm = TRUE), .groups = 'drop')
@@ -109,11 +112,19 @@ ggplot(monthly_sales, aes(x = month, y = total_sales, color = category)) +
     color = "Product Category") +
   theme_minimal(base_size = 14) +                   
   theme(
-    plot.title = element_text(hjust = 0.5,          
-                              size = 16),
-    axis.text.x = element_text(size = 12),          
-    axis.title = element_text(size = 14),
-    axis.text = element_text(size = 12),           
+    plot.title = element_text(hjust = 0.5,           
+                              size = 16,
+                              family = "Arial"),
+    plot.title.position = "plot",
+    axis.text.x = element_text(hjust = 0.5,
+                               size = 12,
+                               family = "Arial"),          
+    axis.title = element_text(hjust = 0.5,
+                               size = 14,
+                               family = "Arial"),
+    axis.text = element_text(size = 12,
+                             hjust = 0.5,
+                             family = "Arial"),           
     panel.grid.major.x = element_blank(),          
     panel.grid.major.y = element_line(color = "gray", 
                                       linetype = "dashed"), 
