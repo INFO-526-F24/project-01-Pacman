@@ -258,18 +258,11 @@ plotly_plot
 
 data$discount <- data$discount * 100
 
-# Scatter plot for discounts vs. sales volumes
 ggplot(data, aes(x = discount, y = quantity)) +
-  geom_point(alpha = 0.5, color = "blue") +
-  labs(title = "Correlation Between Discounts and Sales Volumes", x = "Discount (%)", y = "Sales") +
-  theme_minimal() +
-  theme(
-  plot.title = element_text(hjust = 0.5, family = "Arial", size = 16),
-  axis.title.x = element_text(hjust = 0.5, family = "Arial", size = 14),
-  axis.title.y = element_text(hjust = 0.5, family = "Arial", size = 14),
-  axis.text.x = element_text(hjust = 0.5, family = "Arial", size = 12),
-  axis.text.y = element_text(hjust = 0.5, family = "Arial", size = 12)
-)
+  stat_summary(fun = mean, geom = "line", color = "blue") +
+  labs(title = "Trend of Average Sales Volume vs. Discounts", x = "Discount (%)", y = "Sales") +
+  theme_minimal()
+
 
 ```
 
