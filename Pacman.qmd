@@ -272,17 +272,30 @@ ggplot(data, aes(x = discount, y = quantity)) +
 
 ```
 
+#### Plot 2: 
+
 ```{r}
 #| message: false
+
+# Creating plot to visualize discount to profit margins
 ggplot(data, aes(x = discount, y = profit_margin)) +
-  geom_point(alpha = 0.5, color = "salmon") +
-  geom_smooth(method = "lm", se = FALSE, color = "blue") +
-  labs(title = "Impact of Discounts on Profit Margins", x = "Discount (%)", y = "Profit Margin (%)") +
-  theme_minimal() +
+  geom_point(alpha = 0.5, color = "darkorange", size = 2) + # Adjusted color and point size
+  geom_smooth(method = "lm", se = FALSE, color = "darkblue") + # Improved color contrast
+  labs(
+    title = "Impact of Discounts on Profit Margins",
+    subtitle = "Linear trend shows strong correlation",
+    x = "Discount (%)",
+    y = "Profit Margin (%)"
+  ) +
+  theme_minimal(base_size = 12) +
   theme(
-     plot.title = element_text(hjust = 0.5, size = 14, family = "Arial"),
-     axis.title = element_text(size = 10, family = "Arial")
+    plot.title = element_text(hjust = 0.5, size = 14, family = "Arial"), # Enhanced title formatting
+    plot.subtitle = element_text(hjust = 0.5, size = 12, family = "Arial"), # Added subtitle formatting
+    axis.title = element_text(size = 10, family = "Arial"),
+    panel.grid.major = element_line(color = "grey80", linetype = "dashed"), # Customized gridlines
+    panel.grid.minor = element_blank() # Removed minor gridlines
   )
+
 ```
 
 ```{r}
