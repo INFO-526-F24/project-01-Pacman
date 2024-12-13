@@ -128,7 +128,7 @@ data %>%
 Sales and Trends by Month
 
 ```{r}
-# Sales and Profit Trends by Month
+# Sales and Profit Trends by Month with Custom X-Axis Labels
 data %>%
   group_by(month) %>%
   summarise(
@@ -139,6 +139,7 @@ data %>%
   geom_line(aes(y = total_sales, color = "Total Sales"), size = 1.2) +
   geom_line(aes(y = total_profit, color = "Total Profit"), size = 1.2) +
   scale_color_manual(values = c("Total Sales" = "blue", "Total Profit" = "green")) +
+  scale_x_continuous(breaks = c(3, 6, 9, 12), labels = c("3", "6", "9", "12")) +
   theme_minimal() +
   labs(
     title = "Sales and Profit Trends by Month",
@@ -146,6 +147,7 @@ data %>%
     y = "Value",
     color = "Metric"
   )
+
 
 ```
 
