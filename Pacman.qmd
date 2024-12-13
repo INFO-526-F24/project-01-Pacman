@@ -1,6 +1,6 @@
 ---
 title: "Pacman"
-subtitle: "Project"
+format: html
 editor: visual
 execute: 
   warning: false
