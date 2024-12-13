@@ -194,4 +194,4 @@ data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fal
 
 ## Citations
 
-KZMontage, "Sales from different stores," Kaggle. \[Online\]. Available: [Sales from different stores.](https://www.kaggle.com/datasets/kzmontage/sales-from-different-stores).
+**T. Chant,** "Supstore Dataset 2019-2022," *Kaggle*, Jul. 12, 2022. \[Online\]. Available: [Superstore Dataset 2019-2022](https://www.kaggle.com/datasets/timchant/supstore-dataset-2019-2022/data). \[Accessed: Dec. 13, 2024\].
