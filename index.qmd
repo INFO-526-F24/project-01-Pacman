@@ -5,7 +5,7 @@ author:
   - name: "Pacman"
     affiliations:
       - name: "School of Information, University of Arizona"
-description: "In order to identify trends in consumer behavior, sales patterns, and profitability, this project examines e-commerce transaction data from different shopping centers and geographical areas. We seek to determine seasonal sales patterns, high-value client groups, and the effects of discounts by examining variables such as consumer demographics, product categories, and payment methods. The knowledge acquired will contribute to our comprehension of customer decision-making processes and the effects of various sales tactics on performance in various contexts."
+description: "This project aims to evaluate e-commerce transaction data across regions in order to determine trends in customer behavior, sales patterns, and profitability, with a focus on demographics and product categories. The aim of insights is to improve understanding of consumer choices and the effects of sales techniques."
 format:
    html:
     code-tools: true
