@@ -14,12 +14,14 @@ execute:
 #| message: false
 
 # Load the necessary libraries
-library(tidyverse)
-library(dplyr)
-library(lubridate)
-library(ggplot2)
-library(scales)
-library(plotly)
+pacman::p_load(tidyverse,
+               ggplot2,
+               dplyr,
+               plotly,
+               lubridate,
+               scales )
+
+
 ```
 
 ### Data Initialization
@@ -426,11 +428,11 @@ plot_3d <- plot_ly(
   mode = 'markers',
   marker = list(
     size = 5,
-    color = ~profit_margin,       # Color points based on profit_margin
-    colorscale = 'Viridis',       # Use Viridis color scale for better visibility
-    opacity = 0.8                 # Add transparency for less clutter
+    color = ~profit_margin,       
+    colorscale = 'Viridis',       
+    opacity = 0.8                 
   ),
-  hoverinfo = 'text',             # Display additional information on hover
+  hoverinfo = 'text',             
   text = ~paste(
     "Discount: ", discount, 
     "<br>Quantity: ", quantity, 
@@ -444,8 +446,8 @@ plot_3d <- plot_ly(
         title = "Discount (%)",
         showgrid = TRUE,
         zeroline = TRUE,
-        backgroundcolor = 'rgb(240,240,240)',  # Light background for axis
-        gridcolor = 'rgb(200,200,200)'         # Subtle grid lines
+        backgroundcolor = 'rgb(240,240,240)',  
+        gridcolor = 'rgb(200,200,200)'        
       ),
       yaxis = list(
         title = "Quantity Sold",
@@ -462,7 +464,7 @@ plot_3d <- plot_ly(
         gridcolor = 'rgb(200,200,200)'
       ),
       camera = list(
-        eye = list(x = 1.5, y = 1.5, z = 1.5)  # Set initial camera position
+        eye = list(x = 1.5, y = 1.5, z = 1.5)  
       )
     ),
     annotations = list(
@@ -475,9 +477,9 @@ plot_3d <- plot_ly(
         font = list(size = 12)
       )
     ),
-    paper_bgcolor = 'rgba(240,240,240,1)',  # Light paper background
-    plot_bgcolor = 'rgba(240,240,240,1)',  # Light plot background
-    showlegend = TRUE                      # Enable legend
+    paper_bgcolor = 'rgba(240,240,240,1)',  
+    plot_bgcolor = 'rgba(240,240,240,1)',  
+    showlegend = TRUE                      
   )
 
 # Output the plot
