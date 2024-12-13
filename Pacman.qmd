@@ -416,7 +416,8 @@ ggplot(cor_melt, aes(x = Var1, y = Var2, fill = value)) +
 ```{r}
 library(plotly)
 
-plot_ly(
+# Create the 3D scatter plot using plotly
+plot_3d <- plot_ly(
   data = data,
   x = ~discount,
   y = ~quantity,
@@ -464,7 +465,7 @@ plot_ly(
         eye = list(x = 1.5, y = 1.5, z = 1.5)  # Set initial camera position
       )
     ),
-    annotations = list(  # Add an example annotation
+    annotations = list(
       list(
         x = 20, y = 50, z = 0.2,
         text = "High Discount, Low Profit",
@@ -478,5 +479,12 @@ plot_ly(
     plot_bgcolor = 'rgba(240,240,240,1)',  # Light plot background
     showlegend = TRUE                      # Enable legend
   )
+
+# Output the plot
+plot_3d
+
+# Save the interactive plot as an HTML file
+htmlwidgets::saveWidget(plot_3d, "plot_3d.html")
+
 
 ```
