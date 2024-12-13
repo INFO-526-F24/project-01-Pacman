@@ -103,13 +103,17 @@ summary(data)
 Product Category Distribution
 
 ```{r}
+# Product Category Distribution with Percentages
 data %>%
   group_by(category) %>%
   summarise(total_sales = sum(total_sales, na.rm = TRUE)) %>%
+  mutate(percentage = total_sales / sum(total_sales) * 100) %>%
   ggplot(aes(x = "", y = total_sales, fill = category)) +
   geom_bar(stat = "identity", width = 1) +
   coord_polar("y") +
   theme_minimal() +
+  geom_text(aes(label = paste0(round(percentage, 1), "%")), 
+            position = position_stack(vjust = 0.5)) +
   labs(
     title = "Proportion of Sales by Product Category",
     x = NULL,
@@ -117,6 +121,7 @@ data %>%
     fill = "Category"
   ) +
   theme(axis.text.x = element_blank())
+
 
 ```
 
