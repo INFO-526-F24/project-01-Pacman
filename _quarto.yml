@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: E-commerce Sales Trends and Consumer Insights 
+  title: Decoding E-Commerce: Trends and Insights 
   navbar:
     right:
       - icon: github

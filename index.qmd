@@ -1,5 +1,5 @@
 ---
-title: "E-commerce Sales Trends and Consumer Insights"
+title: "Decoding E-Commerce: Trends and Insights"
 subtitle: "INFO 526 - Fall 2024 - Project 01"
 author: 
   - name: "Pacman"
