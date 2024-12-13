@@ -1,5 +1,5 @@
 ---
-title: "E-commerce Sales Trends and Consumer Insights: A Data-Driven Analysis"
+title: "Decoding E-Commerce: Trends and Insights"
 subtitle: "Proposal"
 author: 
   - name: "Pacman"
