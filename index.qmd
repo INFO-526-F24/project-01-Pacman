@@ -1,5 +1,5 @@
 ---
-title: "E-commerce Sales Trends and Consumer Insights: A Data-Driven Analysis"
+title: "E-commerce Sales Trends and Consumer Insights"
 subtitle: "INFO 526 - Fall 2024 - Project 01"
 author: 
   - name: "Pacman"
