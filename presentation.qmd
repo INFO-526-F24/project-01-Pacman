@@ -1,6 +1,6 @@
 ---
 title: "Decoding E-Commerce Trends and Insights"
-subtitle: "INFO 526 - Fall 2023 - Project 1"
+subtitle: "INFO 526 - Fall 2024 - Project 1"
 author: "Ralph Dsouza, Saksham Gupta, Vaishnavi Kulkarni,Jayneet Jain, Mihika Kubadia, Devashree Pawar."	
 title-slide-attributes:
   data-background-image: images/watercolour_sys02_img34_teacup-ocean.jpg
