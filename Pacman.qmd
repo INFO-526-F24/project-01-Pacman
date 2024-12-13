@@ -178,7 +178,7 @@ data %>%
 
 #### Plot 1: Monthly sales by Category
 
-```{r}
+```{r Line chart}
 # Prepare data⁠
 monthly_sales <- data %>%
   group_by(month, category) %>%
@@ -226,7 +226,7 @@ ggplot(monthly_sales, aes(x = month, y = total_sales, color = category)) +
 
 #### Plot 2: Seasonal sales variation by region
 
-```{r}
+```{r Bar Plot}
 #| warning: false
 #| message: false
 
@@ -269,7 +269,8 @@ htmlwidgets::saveWidget(interactive_plot, "interactive_plot.html")
 
 #### Plot 3: Seasonal Sales by Categories
 
-```{r}
+```{r Bar Plot}
+
 # Bar plot for seasonal sales across categories
 seasonal_category_sales <- data %>%
   group_by(season, category) %>%
@@ -296,7 +297,8 @@ ggplot(seasonal_category_sales, aes(x = season, y = total_sales, fill = category
 
 #### Plot 4: Heatmap of Seasonal Sales by Category and Region
 
-```{r}
+```{r Heat Map}
+
 # Faceted heatmap plot for seasonal sales across regions and categories
 faceted_data <- data %>%
   group_by(season, category, region) %>%
@@ -340,7 +342,7 @@ htmlwidgets::saveWidget(plotly_plot, "plotly_plot.html")
 
 #### Plot 1: Relation between Discounts and sales
 
-```{r}
+```{r Scatter Plot}
 data$discount <- data$discount * 100
 
 # Scatter plot for discounts vs. sales volumes
@@ -359,7 +361,8 @@ ggplot(data, aes(x = discount, y = quantity)) +
 
 #### Plot 2: Impact of Discounts on Profit Margin by Category
 
-```{r}
+```{r Scatter Plot}
+
 ggplot(data, aes(x = discount, y = profit_margin)) +
   geom_point(alpha = 0.7, color = "salmon", size = 2.5) + 
   geom_smooth(method = "lm", se = FALSE, color = "steelblue", size = 1) + 
@@ -384,11 +387,8 @@ ggplot(data, aes(x = discount, y = profit_margin)) +
 
 #### Plot 3: Correlation matrix
 
-```{r}
-# Load necessary libraries
-library(ggplot2)
-library(reshape2)
-library(dplyr)
+```{r Correlation matrix}
+
 
 # Calculate the correlation matrix from selected columns
 cor_matrix <- data %>%
@@ -415,7 +415,7 @@ ggplot(cor_melt, aes(x = Var1, y = Var2, fill = value)) +
 
 #### Plot 4: 3D Scatter plot to visualize profit margin, discount and the Quantity sold
 
-```{r}
+```{r 3-D plot}
 
 
 # Create the 3D scatter plot using plotly
