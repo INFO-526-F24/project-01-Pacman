@@ -15,7 +15,7 @@ website:
       - text: Presentation
         href: presentation.qmd
       - text: Dashboard
-        href: Pacman.qmd
+        href: dashboard.qmd
       - text: About
         href: about.qmd
 
