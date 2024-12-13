@@ -1,15 +1,18 @@
 ---
-title: "Project title"
+title: "Sales and Profit Analysis"
 subtitle: "INFO 526 - Fall 2023 - Project 1"
-author: "Author names"
+author: "Ralph Dsouza, Saksham Gupta, Vaishnavi Kulkarni,Jayneet Jain, Mihika Kubadia, Devashree Pawar."	
 title-slide-attributes:
   data-background-image: images/watercolour_sys02_img34_teacup-ocean.jpg
   data-background-size: stretch
   data-background-opacity: "0.7"
   data-slide-number: none
+  
 format:
   revealjs:
+    slide-number: true
     theme:  ['data/customtheming.scss']
+    
   
 editor: visual
 execute:
@@ -20,10 +23,14 @@ execute:
 #| label: load-packages
 #| include: false
 
-# Load packages here
-pacman::p_load(tidymodels,
-               tidyverse)
-
+if(!require(pacman))
+  install.packages("pacman")
+pacman::p_load(tidyverse,
+               dplyr,
+               lubridate,
+               ggplot2,
+               scales,
+               plotly)
 ```
 
 ```{r}
@@ -52,13 +59,30 @@ mtcars$speed <- mtcars$hp / mtcars$wt
 data("penguins")
 ```
 
-# Using Quarto for presentations
+## Introduction and Motivation
 
-## Quarto
+```{r}
 
--   The presentation is created using the Quarto CLI
+```
 
--   `##` sets the start of a new slide
+-   **E-commerce dynamics:** Rapidly evolving market demands a deeper understanding of consumer behavior.
+
+-   **Strategic value:** Insights guide businesses in maximizing profitability and improving customer engagement.
+
+-   **Research Questions:**
+
+    -How do seasonal trends impact sales across product categories and regions?
+
+    -What is the relationship between discounts, sales volumes, and profit margins?\
+    \
+
+## Introduction to the Data
+
+-   **Dataset Overview:** Contains 9,994 entries across 19 columns from a superstore. Encompasses sales transactions, customer insights, product information, and geographical data.
+
+-   **Key Variables:**
+
+    Transaction Details: Order ID, Order Date, Ship Date. Customer Insights: Segment, Customer Name (anonymized). Product Information: Manufacturer, Product Name, Category, Subcategory. Geographical Data: Region, City, State, ZIP code. Financial Metrics: Sales, Quantity, Discount, Profit, Profit Margin. Dates: Altered for confidentiality while maintaining data integrity.
 
 ## Layouts
 
@@ -81,85 +105,3 @@ or in two columns
 -   this
 
 ## Code
-
-```{r, echo=FALSE}
-model <- lm(mpg ~ speed, data = mtcars) 
-
-model |> tidy()
-
-model |> glance()
-
-```
-
-## Plots
-
-```{r}
-penguins |>
-  mutate(species = ifelse(species == "Adelie", "Adelie", "Other")) |>
-  ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
-  geom_point()
-```
-
-## Plot and text
-
-::: columns
-::: {.column width="50%"}
--   Some text
-
--   goes here
-:::
-
-::: {.column width="50%"}
-```{r, warning=FALSE, fig.width=5.5}
-penguins |>
-  ggplot(aes(x = bill_length_mm, y = species, color = species)) +
-  geom_boxplot(linewidth = 0.75,
-               outlier.size = 2.5) +
-  theme_minimal(base_size = 15) +
-  theme(legend.key.size = unit(0.8, "cm"))
-```
-:::
-:::
-
-# A new section...
-
-## Tables
-
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
-
-```{r}
-penguins |> 
-  head() |>
-  kableExtra::kable() |>
-  kableExtra::kable_styling()
-```
-
-## Images
-
-![Image credit: Danielle Navarro, Percolate.](images/watercolour_sys02_img34_teacup-ocean.png){fig-align="center" width="500"}
-
-## Math Expressions {.smaller}
-
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. \$\\alpha+\\beta\$ renders $\alpha + \beta$. You can use the display style with double dollar signs:
-
-```         
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-```
-
-$$
-\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i
-$$
-
-Limitations:
-
-1.  The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
-
-2.  There should not be spaces after the opening `$` or before the closing `$`.
-
-# Wrap up
-
-## Feeling adventurous?
-
--   You are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.
-
--   But some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs.
