@@ -166,7 +166,7 @@ data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fal
 
 ## Questions
 
--   How Do Seasonal Trends Affect Sales Performance Across Different Categories, Malls, and Payment Methods?
+-   How Do Seasonal Trends Affect Sales Performance Across Different Categories?
 
     We are going to investigate the impact of seasonal fluctuations on sales across product categories, locations, and payment methods. This question will help identify peak seasons and preferred payment options during high-demand periods.
 
