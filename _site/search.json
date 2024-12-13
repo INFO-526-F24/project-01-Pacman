@@ -193,6 +193,27 @@
     "href": "presentation.html#introduction-to-the-data",
     "title": "Sales and Profit Analysis",
     "section": "Introduction to the Data",
-    "text": "Introduction to the Data\n\nDataset Overview: Contains 9,994 entries across 19 columns from a superstore. Encompasses sales transactions, customer insights, product information, and geographical data.\nKey Variables: Transaction Details: Order ID, Order Date, Ship Date. Customer Insights: Market segments like Consumer and Home Office.Product Information: Categories and subcategories. Financial Metrics: Sales, discounts, profits, and profit margins. Purpose: Use data to uncover trends and relationships for informed decision-making."
+    "text": "Introduction to the Data\n\nDataset Overview: Contains 9,994 entries across 19 columns from a superstore. Encompasses sales transactions, customer insights, product information, and geographical data.\nKey Variables used for analysis:\n- Product Information: Category, Subcategory.\n- Geographical Data: Region.\n- Financial Metrics: Sales, Quantity, Discount, Profit, Profit Margin.\n- Dates: Altered for confidentiality while maintaining data integrity."
+  },
+  {
+    "objectID": "presentation.html#key-insights-from-eda",
+    "href": "presentation.html#key-insights-from-eda",
+    "title": "Sales and Profit Analysis",
+    "section": "Key Insights from EDA",
+    "text": "Key Insights from EDA\n\nSales Distribution: Furniture, Office Supplies, and Technology contribute almost equally to sales.\nSeasonal Trends: Significant variability in monthly sales; profits remain relatively stable.\nTop 5 cities by sales: NYC, LA, Seattle, Philadelphia, San Francisco. Highlights regional strengths for targeted strategies.\nProfitability Analysis: Technology products have the highest profit margins, whereas Furniture, despite high sales, yields lower margins."
+  },
+  {
+    "objectID": "presentation.html#seasonal-trends-and-sales-performance-analysis",
+    "href": "presentation.html#seasonal-trends-and-sales-performance-analysis",
+    "title": "Sales and Profit Analysis",
+    "section": "Seasonal Trends and Sales Performance Analysis",
+    "text": "Seasonal Trends and Sales Performance Analysis\nPlot 1"
+  },
+  {
+    "objectID": "presentation.html#seasonal-trends-and-sales-performance-analysis-1",
+    "href": "presentation.html#seasonal-trends-and-sales-performance-analysis-1",
+    "title": "Sales and Profit Analysis",
+    "section": "Seasonal Trends and Sales Performance Analysis",
+    "text": "Seasonal Trends and Sales Performance Analysis\nPlot 2"
   }
 ]

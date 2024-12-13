@@ -1,10 +1,15 @@
 /*-- scss:uses --*/
-// Change the main title color
+// Change the font size for main titles
 .reveal h1 {
-  color: #1a73e8; // This is a blue color, replace with your desired color code
+  font-size: 30px; // You can adjust the size as needed
 }
 
-// Optionally change the subtitle color
+// Change the font size for subtitles
 .reveal h2 {
-  color: #d35400; // This is an orange color, replace with your desired color code
+  font-size: 28px; // Adjust this value based on your preference
+}
+
+// Change the font size for regular slide text
+.reveal p {
+  font-size: 25px; // This affects normal paragraph text
 }

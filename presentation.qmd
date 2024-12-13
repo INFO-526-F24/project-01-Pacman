@@ -19,51 +19,7 @@ execute:
   echo: false
 ---
 
-```{r}
-#| label: load-packages
-#| include: false
-
-if(!require(pacman))
-  install.packages("pacman")
-pacman::p_load(tidyverse,
-               dplyr,
-               lubridate,
-               ggplot2,
-               scales,
-               plotly)
-```
-
-```{r}
-#| label: setup
-#| include: false
-
-# Plot theme
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 11))
-
-# For better figure resolution
-knitr::opts_chunk$set(
-  fig.retina = 3, 
-  dpi = 300, 
-  fig.width = 6, 
-  fig.asp = 0.618 
-  )
-```
-
-```{r}
-#| label: load-data
-#| include: false
-# Load data here
-data(mtcars)
-mtcars$speed <- mtcars$hp / mtcars$wt
-
-data("penguins")
-```
-
 ## Introduction and Motivation
-
-```{r}
-
-```
 
 -   **E-commerce dynamics:** Rapidly evolving market demands a deeper understanding of consumer behavior.
 
@@ -80,28 +36,38 @@ data("penguins")
 
 -   **Dataset Overview:** Contains 9,994 entries across 19 columns from a superstore. Encompasses sales transactions, customer insights, product information, and geographical data.
 
--   **Key Variables:**
+-   **Key Variables used for analysis:**
 
-    Transaction Details: Order ID, Order Date, Ship Date. Customer Insights: Segment, Customer Name (anonymized). Product Information: Manufacturer, Product Name, Category, Subcategory. Geographical Data: Region, City, State, ZIP code. Financial Metrics: Sales, Quantity, Discount, Profit, Profit Margin. Dates: Altered for confidentiality while maintaining data integrity.
+    \- Product Information: Category, Subcategory.
 
-## Layouts
+    \- Geographical Data: Region.
 
-You can use plain text
+    \- Financial Metrics: Sales, Quantity, Discount, Profit, Profit Margin.
 
-::: columns
-::: {.column width="40%"}
--   or bullet points[^1]
-:::
+    \- Dates: Altered for confidentiality while maintaining data integrity.
 
-::: {.column width="60%"}
-or in two columns
-:::
-:::
+## Key Insights from EDA
 
-[^1]: And add footnotes
+-   Sales Distribution: Furniture, Office Supplies, and Technology contribute almost equally to sales.
 
--   like
+-   Seasonal Trends: Significant variability in monthly sales; profits remain relatively stable.
 
--   this
+-   Top 5 cities by sales: NYC, LA, Seattle, Philadelphia, San Francisco. Highlights regional strengths for targeted strategies.
 
-## Code
+-   Profitability Analysis: Technology products have the highest profit margins, whereas Furniture, despite high sales, yields lower margins.
+
+## Seasonal Trends and Sales Performance Analysis
+
+#### **Plot 1**
+
+<iframe src="interactive_plot.html" width="100%" height="400">
+
+</iframe>
+
+## Seasonal Trends and Sales Performance Analysis
+
+#### **Plot 2**
+
+<iframe src="plotly_plot.html" width="100%" height="400">
+
+</iframe>

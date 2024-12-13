@@ -354,28 +354,33 @@ Ralph Dsouza, Saksham Gupta, Vaishnavi Kulkarni,Jayneet Jain, Mihika Kubadia, De
 <h2>Introduction to the Data</h2>
 <ul>
 <li><p><strong>Dataset Overview:</strong> Contains 9,994 entries across 19 columns from a superstore. Encompasses sales transactions, customer insights, product information, and geographical data.</p></li>
-<li><p><strong>Key Variables:</strong> <em>Transaction Details</em>: Order ID, Order Date, Ship Date. <em>Customer Insights</em>: Market segments like Consumer and Home Office.<em>Product Information</em>: Categories and subcategories. <em>Financial Metrics</em>: Sales, discounts, profits, and profit margins. <em>Purpose</em>: Use data to uncover trends and relationships for informed decision-making.</p></li>
+<li><p><strong>Key Variables used for analysis:</strong></p>
+<p>- Product Information: Category, Subcategory.</p>
+<p>- Geographical Data: Region.</p>
+<p>- Financial Metrics: Sales, Quantity, Discount, Profit, Profit Margin.</p>
+<p>- Dates: Altered for confidentiality while maintaining data integrity.</p></li>
 </ul>
 </section>
-<section id="layouts" class="slide level2">
-<h2>Layouts</h2>
-<p>You can use plain text</p>
-<div class="columns">
-<div class="column" style="width:40%;">
+<section id="key-insights-from-eda" class="slide level2">
+<h2>Key Insights from EDA</h2>
 <ul>
-<li>or bullet points<sup>1</sup></li>
+<li><p>Sales Distribution: Furniture, Office Supplies, and Technology contribute almost equally to sales.</p></li>
+<li><p>Seasonal Trends: Significant variability in monthly sales; profits remain relatively stable.</p></li>
+<li><p>Top 5 cities by sales: NYC, LA, Seattle, Philadelphia, San Francisco. Highlights regional strengths for targeted strategies.</p></li>
+<li><p>Profitability Analysis: Technology products have the highest profit margins, whereas Furniture, despite high sales, yields lower margins.</p></li>
 </ul>
-</div><div class="column" style="width:60%;">
-<p>or in two columns</p>
-</div>
-</div>
-<ul>
-<li><p>like</p></li>
-<li><p>this</p></li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>And add footnotes</p></li></ol></aside></section>
-<section id="code" class="slide level2">
-<h2>Code</h2>
+</section>
+<section id="seasonal-trends-and-sales-performance-analysis" class="slide level2">
+<h2>Seasonal Trends and Sales Performance Analysis</h2>
+<h4 id="plot-1"><strong>Plot 1</strong></h4>
+<iframe src="interactive_plot.html" width="100%" height="400">
+</iframe>
+</section>
+<section id="seasonal-trends-and-sales-performance-analysis-1" class="slide level2">
+<h2>Seasonal Trends and Sales Performance Analysis</h2>
+<h4 id="plot-2"><strong>Plot 2</strong></h4>
+<iframe src="plotly_plot.html" width="100%" height="400">
+</iframe>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -383,7 +388,6 @@ Ralph Dsouza, Saksham Gupta, Vaishnavi Kulkarni,Jayneet Jain, Mihika Kubadia, De
 </div>
 </div>
 </section>
-
     </div>
   </div>
 
@@ -594,44 +598,6 @@ Ralph Dsouza, Saksham Gupta, Vaishnavi Kulkarni,Jayneet Jain, Mihika Kubadia, De
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

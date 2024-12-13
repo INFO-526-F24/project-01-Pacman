@@ -259,6 +259,10 @@ p <- ggplot(seasonal_sales_malls, aes(x = season, y = total_sales, fill = region
   )
 interactive_plot <- ggplotly(p)
 interactive_plot
+library(plotly)
+# `interactive_plot` is your plotly object
+htmlwidgets::saveWidget(interactive_plot, "interactive_plot.html")
+
 ```
 
 #### Plot 3: Seasonal Sales by Categories
@@ -326,6 +330,8 @@ plotly_plot <- plotly_plot %>%
 
 # Display the interactive plot
 plotly_plot
+htmlwidgets::saveWidget(plotly_plot, "plotly_plot.html")
+
 ```
 
 ### Question 2: Discounts, Sales Volumes, and Profit Margins
