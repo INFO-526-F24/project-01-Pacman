@@ -2,22 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://INFO-526-F24.github.io/project-01-Pacman/proposal.html</loc>
-    <lastmod>2024-11-13T21:29:33.529Z</lastmod>
+    <lastmod>2024-12-13T19:21:22.570Z</lastmod>
   </url>
   <url>
-    <loc>https://INFO-526-F24.github.io/project-01-Pacman/index.html</loc>
-    <lastmod>2024-10-16T23:52:15.920Z</lastmod>
+    <loc>https://INFO-526-F24.github.io/project-01-Pacman/Pacman.html</loc>
+    <lastmod>2024-12-13T15:55:10.242Z</lastmod>
+  </url>
+  <url>
+    <loc>https://INFO-526-F24.github.io/project-01-Pacman/dashboard.html</loc>
+    <lastmod>2024-12-13T19:13:52.165Z</lastmod>
   </url>
   <url>
     <loc>https://INFO-526-F24.github.io/project-01-Pacman/about.html</loc>
-    <lastmod>2024-10-16T23:36:10.597Z</lastmod>
+    <lastmod>2024-12-04T20:21:35.944Z</lastmod>
   </url>
   <url>
     <loc>https://INFO-526-F24.github.io/project-01-Pacman/contract.html</loc>
-    <lastmod>2024-10-16T23:36:10.598Z</lastmod>
+    <lastmod>2024-12-04T20:21:35.944Z</lastmod>
+  </url>
+  <url>
+    <loc>https://INFO-526-F24.github.io/project-01-Pacman/index.html</loc>
+    <lastmod>2024-12-13T19:21:22.567Z</lastmod>
   </url>
   <url>
     <loc>https://INFO-526-F24.github.io/project-01-Pacman/presentation.html</loc>
-    <lastmod>2024-10-16T23:47:19.624Z</lastmod>
+    <lastmod>2024-12-13T19:21:22.569Z</lastmod>
   </url>
 </urlset>
