@@ -25,8 +25,6 @@ The aim of the project is to analyze and extract meaningful insights from E-comm
 
 In the rapidly evolving e-commerce landscape, understanding consumer behavior is paramount for businesses aiming to maximize profitability and enhance customer engagement. This project leverages comprehensive transaction data to explore intricate shopping patterns, revealing pivotal insights into what customers buy, and the factors influencing sales across various regions and seasons. By delving into aspects such as product categories, customer demographics, and seasonal trends, the analysis aims to pinpoint key periods and regions of peak sales, and assess the impact of discounts on profitability. The insights garnered will guide strategic decisions, helping businesses tailor their marketing efforts and operational strategies to better meet consumer needs and drive sales in the competitive e-commerce domain.
 
-
-
 ```{r}
 #| label: load-pkgs
 #| message: false
@@ -93,12 +91,11 @@ data$season <- factor(data$season, levels = c("Winter", "Spring", "Summer", "Fal
 glimpse(data)
 ```
 
-The steps used in preprocessing are: 
+The steps used in preprocessing are:
 
 *Handling Missing Values*
 
-Checked for missing values and removed rows with missing or invalid values in critical fields like sales and profit margins.
-Date Formatting and Feature Extraction
+Checked for missing values and removed rows with missing or invalid values in critical fields like sales and profit margins. Date Formatting and Feature Extraction
 
 *Converted order_date and ship_date to proper date formats.*
 
@@ -119,7 +116,6 @@ Normalized the total_sales column to a 0–1 range to make it consistent and rea
 *Categorical Variables*
 
 Converted columns like category, region, and segment into factors and ensured season was ordered logically (Winter → Fall).
-
 
 ## Exploratory Data Analysis (EDA)
 
@@ -155,7 +151,6 @@ data %>%
 **Sales and Profit Trends by Month:**
 
 The line chart tracks total sales and profits over the course of a year. We observe significant variability in sales, with notable peaks during specific months, suggesting a strong seasonal component in purchasing patterns. Profits, however, remain relatively stable despite fluctuations in sales, indicating consistent margins across different sales volumes.
-
 
 ```{r}
 # Sales and Profit Trends by Month with Custom X-Axis Labels
@@ -201,9 +196,7 @@ data %>%
   theme(legend.position = "none")
 ```
 
-
 These visualizations underscore the importance of regional and seasonal factors in sales strategies and provide a clear view of where to focus efforts to maximize profitability and market penetration. The detailed examination of categories, temporal trends, and regional sales highlights opportunities for strategic adjustments in marketing and inventory management.
-
 
 ### Question 1: Seasonal Trends and Sales Performance:
 
@@ -212,7 +205,6 @@ These visualizations underscore the importance of regional and seasonal factors 
 A line graph is used to visualize the monthly sales trends for each category. This involves plotting total sales against each month, differentiated by product categories using color-coded lines.
 
 Points are added on the lines to indicate actual sales data for each month, and a linear model smoothing line is included to depict trends.
-
 
 ```{r}
 # Prepare data⁠
@@ -309,7 +301,6 @@ htmlwidgets::saveWidget(interactive_plot, "interactive_plot.html")
 
 Another bar chart was utilized to depict how sales across different categories varied by season. This provided insights into category-specific seasonal trends. The bars were positioned in a dodge arrangement to facilitate direct comparison between categories within each season.
 
-
 ```{r}
 # Bar plot for seasonal sales across categories
 seasonal_category_sales <- data %>%
@@ -338,7 +329,6 @@ ggplot(seasonal_category_sales, aes(x = season, y = total_sales, fill = category
 #### Plot 4: Heatmap of Seasonal Sales by Category and Region
 
 A heatmap was created to visualize complex multivariate relationships. This plot displayed total sales across categories and seasons, faceted by region, to explore regional differences more effectively. Each cell's color intensity in the heatmap corresponded to the sales volume, providing an immediate visual impact of higher and lower sales across regions.
-
 
 ```{r}
 # Faceted heatmap plot for seasonal sales across regions and categories
@@ -383,7 +373,6 @@ htmlwidgets::saveWidget(plotly_plot, "plotly_plot.html")
 ### Question 2: Discounts, Sales Volumes, and Profit Margins
 
 #### Plot 1: Relation between Discounts and sales
-
 
 ```{r}
 data$discount <- data$discount * 100
@@ -466,7 +455,6 @@ ggplot(cor_melt, aes(x = Var1, y = Var2, fill = value)) +
 
 A three-dimensional scatter plot was created to explore the multivariate relationship between discount rates, quantities sold, and profit margins. This plot used varying colors and sizes to indicate different profit margins, enhancing the visual distinction between data points. Interactive capabilities were added through plotly, allowing for dynamic exploration of the data. Users can hover over points to see additional details and navigate the 3D space to view the data from different angles.
 
-
 ```{r}
 library(plotly)
 
@@ -543,8 +531,6 @@ htmlwidgets::saveWidget(plot_3d, "plot_3d.html")
 
 ## Results
 
-**Seasonal Sales Variations by Region (Q1)**
-
 The analysis of sales performance across the four regions (Central, East, South, and West) reveals key insights regarding seasonal and regional dynamics:
 
 *Seasonal Impact:*
@@ -569,8 +555,6 @@ The pronounced sales increase in the fall in the East suggests leveraging this s
 
 The steady performance in the South and West regions highlights their potential as stable revenue streams, warranting year-round engagement strategies.
 
-**Heatmap of Seasonal Sales by Category and Region (Q2)**
-
 The heatmap analysis highlights performance variations in product categories across regions and seasons:
 
 *Regional and Seasonal Variations:*
@@ -588,6 +572,20 @@ Technology: Achieves the highest sales across all regions in the fall, suggestin
 Office Supplies: Exhibits the least variation and lowest sales figures, reflecting a stable but modest year-round demand.
 
 Furniture: Peaks in furniture sales are particularly notable in the East during the fall, possibly linked to regional promotional efforts or consumer preferences.
+
+*Impact of Discounts on Quantity and Profit Margins:*
+
+For Discounts and Profit Margins: There's a clear negative correlation. ie,More discounts means lower profits.
+
+Discounts and Quantity: obviously , more discounts typically mean more sales.
+
+For Quantity and Profits: More sales don't always mean better profit ie. this relationship is quite weak.
+
+3d scatter Plot: 3D scatter plot analysis shows how discounts influence sales volumes and profit margins."
+
+Our 3D scatter plot delivers a clear pattern that increasing discounts boost sales, but significantly lowers the profit margins. At lower discounts, profits are optimal. but Beyond a certain point, profits start to decline sharply.
+
+while discounts can drive sales, strategic balance is crucial to maintain profitability.
 
 *Strategic Insights:*
 
@@ -624,4 +622,3 @@ Running simulations on various discount levels or pricing models enables busines
 Factoring in macroeconomic variables, such as inflation or consumer sentiment, can refine discount strategies. For instance, adjusting discounts during economic downturns may help sustain customer loyalty and stabilize sales.
 
 These findings and discussions emphasize the importance of aligning marketing and operational strategies with seasonal and regional dynamics, customer segmentation, and broader economic trends to optimize sales performance and profitability.
-
