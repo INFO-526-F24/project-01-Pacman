@@ -12,7 +12,7 @@ This project was developed by **Pacman** For [INFO 526 - Data Analysis and Visua
 
 -   Jayneet Jain : 1st-year Master's student in Data Science, graduating in 2026.
 
--   Saksham Gupta : 1st-year Master's student in Data Science, graduating in 2026.
+-   Saksham Gupta : 2nd-year Master's student in Data Science, graduating in 2025.
 
 -   Vaishnavi Kulkarni : 1st-year Master's student in Data Science, graduating in 2026.
 
